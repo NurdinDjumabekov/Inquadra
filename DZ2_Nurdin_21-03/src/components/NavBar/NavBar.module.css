@@ -1,0 +1,12 @@
+.parent_navBar {
+  width: 100%;
+  background-color: bisque;
+}
+.parent_navBar ul {
+  display: flex;
+  gap: 90px;
+}
+.parent_navBar li {
+  padding: 40px 0;
+  font-size: 30px;
+}

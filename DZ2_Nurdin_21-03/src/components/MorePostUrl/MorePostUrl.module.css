@@ -1,0 +1,19 @@
+.parent_morePostInfo {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: gray;
+}
+.parent_morePostInfo img {
+  width: 400px;
+  height: 400px;
+}
+.btnBackInner {
+  width: 80px;
+  height: 30px;
+  border-radius: 0 10px 10px 0;
+  position: absolute;
+  left: 0px;
+  top:  0px;
+}
