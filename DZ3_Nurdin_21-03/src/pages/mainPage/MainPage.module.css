@@ -1,0 +1,28 @@
+.parent_block {
+  width: 80%;
+  margin: 200px auto 0;
+}
+.parent_block h2 {
+  font-size: 40px;
+}
+
+.parent_block button {
+  /* width: 80px;
+  height: 30px; */
+  font-size: 25px;
+  font-weight: 700;
+  padding: 7px 12px;
+  border-radius: 10px;
+}
+.parent_block button:hover {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+.btns_block {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  margin: 10px auto;
+}
