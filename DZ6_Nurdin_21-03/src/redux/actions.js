@@ -42,10 +42,18 @@ const stopped = () => {
   };
 };
 
+// const createNewNameAction = () => {
+//   return {
+//     type: types.NEW_NAME,
+//     // payload: inputName,
+//   };
+// };
+
 export const stopViewAction = () => {
   return (dispatch) => {
     setTimeout(() => {
       dispatch(stopped());
+      // dispatch(createNewNameAction());
     }, 5000);
   };
 };

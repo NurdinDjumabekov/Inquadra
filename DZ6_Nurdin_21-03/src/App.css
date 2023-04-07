@@ -1,0 +1,41 @@
+.block_welcome > h1 {
+  color: white;
+  margin: 25px 0;
+}
+.block_icon {
+  width: 800px;
+  height: 500px;
+  background-color: aliceblue;
+  margin: 0 auto;
+  padding-top: 20px;
+  border-radius: 5px;
+}
+
+.block_icon > input {
+  width: 550px;
+  height: 30px;
+  display: block;
+  margin: 15px auto;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding-left: 4%;
+  font-weight: 600;
+}
+.block_send_button {
+  width: 550px;
+  text-align: right;
+  margin: 0 auto;
+}
+.block_send_button > button {
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 18px;
+  font-weight: 600;
+  transition: 0.6s;
+}
+.block_send_button > button:hover {
+  background-color: black;
+  color: white;
+}

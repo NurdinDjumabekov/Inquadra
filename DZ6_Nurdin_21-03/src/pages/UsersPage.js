@@ -1,10 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  changeStatusAction,
-  postUserAction,
-  stopViewAction,
-} from "../redux/actions";
+import { postUserAction, stopViewAction } from "../redux/actions";
 import { useState } from "react";
+import Successful from "../components/successful";
 
 const UsersPage = () => {
   const dispatch = useDispatch();
@@ -12,6 +9,7 @@ const UsersPage = () => {
   const [inputSurName, setInputSurName] = useState("");
   const [inputEmail, setInputEmail] = useState("");
   const [inputWebsite, setInputWebsite] = useState("");
+
   const { stateStatus } = useSelector((state) => state.stateRequestReducer);
   //   console.log(stateStatus);
   const sendRequest = () => {
@@ -21,8 +19,10 @@ const UsersPage = () => {
 
   return (
     <>
-      <div>UsersPage</div>
-      <div>
+      <div className="block_welcome">
+        <h1>Введите данные для того, чтобы зарегистрироваться</h1>
+      </div>
+      <div className="block_icon">
         <input
           type="text"
           placeholder="name"
@@ -34,7 +34,7 @@ const UsersPage = () => {
           onChange={(e) => setInputSurName(e.target.value)}
         />
         <input
-          type="text"
+          type="email"
           placeholder="Email"
           onChange={(e) => setInputEmail(e.target.value)}
         />
@@ -43,9 +43,11 @@ const UsersPage = () => {
           placeholder="website"
           onChange={(e) => setInputWebsite(e.target.value)}
         />
-        <button onClick={sendRequest}>send</button>
+        <div className="block_send_button">
+          <button onClick={sendRequest}>send</button>
+        </div>
       </div>
-      {stateStatus && <div>Вы успешно зареганы!!!</div>}
+      {stateStatus && <Successful inputName={inputName} />}
     </>
   );
 };
