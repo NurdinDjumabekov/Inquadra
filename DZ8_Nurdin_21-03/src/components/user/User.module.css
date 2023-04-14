@@ -1,0 +1,12 @@
+.parent_userBlock {
+  width: 1200px;
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+  gap: 150px;
+}
+
+.parent_userBlock li {
+  font-size: 25px;
+  list-style: none;
+}

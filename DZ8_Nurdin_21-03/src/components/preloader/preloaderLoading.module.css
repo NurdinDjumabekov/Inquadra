@@ -1,0 +1,9 @@
+.parent_preloader {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.parent_preloader p {
+  font-size: 50px;
+}
