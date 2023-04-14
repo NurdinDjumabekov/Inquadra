@@ -13,11 +13,11 @@ const UserPage = () => {
   return (
     <div>
       {preloader && <PreloaderLoading />}
-      <ul>
+      <div className="parent_for_user">
         {users.map((user) => (
           <User user={user} key={user.id} />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

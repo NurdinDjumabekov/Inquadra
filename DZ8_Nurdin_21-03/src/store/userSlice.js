@@ -13,7 +13,7 @@ export const usersOutput = createAsyncThunk(
       const response = await axios.get(
         "http://jsonplaceholder.typicode.com/users"
       );
-      // console.log(response.data);
+      console.log(response.data);
       dispatch(usersinfo(response.data));
       dispatch(preloaderOff(false));
     } catch {

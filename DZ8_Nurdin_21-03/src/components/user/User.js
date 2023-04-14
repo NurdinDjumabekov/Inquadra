@@ -3,10 +3,12 @@ import styles from "./User.module.css";
 
 const User = ({ user }) => {
   return (
-    <div className={styles.parent_userBlock}>
+    <ul className={styles.parent_userBlock}>
       <li>name : {user.name}</li>
       <li>username : {user.username}</li>
-    </div>
+      <li>email : {user.email}</li>
+      <li>phone : {user.phone}</li>
+    </ul>
   );
 };
 
