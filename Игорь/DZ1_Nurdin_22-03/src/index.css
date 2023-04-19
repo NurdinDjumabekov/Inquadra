@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: black;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+.active {
+  color: black;
+  display: inline-block;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 105%;
+  background-color: black;
+  position: absolute;
+}
