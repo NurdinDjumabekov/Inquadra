@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const EveryPokemon = ({ poki }) => {
+  useEffect(() => {}, []);
   return (
     <NavLink to={`/pokemon/${poki.name}`}>
       <ul>
