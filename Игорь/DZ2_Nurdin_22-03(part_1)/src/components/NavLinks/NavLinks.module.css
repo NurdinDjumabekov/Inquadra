@@ -1,0 +1,8 @@
+.parent_nav {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  background-color: antiquewhite;
+  padding: 20px;
+  margin-bottom: 10px;
+}
