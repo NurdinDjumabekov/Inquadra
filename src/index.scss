@@ -1,0 +1,274 @@
+@import "./assets/fonts/Cygre_book/stylesheet.css";
+@import "./assets/fonts/Righteous/stylesheet.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #050505;
+  font-family: "Cygre Book", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+}
+//// font-family: "Righteous", sans-serif;
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 400;
+  background-color: transparent;
+}
+
+.noneData {
+  display: none;
+}
+
+.viewData {
+  display: block;
+}
+
+.logoText {
+  font-family: AKONY;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 33px;
+  text-align: center;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  margin: 11px 0 10px;
+  background: linear-gradient(90deg, #ebebeb 0%, rgba(5, 5, 5, 0) 90%);
+}
+
+.listTypes {
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    height: 30px;
+    cursor: pointer;
+
+    p {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 16px;
+      color: #050505;
+    }
+  }
+
+  .count {
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    color: #909090;
+    margin-right: 5px;
+  }
+
+  .activeItem {
+    transition: 0.3s;
+
+    > p {
+      position: relative;
+      display: inline-block;
+
+      &:after {
+        position: absolute;
+        bottom: -2px;
+        left: 0px;
+        content: "";
+        min-width: 100% !important;
+        width: 100% !important;
+        height: 1px;
+        background: #050505;
+        opacity: 1;
+      }
+
+      &:not(:hover):after {
+        opacity: 1;
+      }
+    }
+
+    > span {
+      position: relative;
+      display: inline-block;
+
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0px;
+        height: 1px;
+        background: #b5b5b5;
+        width: 110%;
+        animation: modal 0.7s ease-in-out;
+      }
+    }
+  }
+}
+
+.choiceCloth {
+  font-family: "Cygre Book", sans-serif;
+  background-color: #050505;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 290px;
+  border-radius: 5px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+  color: #fff;
+}
+
+.shadow {
+  height: 100vh;
+  min-width: 100%;
+  background-color: rgba(5, 5, 5, 0.553);
+  position: fixed;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+  z-index: 95;
+  animation: modal 0.7s ease-in-out;
+}
+
+.imgAction {
+  cursor: pointer;
+}
+
+.everyPosition {
+  justify-content: flex-start !important;
+  gap: 35px !important;
+}
+
+.morePush {
+  padding: 15px;
+}
+
+// .result {
+//   display: flex;
+//   align-items: center;
+//   gap: 15px;
+//   padding: 25px 0 35px 0;
+
+//   p {
+//       font-family: Century Gothic;
+//       font-size: 20px;
+//       font-weight: 400;
+//       line-height: 20px;
+//       color: #050505;
+//   }
+
+//   span {
+//       font-size: 30px;
+//       font-weight: 400;
+//       line-height: 20px;
+//       color: #FF3535;
+//   }
+
+//   i {
+//       font-size: 30px;
+//       font-weight: 400;
+//       line-height: 20px;
+//       color: #909090;
+//       text-decoration: line-through;
+//   }
+
+// }
+
+.saveBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 290px;
+  border-radius: 10px;
+  height: 50px;
+  gap: 20px;
+  border: 1px solid rgba(235, 235, 235, 0.9215686275);
+
+  span {
+    display: block;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: left;
+    color: #a4a2a26e;
+  }
+
+  > img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.resultAction {
+  p {
+    font-size: 16px;
+    line-height: 16px;
+    color: #909090;
+    height: 20px;
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0px;
+    span {
+      border: 1px solid #050505;
+      width: 225px;
+      height: 50px;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    button {
+      width: 300px !important;
+    }
+  }
+
+  b {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 12px;
+    text-align: left;
+    color: #909090;
+  }
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

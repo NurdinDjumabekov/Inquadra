@@ -1,0 +1,19 @@
+.sale {
+  animation: page 0.7s ease-in-out;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 35px;
+  }
+}
+
+
+@keyframes page {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

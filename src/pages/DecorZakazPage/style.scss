@@ -1,0 +1,13 @@
+.decor {
+    animation: page 0.7s ease-in-out;
+    margin-top: 40px;
+}
+
+@keyframes page {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

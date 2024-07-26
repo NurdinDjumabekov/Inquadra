@@ -1,0 +1,180 @@
+.skeletonParent {
+  width: 100% !important;
+  height: 100vh;
+
+  &__inner {
+    width: 100%;
+
+    .mainInfo {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0 0;
+      gap: 20px;
+
+      &__types {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        .filtered {
+          display: flex;
+          align-items: center;
+          background: transparent;
+          gap: 10px;
+
+          > div {
+            width: 40px;
+            height: 40px;
+            border-radius: 5px;
+          }
+        }
+
+        div {
+          width: 280px;
+          height: 40px;
+          background: #aaa;
+          border-radius: 5px;
+        }
+
+        div {
+          width: 280px;
+          height: 70px;
+          background: #aaa;
+          border-radius: 5px;
+        }
+
+        section {
+          width: 280px;
+          height: 200px;
+          background: #aaa;
+          border-radius: 5px;
+        }
+
+        p {
+          width: 280px;
+          height: 50px;
+          border-radius: 5px;
+
+          background: #aaa;
+        }
+
+        span {
+          width: 280px;
+          height: 70px;
+          background: #aaa;
+          border-radius: 5px;
+        }
+
+        main {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 8px;
+          width: 280px;
+          border-radius: 5px;
+
+          i {
+            width: 35px;
+            height: 35px;
+            background: #aaa;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      &__block {
+        main {
+          display: flex;
+          justify-content: flex-end;
+
+          p {
+            width: 200px;
+            height: 40px;
+            background: #aaa;
+            margin: 15px 0 20px;
+            align-self: center;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+
+    .skeletonFooter {
+      height: 580px;
+      background: #aaa;
+      width: 100%;
+      margin-top: 40px;
+    }
+  }
+}
+
+.menuSkeleton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    width: 100%;
+
+    p {
+      width: 160px;
+      height: 50px;
+      background: #aaa;
+    }
+
+    span {
+      display: block;
+      height: 50px;
+      width: 80px;
+      background: #aaa;
+    }
+  }
+
+  &__center {
+    width: 600px;
+    height: 50px;
+    background: #aaa;
+  }
+
+  &__right {
+    gap: 20px !important;
+    justify-content: flex-end;
+  }
+}
+
+.cardsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin: 3px 0 0 0;
+
+  > div {
+    height: 440px;
+
+    i {
+      display: block;
+      width: 295px;
+      height: 400px;
+      background: #aaa;
+      border-radius: 5px;
+    }
+
+    b {
+      display: block;
+      height: 20px;
+      background: #aaa;
+      margin: 10px 0 0 0;
+    }
+
+    span {
+      display: block;
+      height: 40px;
+      background: #aaa;
+      margin: 5px 0 0 0;
+    }
+  }
+}

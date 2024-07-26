@@ -1,0 +1,234 @@
+@font-face {
+    font-family: 'Cygre Book';
+    src: url('Cygre-BookIt.eot');
+    src: url('Cygre-BookIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-BookIt.woff2') format('woff2'),
+        url('Cygre-BookIt.woff') format('woff'),
+        url('Cygre-BookIt.ttf') format('truetype'),
+        url('Cygre-BookIt.svg#Cygre-BookIt') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-ExtraBold.eot');
+    src: url('Cygre-ExtraBold.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-ExtraBold.woff2') format('woff2'),
+        url('Cygre-ExtraBold.woff') format('woff'),
+        url('Cygre-ExtraBold.ttf') format('truetype'),
+        url('Cygre-ExtraBold.svg#Cygre-ExtraBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-ExtraBoldIt.eot');
+    src: url('Cygre-ExtraBoldIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-ExtraBoldIt.woff2') format('woff2'),
+        url('Cygre-ExtraBoldIt.woff') format('woff'),
+        url('Cygre-ExtraBoldIt.ttf') format('truetype'),
+        url('Cygre-ExtraBoldIt.svg#Cygre-ExtraBoldIt') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-Medium.eot');
+    src: url('Cygre-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Medium.woff2') format('woff2'),
+        url('Cygre-Medium.woff') format('woff'),
+        url('Cygre-Medium.ttf') format('truetype'),
+        url('Cygre-Medium.svg#Cygre-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-SemiBoldIt.eot');
+    src: url('Cygre-SemiBoldIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-SemiBoldIt.woff2') format('woff2'),
+        url('Cygre-SemiBoldIt.woff') format('woff'),
+        url('Cygre-SemiBoldIt.ttf') format('truetype'),
+        url('Cygre-SemiBoldIt.svg#Cygre-SemiBoldIt') format('svg');
+    font-weight: 600;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-MediumIt.eot');
+    src: url('Cygre-MediumIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-MediumIt.woff2') format('woff2'),
+        url('Cygre-MediumIt.woff') format('woff'),
+        url('Cygre-MediumIt.ttf') format('truetype'),
+        url('Cygre-MediumIt.svg#Cygre-MediumIt') format('svg');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-Black.eot');
+    src: url('Cygre-Black.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Black.woff2') format('woff2'),
+        url('Cygre-Black.woff') format('woff'),
+        url('Cygre-Black.ttf') format('truetype'),
+        url('Cygre-Black.svg#Cygre-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-Regular.eot');
+    src: url('Cygre-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Regular.woff2') format('woff2'),
+        url('Cygre-Regular.woff') format('woff'),
+        url('Cygre-Regular.ttf') format('truetype'),
+        url('Cygre-Regular.svg#Cygre-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-Bold.eot');
+    src: url('Cygre-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Bold.woff2') format('woff2'),
+        url('Cygre-Bold.woff') format('woff'),
+        url('Cygre-Bold.ttf') format('truetype'),
+        url('Cygre-Bold.svg#Cygre-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-RegularIt.eot');
+    src: url('Cygre-RegularIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-RegularIt.woff2') format('woff2'),
+        url('Cygre-RegularIt.woff') format('woff'),
+        url('Cygre-RegularIt.ttf') format('truetype'),
+        url('Cygre-RegularIt.svg#Cygre-RegularIt') format('svg');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-BoldIt.eot');
+    src: url('Cygre-BoldIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-BoldIt.woff2') format('woff2'),
+        url('Cygre-BoldIt.woff') format('woff'),
+        url('Cygre-BoldIt.ttf') format('truetype'),
+        url('Cygre-BoldIt.svg#Cygre-BoldIt') format('svg');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-Thin.eot');
+    src: url('Cygre-Thin.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Thin.woff2') format('woff2'),
+        url('Cygre-Thin.woff') format('woff'),
+        url('Cygre-Thin.ttf') format('truetype'),
+        url('Cygre-Thin.svg#Cygre-Thin') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-Light.eot');
+    src: url('Cygre-Light.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Light.woff2') format('woff2'),
+        url('Cygre-Light.woff') format('woff'),
+        url('Cygre-Light.ttf') format('truetype'),
+        url('Cygre-Light.svg#Cygre-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-ThinIt.eot');
+    src: url('Cygre-ThinIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-ThinIt.woff2') format('woff2'),
+        url('Cygre-ThinIt.woff') format('woff'),
+        url('Cygre-ThinIt.ttf') format('truetype'),
+        url('Cygre-ThinIt.svg#Cygre-ThinIt') format('svg');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-LightIt.eot');
+    src: url('Cygre-LightIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-LightIt.woff2') format('woff2'),
+        url('Cygre-LightIt.woff') format('woff'),
+        url('Cygre-LightIt.ttf') format('truetype'),
+        url('Cygre-LightIt.svg#Cygre-LightIt') format('svg');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-BlackIt.eot');
+    src: url('Cygre-BlackIt.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-BlackIt.woff2') format('woff2'),
+        url('Cygre-BlackIt.woff') format('woff'),
+        url('Cygre-BlackIt.ttf') format('truetype'),
+        url('Cygre-BlackIt.svg#Cygre-BlackIt') format('svg');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre Book';
+    src: url('Cygre-Book.eot');
+    src: url('Cygre-Book.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-Book.woff2') format('woff2'),
+        url('Cygre-Book.woff') format('woff'),
+        url('Cygre-Book.ttf') format('truetype'),
+        url('Cygre-Book.svg#Cygre-Book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cygre';
+    src: url('Cygre-SemiBold.eot');
+    src: url('Cygre-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Cygre-SemiBold.woff2') format('woff2'),
+        url('Cygre-SemiBold.woff') format('woff'),
+        url('Cygre-SemiBold.ttf') format('truetype'),
+        url('Cygre-SemiBold.svg#Cygre-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+

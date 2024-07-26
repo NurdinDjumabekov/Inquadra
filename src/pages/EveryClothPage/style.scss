@@ -1,0 +1,137 @@
+.everyCloth {
+  animation: page 0.7s ease-in-out;
+
+  .navPath {
+    margin: 35px 0 25px;
+  }
+
+  &__inner {
+    display: flex;
+    gap: 20px;
+
+    .mainContant {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 10px;
+
+      .dopImg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
+
+        > div {
+          width: 170px;
+          height: 230px;
+          border-radius: 10px;
+
+          > img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+          }
+        }
+      }
+
+      .mainImg {
+        width: 525px;
+        height: 710px;
+        border-radius: 10px;
+
+        img {
+          object-fit: cover;
+          border-radius: 10px;
+          // box-shadow: 0 1px 5px 0 rgba(65, 69, 88, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07);;
+        }
+      }
+    }
+
+    .line {
+      background: transparent !important;
+      margin: 10px 0 0 0 !important;
+    }
+
+    .dopContant {
+      width: 100%;
+
+      .titles {
+        padding: 17px 15px 12px;
+        background: #f0f0f0;
+        border-radius: 10px;
+
+        > div {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: 10px;
+
+          span {
+            display: block;
+            font-size: 18px;
+            line-height: 18px;
+            text-align: left;
+            color: #909090;
+          }
+
+          b {
+            display: block;
+            font-size: 16px;
+            line-height: 16px;
+            text-align: right;
+          }
+        }
+
+        h5 {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+
+      .prices {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f0f0f0;
+        padding: 15px 15px 12px;
+
+        p {
+          font-size: 24px;
+          line-height: 24px;
+          color: #050505;
+        }
+
+        span {
+          font-size: 24px;
+          line-height: 24px;
+          text-align: right;
+          color: #050505;
+        }
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+
+        .choiceCloth {
+          width: 200px;
+          height: 50px;
+          background: #050505;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+}
+
+@keyframes page {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

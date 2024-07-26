@@ -1,0 +1,241 @@
+.menuChoice {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  top: 36px;
+
+  ////////// меню
+  .menuBurger:hover,
+  .menuBurger.hovered {
+    width: 104px;
+  }
+
+  .menuMain:hover p,
+  .menuMain.hovered p {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .activeMenu {
+    width: 100% !important;
+    padding: 10px 15px;
+    justify-content: flex-start;
+    transition: width 0.6s ease-in-out, padding 0.6s ease-in-out;
+
+    > p {
+      display: block;
+      transform: translateX(0);
+      opacity: 1;
+      color: #828282;
+    }
+
+    .lineVertical {
+      height: 10px;
+      width: 1px;
+      background: #fff;
+    }
+
+    .activeMenuList {
+      display: flex;
+      gap: 30px;
+      margin: 0 0 0 30px;
+      opacity: 1;
+      transition: opacity 0.6s ease-in-out;
+
+      &.closing {
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      li {
+        font-size: 16px;
+        line-height: 16px;
+        color: #fff;
+        position: relative;
+        display: inline-block;
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          height: 1px;
+          background: #828282;
+          width: 0;
+          transition: width 0.5s ease-in-out;
+        }
+        &:hover:after {
+          width: 100%;
+        }
+        &:hover {
+          color: #828282;
+          transition: 0.5s;
+        }
+        &:after {
+          width: 0%;
+        }
+        &:hover:after {
+          width: 100%;
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          height: 1px;
+          background: #828282;
+          width: 0;
+          transition: width 0.5s ease-in-out;
+        }
+        &:hover:before {
+          width: 100%;
+        }
+        &:before {
+          transition: width 0.5s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .closing {
+    width: 40px !important;
+    padding: 10px 10px !important;
+    transition: width 0.6s ease-in-out, padding 0.6s ease-in-out;
+  }
+
+  //////// подобрать мне плитку
+
+  .filterShadow {
+    position: relative;
+  }
+
+  .filterActive {
+    width: 235px;
+
+    > p {
+      color: #828282;
+      opacity: 1;
+      display: block;
+      transform: translateX(0%);
+    }
+  }
+
+  .filterActiveMore {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 240px;
+    z-index: 1;
+    align-items: center;
+    min-width: 100%;
+    gap: 10px;
+    animation: modal 0.7s ease-in-out;
+
+    .call {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      width: 325px;
+      height: 40px;
+      border: 1px solid #050505;
+      border-radius: 10px;
+      padding: 5px 5px 5px 10px;
+
+      img {
+        width: 20px;
+        height: 20px;
+      }
+
+      span {
+        font-size: 16px;
+        line-height: 17px;
+        color: #909090;
+        margin-top: 3px;
+      }
+
+      > button {
+        font-family: Cygre;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        text-align: center;
+        color: #fff;
+        width: 130px;
+        height: 30px;
+        background: #050505;
+        border-radius: 7px;
+        padding-top: 2px;
+      }
+    }
+
+    .conditions {
+      width: 325px;
+      padding-bottom: 5px;
+
+      b {
+        font-size: 14px;
+        line-height: 14px;
+        color: #050505;
+      }
+
+      span {
+        font-size: 14px;
+        line-height: 14px;
+        color: #3366bb;
+        text-decoration: underline;
+        display: block;
+      }
+    }
+  }
+
+  .filterBlock:hover {
+    width: 235px;
+  }
+}
+
+////////// меню
+.menuChoiceActive {
+  min-width: 1240px;
+  transition: min-width 0.6s ease-in-out;
+  z-index: 5;
+
+  .filterShadow {
+    display: none;
+  }
+}
+
+///// для двух кнопок
+.menuMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #050505;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 10px 10px;
+  transition: width 0.6s ease-in-out, padding 0.6s ease-in-out;
+
+  > img {
+    width: 18px;
+    height: 18px;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  > p {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 350;
+    line-height: 20px;
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.5s ease-in-out, transform 0.7s ease-in-out;
+    transform: translateX(-100%);
+    display: none;
+  }
+}

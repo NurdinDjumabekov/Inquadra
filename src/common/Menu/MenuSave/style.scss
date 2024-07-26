@@ -1,0 +1,74 @@
+.blockFavorite {
+  position: relative;
+
+  .btnAction {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 16px;
+      color: #909090;
+    }
+
+    img {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .activeFavorite {
+    p {
+      color: #fff;
+      z-index: 99;
+    }
+
+    img {
+      z-index: 99;
+    }
+  }
+
+  .favorite__modal {
+    width: 600px;
+    border-radius: 5px;
+    padding: 15px;
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    z-index: 120;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-height: 520px;
+    animation: modal 0.5s ease-in-out;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    min-height: 250px;
+    text-align: center;
+
+    .emptyFavourite {
+      padding-top: 100px;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 18px;
+      color: #303030;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+@keyframes modal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
