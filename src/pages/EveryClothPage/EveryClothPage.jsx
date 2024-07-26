@@ -15,7 +15,10 @@ import Favourite from "../../common/Menu/Favourite/Favourite";
 
 ////////// fns
 import { addProdBasket } from "../../store/reducers/saveDataSlice";
-import { detailedCloth } from "../../store/reducers/requestSlice";
+import {
+  detailedCloth,
+  getListhistory,
+} from "../../store/reducers/requestSlice";
 
 ///////// helpers
 import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
@@ -55,6 +58,7 @@ const EveryClothPage = () => {
 
   useEffect(() => {
     dispatch(detailedCloth(id));
+    dispatch(getListhistory());
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
@@ -124,8 +128,8 @@ const EveryClothPage = () => {
             <Description everyCloth={everyCloth} />
           </div>
         </div>
-        <RecomCloth list={everyCloth?.recommendations} />
-        <MayBeFavorite list={everyCloth?.recommendations} />
+        <RecomCloth />
+        {/* <MayBeFavorite list={everyCloth?.recommendations} /> */}
       </div>
     </div>
   );

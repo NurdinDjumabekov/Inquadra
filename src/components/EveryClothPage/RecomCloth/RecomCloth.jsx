@@ -1,27 +1,36 @@
-import React from "react";
-import "./style.scss";
-import { defaultRequest } from "../../../helpers/LodalData";
-import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
-import { getListCategs } from "../../../store/reducers/requestSlice";
+/////// hooks
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 
-const RecomCloth = ({ list }) => {
+/////// imgs
+import heart from "../../../assets/icons/heartWhite.svg";
+
+/////// style
+import "./style.scss";
+
+/////// components
+import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
+
+/////// fns
+
+const RecomCloth = () => {
   const dispatch = useDispatch();
 
-  // const { listCloth } = useSelector((state) => state.requestSlice);
+  const { listHistory } = useSelector((state) => state.requestSlice);
 
-  // useEffect(() => {
-  //   dispatch(getListCategs(defaultRequest));
-  // }, []);
-
-  if (list?.length > 0) {
+  if (listHistory?.length > 0) {
     return (
       <div className="recom">
-        <h4>Можно дополнить образ, чтобы собрать весь комплект</h4>
+        <div className="recom__title">
+          <h4>Можно дополнить образ, чтобы собрать весь комплект</h4>
+          <div>
+            <img src={heart} alt="heart" />
+          </div>
+        </div>
         <ul className="recom__list">
-          {list?.map((item) => (
-            <RenderEveryCloth item={item} key={item.id} detailed={false} />
+          {listHistory?.map((item) => (
+            <RenderEveryCloth item={item} key={item.id} />
           ))}
         </ul>
       </div>

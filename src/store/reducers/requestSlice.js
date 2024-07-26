@@ -235,6 +235,25 @@ export const getListFavourite = createAsyncThunk(
   }
 );
 
+///// getListhistory - get список избранных
+export const getListhistory = createAsyncThunk(
+  "getListhistory",
+  async function (_, { dispatch, rejectWithValue }) {
+    const url = `${REACT_APP_API_URL}view-history`;
+
+    try {
+      const response = await axiosInstance(url);
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 const initialState = {
   preloader: false,
   preloaderFavourite: false,
@@ -243,7 +262,8 @@ const initialState = {
   //////////
   search: "",
   searchList: [], //// поиск одежды
-  listCloth: [],
+  listCloth: [], /// для отображения списка
+  listHistory: [], /// для отображения списка
   listBrands: [], // бренд
   categKladka: [], // кладки
   categStatus: [], // статус
@@ -358,6 +378,19 @@ const requestSlice = createSlice({
       state.preloader = false;
     });
     builder.addCase(detailedCloth.pending, (state, action) => {
+      state.preloader = true;
+    });
+
+    ////////////////////// getListhistory
+    builder.addCase(getListhistory.fulfilled, (state, action) => {
+      state.preloader = false;
+      state.listHistory = action.payload;
+    });
+    builder.addCase(getListhistory.rejected, (state, action) => {
+      state.error = action.payload;
+      state.preloader = false;
+    });
+    builder.addCase(getListhistory.pending, (state, action) => {
       state.preloader = true;
     });
   },

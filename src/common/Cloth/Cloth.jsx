@@ -94,38 +94,33 @@ const Cloth = ({ item, type }) => {
       <li className="everyBasket">
         <div className="imgMain">
           <img src={sarchImg(item?.photos)?.url} alt="" />
+          <button onClick={navDetailed}>Посмотреть</button>
         </div>
         <div className="infoBlock">
           <div className="title">
-            <h5>{item.productName}</h5>
-            <button
-              className="actionDelete"
-              onClick={() => changeFavourite(item)}
-            >
-              <img src={deleteImg} alt="x" />
-            </button>
+            <div>
+              <span>{item?.brand?.brandName}</span>
+              <h6>{item.productName}</h6>
+            </div>
+            <b>{item?.productStatus?.status}</b>
           </div>
           <DiscountPrice item={item} />
           <div className="sizes">
             <div className="sizes__inner">
-              <span>Размерная сетка</span>
-              <b>{size?.[0]?.sizeName}</b>
-            </div>
-            <div className="sizes__inner">
-              <span>Цветовая палитра</span>
-              <div className="colorImg">
-                <img
-                  src={color?.[0]?.color}
-                  alt=""
-                  className={item?.activeColorEvery ? "" : "noneImg"}
-                />
-              </div>
+              <Favourite obj={item} />
+              <button
+                className="actionDelete"
+                onClick={() => changeFavourite(item)}
+              >
+                <img src={deleteImg} alt="x" />
+              </button>
             </div>
           </div>
           <div className="actions">
-            <button className="choiceCloth" onClick={nav}>
-              Добавить в корзину
+            <button className="choiceCloth favouriteBtnNone" onClick={nav}>
+              Выбрать характеристики
             </button>
+            {/* <Favourite obj={item} /> */}
           </div>
         </div>
       </li>
