@@ -1,5 +1,5 @@
 ////// hooks
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ////// imgs
@@ -14,29 +14,43 @@ import "./style.scss";
 ////// fns
 import { lookBasketFN } from "../../../store/reducers/stateSlice";
 import { lookFavoriteFN } from "../../../store/reducers/stateSlice";
+import { getListBasket } from "../../../store/reducers/requestSlice";
+import { getListFavourite } from "../../../store/reducers/requestSlice";
 
 ////// components
 import Cloth from "../../Cloth/Cloth";
-import { getListFavourite } from "../../../store/reducers/requestSlice";
 
 const MenuSave = () => {
   const dispatch = useDispatch();
 
   const { lookFavorite, lookBasket } = useSelector((state) => state.stateSlice);
 
-  const { basketList } = useSelector((state) => state.saveDataSlice);
-  const { favouriteList } = useSelector((state) => state.serverSave);
+  const { basketList } = useSelector((state) => state.serverSaveSlice);
+  const { favouriteList } = useSelector((state) => state.serverSaveSlice);
 
+  console.log(basketList, "basketList");
   const lookMyFavorite = () => {
     dispatch(lookFavoriteFN(!lookFavorite));
 
     if (!lookFavorite) {
-      dispatch(getListFavourite());
+      // dispatch(getListFavourite());  /// time
       ///// get список избранных
     }
   };
 
-  const lookMyBasket = () => dispatch(lookBasketFN(!lookBasket));
+  useEffect(() => {
+    dispatch(getListFavourite());
+    dispatch(getListBasket());
+  }, []);
+
+  const lookMyBasket = () => {
+    dispatch(lookBasketFN(!lookBasket));
+
+    if (!lookBasket) {
+      // dispatch(getListBasket());  /// time
+      ///// get список корзины
+    }
+  };
 
   return (
     <>
@@ -62,12 +76,13 @@ const MenuSave = () => {
           </ul>
         )}
       </div>
+
       <div className="blockFavorite">
         <button
           className={`btnAction ${lookBasket && "activeFavorite"}`}
           onClick={lookMyBasket}
         >
-          <p>{basketList?.reduce((total, item) => total + item.count, 0)}</p>
+          <p>{basketList?.length}</p>
           <img src={lookBasket ? saleWhite : sale} alt="sale" />
         </button>
         {lookBasket && (

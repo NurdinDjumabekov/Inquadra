@@ -11,17 +11,17 @@ import del from "../../../assets/icons/deleteGray.svg";
 import "./style.scss";
 
 ///// componnets
+import Cloth from "../../Cloth/Cloth";
 import { searchFN, searchListFN } from "../../../store/reducers/requestSlice";
+
+////// fns
 import { searchCloth } from "../../../store/reducers/requestSlice";
 import { listCloth } from "../../../helpers/LodalData";
-import Cloth from "../../Cloth/Cloth";
 
 const MenuSearch = () => {
   const dispatch = useDispatch();
 
   const { search, searchList } = useSelector((state) => state.requestSlice);
-
-  //   const onChange = (e) => dispatch(searchFN(e?.target?.value));
 
   const clear = (e) => {
     dispatch(searchFN(""));
@@ -44,14 +44,15 @@ const MenuSearch = () => {
         dispatch(searchCloth(text));
         // Выполнение поиска с заданными параметрами
 
-        //// временно
-        dispatch(searchListFN(listCloth));
+        // //// временно
+        // dispatch(searchListFN(listCloth)); /// time
       }
     }, 500),
     []
   );
 
   const haveData = search?.length > 0;
+  const emptyList = searchList?.length === 0;
 
   return (
     <>
@@ -62,9 +63,9 @@ const MenuSearch = () => {
           <img src={del} alt="loop" className="del" onClick={clear} />
         )}
 
-        {haveData && (
+        {haveData && !emptyList && (
           <ul className="contentSearch">
-            {searchList?.slice(0, 2)?.map((item, index) => (
+            {searchList?.map((item, index) => (
               <Cloth item={item} key={index} type={"search"} />
             ))}
           </ul>

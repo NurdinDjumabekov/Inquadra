@@ -232,35 +232,39 @@ button {
 
 .resultAction {
   p {
-    font-size: 16px;
-    line-height: 16px;
-    color: #909090;
-    height: 20px;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #050505;
   }
 
   .action {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin: 10px 0px;
+    margin: 15px 0 10px 0px;
+
     span {
       border: 1px solid #050505;
-      width: 225px;
+      width: 245px;
       height: 50px;
       padding: 15px;
-      border-radius: 5px;
+      border-radius: 10px;
     }
+
     button {
       width: 300px !important;
+      border-radius: 10px;
     }
   }
 
   b {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 12px;
-    text-align: left;
+    font-size: 14px;
+    line-height: 16px;
     color: #909090;
+    display: block;
+    margin: 6px 0 0 0;
   }
 }
 

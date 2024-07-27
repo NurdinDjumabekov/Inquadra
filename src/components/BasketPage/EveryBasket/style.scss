@@ -1,157 +1,181 @@
 .basket__every {
-    display: flex;
-    gap: 30px;
-    margin-bottom: 20px;
-    justify-content: space-between;
+  display: flex;
+  gap: 30px;
+  margin-bottom: 20px;
+  justify-content: space-between;
 
-    .mainImg {
-        width: 290px;   
-        height: 390px;
+  .mainImg {
+    width: 290px;
+    height: 390px;
 
-        > img {
-            object-fit: cover;
-            border-radius: 10px;
-        }
+    > img {
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  .dopContant {
+    width: 390px;
+    .title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-direction: row;
+      width: 100%;
+      background: #f7f7f7;
+      gap: 3px;
+      padding: 7px 10px 10px;
+      border-radius: 10px;
+
+      p {
+        font-size: 14px;
+        line-height: 14px;
+        color: #909090;
+        margin: 0;
+        text-align: left;
+      }
+
+      h5 {
+        font-size: 20px;
+        line-height: 20px;
+        text-align: left;
+        color: #7e7e7e;
+        max-height: 38px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      h6 {
+        text-align: left;
+      }
+
+      b {
+        display: block;
+        color: #909090;
+        font-size: 14px;
+        line-height: 14px;
+        margin-top: 3px;
+      }
+
+      span {
+        color: #909090;
+        font-size: 14px;
+        line-height: 14px;
+      }
     }
 
-    .dopContant {
-        width: 505px;
+    .sizes {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin: 10px 0px;
 
-        .mainInfo {
-            display: flex;
-            justify-content: space-between;
-
-            h5 {
-                width: 80%;
-            }
-
-            > img {
-                width: 30px;
-                height: 30px;
-                cursor: pointer;
-            }
-        }
+      .size,
+      .color {
+        background: #050505;
+        // min-width: 90px;
+        height: 40px;
+        padding: 12px 10px 10px;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
 
         p {
-            margin: 13px 0 20px;
-            font-size: 25px;
-            font-weight: 400;
-            line-height: 25px;
-            text-align: left;
+          font-size: 16px;
+          line-height: 20px;
+          text-align: center;
+          color: #fff;
         }
-
-        .blockPay {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-
-            img {
-                width: 30px;
-                height: 30px;
-            }
-
-            span {
-                margin-left: 25px;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 20px;
-            }
-        }
-
-        .counterBlock {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin: 20px 0 26px;
-            > button {
-                width: 37px;
-                height: 37px;
-                border-radius: 6px;
-                font-size: 45px;
-                line-height: 0;
-                color: #fff;
-                
-            }
-            > span {
-                width: 50px;
-                text-align: center;
-                font-size: 16px;
-                font-weight: 400;
-                line-height: 20px;
-                text-decoration: underline;
-            }
-        }
-
-        .sizesColors {
-            display: flex;
-            gap: 45px;
-            .sizes {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                gap: 25px;
-      
-                &__inner {
-                  display: flex;
-                  flex-direction: column;
-                  gap: 10px;
-      
-                  > b {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 12px;
-                    text-align: center;
-      
-                  }
-      
-                  b,img {
-                    width: 40px;
-                    height: 40px;
-                  }
-                }
-      
-                span {
-                  font-size: 16px;
-                  font-weight: 400;
-                  line-height: 18px;
-                  text-align: left;
-                  color: #303030;
-                }
-      
-                b {
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                  border: 1px solid #050505;
-                  font-size: 12px;
-                  font-weight: 400;
-                  line-height: 12px;
-                  text-align: center;
-                  color: #050505;
-                }
-      
-                img {
-                  width: 40px;
-                  height: 40px;
-                  border-radius: 50%;
-                }
-              }
-      
-            
-        }
+      }
     }
 
-    .deleteAction {
-        width: 350px;
-        height: 100%;
-        text-align: right;
+    .price {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: 0 0 5px 0px;
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        border: 1px solid #c0c0c0;
+        padding: 3px 10px 0;
+        height: 50px;
+        border-radius: 10px;
+
+        p {
+          font-size: 18px;
+          line-height: 46px;
+        }
+
+        span {
+          font-size: 14px;
+          line-height: 36px;
+          text-align: center;
+          color: #c0c0c0;
+        }
+      }
+    }
+
+    .actionsBasket {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      &__counter {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
         > button {
-            width: 30px;
-            height: 30px;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Cygre Book", sans-serif;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 36px;
+          text-align: center;
+          border-radius: 10px;
+          background: #444444;
         }
+
+        button:nth-child(1) {
+          background: #c0c0c0;
+        }
+
+        button:nth-child(2) {
+          background: #fff;
+          border: 1px solid #050505;
+          padding: 3px 2px 0 0;
+        }
+      }
+
+      > button {
+        height: 50px;
+        width: 200px;
+        background: #050505;
+        color: #fff;
+        border-radius: 10px;
+        font-family: "Cygre Book", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 36px;
+        text-align: center;
+      }
     }
+  }
+
+  .deleteAction {
+    width: 350px;
+    height: 100%;
+    text-align: right;
+    > button {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }

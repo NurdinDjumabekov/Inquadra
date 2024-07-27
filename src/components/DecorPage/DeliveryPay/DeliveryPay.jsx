@@ -49,7 +49,7 @@ const DeliveryPay = () => {
 
   const navigate = useNavigate();
 
-  const { basketList } = useSelector((state) => state.saveDataSlice);
+  const { basketList } = useSelector((state) => state.serverSaveSlice);
 
   const onChange = (data) => {
     setList(list.map((item) => (item.id === data.id ? data : item)));

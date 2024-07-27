@@ -10,7 +10,7 @@ const Promocode = () => {
       <p>Промокод со скидками и (или) бонусами</p>
       <div className="action">
         <input
-          placeholder={"10BEYURSE2024"}
+          placeholder={"inquadra10"}
           onChange={(e) => setPromocode(e.target.value)}
           value={promocode}
         />

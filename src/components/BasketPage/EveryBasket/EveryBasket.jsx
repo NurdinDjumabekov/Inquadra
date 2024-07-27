@@ -13,9 +13,9 @@ import deleteImg from "../../../assets/icons/delete.svg";
 import info from "../../../assets/icons/Info.svg";
 
 //////components
-import { deleteProdBasket } from "../../../store/reducers/saveDataSlice";
-import { addProdBasket } from "../../../store/reducers/saveDataSlice";
-import { removeProdBasket } from "../../../store/reducers/saveDataSlice";
+import { deleteProdBasket } from "../../../store/reducers/serverSaveSlice";
+import { addProdBasket } from "../../../store/reducers/serverSaveSlice";
+import { removeProdBasket } from "../../../store/reducers/serverSaveSlice";
 
 ////helpers
 import { sarchImg } from "../../../helpers/sarchImg";
@@ -23,6 +23,14 @@ import { useDispatch } from "react-redux";
 
 const EveryBasket = ({ item }) => {
   const dispatch = useDispatch();
+
+  const color = item?.colors?.filter((i) => i?.id === item?.colorId); /// цвет
+  const colorActive = color?.[0]?.color;
+
+  const size = item?.sizes?.filter((i) => i?.id === item?.sizeId); /// размер
+  const sizeActive = size?.[0]?.sizeName;
+
+  console.log(item);
 
   return (
     <>
@@ -32,50 +40,41 @@ const EveryBasket = ({ item }) => {
             <img src={sarchImg(item?.photos)?.url} alt="" />
           </div>
           <div className="dopContant">
-            <div className="mainInfo">
-              <h5>{item?.productName}</h5>
-              <img src={info} alt="pay" />
-            </div>
-            <p>{item?.price} ₽</p>
-            <div className="blockPay">
-              <img src={pay2} alt="pay" />
-              <img src={pay1} alt="pay" />
-              <span>4 платежа по ~870 ₽</span>
-            </div>
-            <h5>Количество</h5>
-            <div className="counterBlock">
-              <button onClick={() => dispatch(removeProdBasket(item))}>
-                <img src={minus} alt="-" />
-              </button>
-              <span>{item?.count}</span>
-              <button onClick={() => dispatch(addProdBasket(item))}>
-                <img src={plus} alt="+" />
-              </button>
-            </div>
-            <div className="sizesColors">
-              <div className="sizes">
-                <div className="sizes__inner">
-                  <span>Размерная сетка</span>
-                  <b>
-                    {
-                      item?.sizes?.filter(
-                        (i) => i.id == item?.activeSizeEvery
-                      )?.[0]?.sizeName
-                    }
-                  </b>
-                </div>
-                <div className="sizes__inner">
-                  <span>Цветовая палитра</span>
-                  <img
-                    src={
-                      item?.colors?.filter(
-                        (i) => i.id == item?.activeColorEvery
-                      )?.[0]?.color
-                    }
-                    alt=""
-                  />
-                </div>
+            <div className="title">
+              <div>
+                <span>{item?.brand?.brandName}</span>
+                <h6>{item.productName}</h6>
               </div>
+              <b>{item?.productStatus?.status}</b>
+            </div>
+
+            <div className="sizes">
+              <div className="color">
+                <p>{sizeActive}</p>
+              </div>
+              <div className="size">
+                <p>{colorActive}</p>
+              </div>
+            </div>
+
+            <div className="price">
+              <div className="color">
+                <p>{item?.price * item?.count}</p>
+                <span>руб.</span>
+              </div>
+              <div className="size">
+                <p>{item?.price}</p>
+                <span>{item?.saleType?.type}</span>
+              </div>
+            </div>
+
+            <div className="actionsBasket">
+              <div className="actionsBasket__counter">
+                <button onClick={() => {}}>-</button>
+                <button>{item?.count}</button>
+                <button onClick={() => {}}>+</button>
+              </div>
+              <button onClick={() => {}}>В корзину</button>
             </div>
           </div>
         </div>

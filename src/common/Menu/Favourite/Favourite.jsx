@@ -10,6 +10,7 @@ import heartBlack from "../../../assets/icons/heart.svg";
 /////// fns
 import { deleteFavourite } from "../../../store/reducers/requestSlice";
 import { addFavourite } from "../../../store/reducers/requestSlice";
+import { addProdFavourite } from "../../../store/reducers/serverSaveSlice";
 
 /////// helpers
 import { checkFavourite } from "../../../helpers/checkFavourite";
@@ -22,7 +23,7 @@ const Favourite = ({ obj, black, disable }) => {
 
   const dispatch = useDispatch();
 
-  const { favouriteList } = useSelector((state) => state.serverSave);
+  const { favouriteList } = useSelector((state) => state.serverSaveSlice);
   ///// добавление и удалени с избранных
 
   const { temporary } = useSelector((state) => state.stateSlice);
@@ -30,9 +31,7 @@ const Favourite = ({ obj, black, disable }) => {
   const changeFavourite = () => {
     const data = { ...obj, ...temporary };
 
-    const haveId = favouriteList?.some((item) => item?.id === obj?.id);
-
-    if (haveId) {
+    if (checkFavourite(data, favouriteList)) {
       dispatch(deleteFavourite(data));
       ///// удаляю с избранных через запрос
     } else {
@@ -41,8 +40,8 @@ const Favourite = ({ obj, black, disable }) => {
       } else if (temporary?.colorId == 0) {
         alert("Выберите цвет одежды");
       } else {
-        alert("Товар добавлен в корзину");
         dispatch(addFavourite(data));
+        dispatch(addProdFavourite(data)); //// time
         ///// добавляю в избранные через запрос
       }
     }

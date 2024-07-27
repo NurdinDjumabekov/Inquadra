@@ -43,11 +43,7 @@ const SkeletonsSalePage = () => {
               </main>
               <div className="cardsList">
                 {listBlock?.map((i, index) => (
-                  <div key={index}>
-                    <i></i>
-                    <b></b>
-                    <span></span>
-                  </div>
+                  <div key={index}></div>
                 ))}
               </div>
             </div>

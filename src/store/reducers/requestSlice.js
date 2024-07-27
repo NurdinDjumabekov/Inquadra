@@ -3,8 +3,16 @@ import axios from "axios";
 import { changeTemporary, lookNumberConfFN, lookNumberFN } from "./stateSlice";
 import axiosInstance from "../../axiosInstance";
 import { changeToken } from "./saveDataSlice";
-import { addProdFavourite, delProdFavourite } from "./serverSave";
+import {
+  addProdBasket,
+  addProdFavourite,
+  changeFavouriteList,
+  delProdFavourite,
+  deleteProdBasket,
+} from "./serverSaveSlice";
 const { REACT_APP_API_URL } = process.env;
+
+///////////////////////////// токен для авторизации /////////////////////////////////////
 
 ///// getToken - get токен
 export const getToken = createAsyncThunk(
@@ -24,6 +32,8 @@ export const getToken = createAsyncThunk(
     }
   }
 );
+
+///////////////////////////// подтверждение номера /////////////////////////////////////
 
 ///// sendNumberFN - отправка номера
 export const sendNumberFN = createAsyncThunk(
@@ -65,6 +75,8 @@ export const confirmNumberFN = createAsyncThunk(
     // }
   }
 );
+
+///////////////////////////// запросы для получения и сортировки товаров /////////////////////////////////////
 
 ///// getListCateg - get список катег0рий //// check
 export const getListCateg = createAsyncThunk(
@@ -160,7 +172,7 @@ export const getListProds = createAsyncThunk(
 export const searchCloth = createAsyncThunk(
   "searchCloth",
   async function (text, { dispatch, rejectWithValue }) {
-    const url = `${REACT_APP_API_URL}products/search/${text}`;
+    const url = `${REACT_APP_API_URL}search?query=${text}`;
     try {
       const response = await axiosInstance(url);
       if (response.status >= 200 && response.status < 300) {
@@ -174,20 +186,40 @@ export const searchCloth = createAsyncThunk(
   }
 );
 
-///// addFavourite - добавить с избранных товар
+///////////////////////////// избранные /////////////////////////////////////
+
+///// getListFavourite - get список избранных
+export const getListFavourite = createAsyncThunk(
+  "getListFavourite",
+  async function (_, { dispatch, rejectWithValue }) {
+    const url = `${REACT_APP_API_URL}favorites`;
+    try {
+      const response = await axiosInstance(url);
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+///// addFavourite - добавить в избранные товар
 export const addFavourite = createAsyncThunk(
   "addFavourite",
   async function (data, { dispatch, rejectWithValue }) {
-    const url = `${REACT_APP_API_URL}users/1/favorites`;
-
+    const url = `${REACT_APP_API_URL}favorites`;
     try {
       const response = await axiosInstance.post(url, data);
       if (response.status >= 200 && response.status < 300) {
-        dispatch(addProdFavourite({ data }));
+        dispatch(addProdFavourite({ ...data, codeid: response.data?.codeid }));
         ///// добавляю в избранные локально
         dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
         ///// обнуляю state для временного хранения цвета и размера и типа размера
-        return response?.data;
+        alert("Товар добавлен в корзину");
+        return response.data;
       } else {
         throw Error(`Error: ${response.status}`);
       }
@@ -201,10 +233,11 @@ export const addFavourite = createAsyncThunk(
 export const deleteFavourite = createAsyncThunk(
   "deleteFavourite",
   async function (data, { dispatch, rejectWithValue }) {
-    const url = `${REACT_APP_API_URL}users/1/favorites`;
+    const { id } = data;
+    const url = `${REACT_APP_API_URL}favorites/${id}`;
 
     try {
-      const response = await axiosInstance.post(url, data);
+      const response = await axiosInstance.delete(url);
       if (response.status >= 200 && response.status < 300) {
         dispatch(delProdFavourite(data));
         return response?.data;
@@ -216,15 +249,62 @@ export const deleteFavourite = createAsyncThunk(
     }
   }
 );
+///////////////////////////// корзина /////////////////////////////////////
 
-///// getListFavourite - get список избранных
-export const getListFavourite = createAsyncThunk(
-  "getListFavourite",
-  async function (token, { dispatch, rejectWithValue }) {
-    const url = `${REACT_APP_API_URL}users/1/favorites`;
+///// getListBasket - get список корзины
+export const getListBasket = createAsyncThunk(
+  "getListBasket",
+  async function (_, { dispatch, rejectWithValue }) {
+    const url = `${REACT_APP_API_URL}basket`;
     try {
       const response = await axiosInstance(url);
       if (response.status >= 200 && response.status < 300) {
+        return response?.data?.items;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+///// addBasket - добавить в корзину товар
+export const addBasket = createAsyncThunk(
+  "addBasket",
+  async function (data, { dispatch, rejectWithValue }) {
+    const url = `${REACT_APP_API_URL}basket/addItem`;
+    try {
+      const response = await axiosInstance.post(url, data);
+      if (response.status >= 200 && response.status < 300) {
+        dispatch(addProdBasket({ ...data, codeid: response?.data?.codeid }));
+        ///// добавляю в корзину локально
+
+        dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
+        ///// обнуляю state для временного хранения цвета и размера и типа размера
+        alert("Товар добавлен в корзину");
+        return response.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+///// deleteBasket -  удалить с корзины товар
+export const deleteBasket = createAsyncThunk(
+  "deleteBasket",
+  async function (data, { dispatch, rejectWithValue }) {
+    const { codeid } = data;
+    const url = `${REACT_APP_API_URL}basket/item/${codeid}`;
+
+    try {
+      const response = await axiosInstance.delete(url);
+      if (response.status >= 200 && response.status < 300) {
+        dispatch(deleteProdBasket(data));
+
         return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -234,6 +314,40 @@ export const getListFavourite = createAsyncThunk(
     }
   }
 );
+
+///// counterFavourite - counter для изменения кол-ва товаров в избранных
+export const counterFavourite = createAsyncThunk(
+  "counterFavourite",
+  async function (props, { dispatch, rejectWithValue }) {
+    const { typeCounter, item, favouriteList } = props; //. typeCounter 1 - добавляю, 2 - минусую
+
+    const url = `${REACT_APP_API_URL}counter-favourite`;
+    const data = { typeCounter, id: item?.id };
+
+    try {
+      const response = await axiosInstance.post(url, data);
+      if (response.status >= 200 && response.status < 300) {
+        const objSort = favouriteList?.find((i) => i?.id === item?.id); /// нахожу элемент
+
+        if (objSort) {
+          const num = typeCounter === 1 ? 1 : -1;
+          const newList = favouriteList?.map((i) =>
+            i?.id === item?.id ? { ...i, count: i?.count + num } : i
+          );
+          dispatch(changeFavouriteList(newList));
+        }
+
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+///////////////////////////// история /////////////////////////////////////
 
 ///// getListhistory - get список избранных
 export const getListhistory = createAsyncThunk(
@@ -366,6 +480,19 @@ const requestSlice = createSlice({
     });
     builder.addCase(getListProds.pending, (state, action) => {
       state.preloader = true;
+    });
+
+    //////////////////// searchCloth
+    builder.addCase(searchCloth.fulfilled, (state, action) => {
+      // state.preloader = false;
+      state.searchList = action.payload;
+    });
+    builder.addCase(searchCloth.rejected, (state, action) => {
+      state.error = action.payload;
+      // state.preloader = false;
+    });
+    builder.addCase(searchCloth.pending, (state, action) => {
+      // state.preloader = true;
     });
 
     /////////////////// detailedCloth

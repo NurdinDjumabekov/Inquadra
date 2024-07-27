@@ -6,11 +6,15 @@ const DiscountPrice = ({ item }) => {
     <div className="prices">
       {item?.discountActive ? (
         <div className="price">
-          <span>{item?.price} рублей за м²</span>
+          <span>
+            {item?.price} рублей за {item?.saleType?.type}
+          </span>
           <b>{item?.discountActive && <p>{item?.discount}</p>}</b>
         </div>
       ) : (
-        <p>{item?.price} рублей за м²</p>
+        <p>
+          {item?.price} рублей за {item?.saleType?.type}
+        </p>
       )}
     </div>
   );

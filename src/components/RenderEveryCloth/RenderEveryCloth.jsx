@@ -21,7 +21,6 @@ const RenderEveryCloth = ({ item }) => {
   const clickBtn = () => {
     if (location?.pathname?.includes("every")) {
       navigate(`/every/${item?.id}`);
-      window.location.reload();
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       navigate(`/every/${item?.id}`);

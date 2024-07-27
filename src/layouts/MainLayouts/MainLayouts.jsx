@@ -1,11 +1,16 @@
+////// hooks
 import React, { useRef } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+////// style
 import "./MainLayouts.scss";
+
+////// components
 import Footer from "../../common/Footer/Footer";
 import Menu from "../../common/Menu/Menu/Menu";
 import ModalNumber from "../../components/Modals/ModalNumber/ModalNumber";
 import ModalNumConfirm from "../../components/Modals/ModalNumConfirm/ModalNumConfirm";
-import { useSelector } from "react-redux";
 
 const MainLayouts = () => {
   const footerRef = useRef(null);

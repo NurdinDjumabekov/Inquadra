@@ -149,32 +149,13 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 20px 20px;
   margin: 3px 0 0 0;
 
   > div {
     height: 440px;
-
-    i {
-      display: block;
-      width: 295px;
-      height: 400px;
-      background: #aaa;
-      border-radius: 5px;
-    }
-
-    b {
-      display: block;
-      height: 20px;
-      background: #aaa;
-      margin: 10px 0 0 0;
-    }
-
-    span {
-      display: block;
-      height: 40px;
-      background: #aaa;
-      margin: 5px 0 0 0;
-    }
+    width: 295px;
+    background: #aaa;
+    border-radius: 5px;
   }
 }

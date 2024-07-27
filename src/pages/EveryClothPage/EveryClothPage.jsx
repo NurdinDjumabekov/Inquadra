@@ -3,22 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-///////// /style
-import "./style.scss";
-
 ///////// components
 import { NavPath } from "../../common/NavPath/NavPath";
 import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
 import { Description } from "../../components/EveryClothPage/Description/Description";
-import MayBeFavorite from "../../components/EveryClothPage/MayBeFavorite/MayBeFavorite";
 import Favourite from "../../common/Menu/Favourite/Favourite";
 
 ////////// fns
-import { addProdBasket } from "../../store/reducers/saveDataSlice";
-import {
-  detailedCloth,
-  getListhistory,
-} from "../../store/reducers/requestSlice";
+import { addBasket, getListhistory } from "../../store/reducers/requestSlice";
+import { detailedCloth } from "../../store/reducers/requestSlice";
+import { changeTemporary } from "../../store/reducers/stateSlice";
 
 ///////// helpers
 import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
@@ -26,7 +20,10 @@ import PriceMeter from "../../components/EveryClothPage/PriceMeter/PriceMeter";
 import EveryClothSize from "../../components/EveryClothPage/EveryClothSize/EveryClothSize";
 import EveryClothColor from "../../components/EveryClothPage/EveryClothColor/EveryClothColor";
 import SkeletonsDetailedPage from "../../common/Skeletons/SkeletonsDetailedPage/SkeletonsDetailedPage";
-import { changeTemporary } from "../../store/reducers/stateSlice";
+
+///////// /style
+import "./style.scss";
+import { addProdBasket } from "../../store/reducers/serverSaveSlice";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -35,31 +32,29 @@ const EveryClothPage = () => {
   const { id } = params;
 
   const { everyCloth } = useSelector((state) => state.requestSlice);
-  const { activeColorEvery } = useSelector((state) => state.stateSlice);
-  const { activeSizeEvery } = useSelector((state) => state.stateSlice);
   const { temporary } = useSelector((state) => state.stateSlice);
 
   const { preloader } = useSelector((state) => state.requestSlice);
 
-  const addBasket = () => {
+  const addProdInBasket = () => {
+    ///// добавляю в корзину
     if (temporary?.sizeId == 0) {
       alert("Выберите размер одежды");
     } else if (temporary?.colorId == 0) {
       alert("Выберите цвет одежды");
     } else {
       alert("Товар добавлен в корзину");
-      const data = { ...everyCloth, activeColorEvery, activeSizeEvery };
+      const data = { ...everyCloth, ...temporary, productId: 1 };
+      // dispatch(addBasket(data));
       dispatch(addProdBasket(data));
-
-      dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
-      ///// обнуляю state для временного хранения цвета и размера и типа размера
+      ///// добавляю в корзину через запрос
     }
   };
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     dispatch(detailedCloth(id));
     dispatch(getListhistory());
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [id]);
 
   useEffect(() => {
@@ -120,7 +115,7 @@ const EveryClothPage = () => {
             <PriceMeter count={temporary?.count} everyCloth={everyCloth} />
 
             <div className="actions">
-              <button className="choiceCloth" onClick={addBasket}>
+              <button className="choiceCloth" onClick={addProdInBasket}>
                 Добавить
               </button>
               <Favourite obj={everyCloth} black={true} />
@@ -129,7 +124,6 @@ const EveryClothPage = () => {
           </div>
         </div>
         <RecomCloth />
-        {/* <MayBeFavorite list={everyCloth?.recommendations} /> */}
       </div>
     </div>
   );

@@ -10,8 +10,6 @@ import Promocode from "../../components/BasketPage/BasketPage/Promocode";
 import { useDispatch, useSelector } from "react-redux";
 
 ////helpers
-import { sumTotalBasketOldPrice } from "../../helpers/SumTotalBasket";
-////delete
 
 import { sumTotalBasket } from "../../helpers/SumTotalBasket";
 import EveryBasket from "../../components/BasketPage/EveryBasket/EveryBasket";
@@ -22,7 +20,7 @@ const BasketPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { basketList } = useSelector((state) => state.saveDataSlice);
+  const { basketList } = useSelector((state) => state.serverSaveSlice);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -51,12 +49,12 @@ const BasketPage = () => {
             <div className="action">
               <span>{sumTotalBasket(basketList)} ₽</span>
               <button className="choiceCloth" onClick={nav}>
-                Подтвердить заказ
+                Подтвердить
               </button>
             </div>
-            <b>
-              без учета доставки вашего заказа: обычно это стоит около 1000 ₽
-            </b>
+            <b>минимальная сумма заказа от 10000 руб.</b>
+            <b>бесплатная доставка заказа от 20000 руб.</b>
+            <b>доставка рассчитывается при оформлении заказа</b>
           </div>
         </div>
       </div>

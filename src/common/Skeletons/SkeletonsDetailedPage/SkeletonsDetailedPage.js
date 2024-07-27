@@ -46,8 +46,8 @@ const SkeletonsDetailedPage = () => {
           <header></header>
 
           <div className="cardsList moreList">
-            {listCards?.map((i) => (
-              <div>
+            {listCards?.map((i, index) => (
+              <div key={index}>
                 <i></i>
                 <b></b>
                 <span></span>

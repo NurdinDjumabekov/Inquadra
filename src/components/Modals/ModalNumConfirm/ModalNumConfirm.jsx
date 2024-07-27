@@ -19,9 +19,7 @@ import phone from "../../../assets/icons/phone.svg";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { confirmNumberFN } from "../../../store/reducers/requestSlice";
-import saveDataSlice, {
-  changeDataUser,
-} from "../../../store/reducers/saveDataSlice";
+import { changeDataUser } from "../../../store/reducers/saveDataSlice";
 
 const ModalNumConfirm = () => {
   ////// для подивердения номера (подивердение кодом)
