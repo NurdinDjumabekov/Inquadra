@@ -1,21 +1,21 @@
 /////// hooks
-import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, useLocation } from 'react-router-dom';
 
 ////// pages
-import MainLayouts from "../layouts/MainLayouts/MainLayouts";
-import SalePage from "../pages/SalePage/SalePage";
-import EveryClothPage from "../pages/EveryClothPage/EveryClothPage";
-import BasketPage from "../pages/BasketPage/BasketPage";
-import DecorZakazPage from "../pages/DecorZakazPage/DecorZakazPage";
+import MainLayouts from '../layouts/MainLayouts/MainLayouts';
+import SalePage from '../pages/SalePage/SalePage';
+import EveryClothPage from '../pages/EveryClothPage/EveryClothPage';
+import BasketPage from '../pages/BasketPage/BasketPage';
+import DecorZakazPage from '../pages/DecorZakazPage/DecorZakazPage';
 
 /////// fns
-import { getToken } from "../store/reducers/requestSlice";
+import { getToken } from '../store/reducers/requestSlice';
 
 ////// common
-import { Preloader } from "../common/Preloader/Preloader";
+import { Preloader } from '../common/Preloader/Preloader';
 
 const MainRoutes = () => {
   const dispatch = useDispatch();

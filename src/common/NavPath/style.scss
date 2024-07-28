@@ -10,7 +10,7 @@
     span {
       font-size: 14px;
       line-height: 1px;
-      color: #757575;
+      color: #252525;
     }
 
     img {
@@ -24,10 +24,14 @@
   }
 
   .active {
-    position: relative;
+    color: #757575;
+
+    span {
+      color: #757575;
+    }
 
     &::after {
-      content: "";
+      content: '';
       width: 100%;
       height: 1px;
       background: #757575;

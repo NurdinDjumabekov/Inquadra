@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import Selects from "../../../common/Selects/Selects";
-import "./style.scss";
+import React, { useState } from 'react';
+import Selects from '../../../common/Selects/Selects';
+import './style.scss';
 
-import like from "../../../assets/images/likeBlack.png";
+import like from '../../../assets/images/likeBlack.png';
 
 import {
   confidation,
@@ -13,38 +13,38 @@ import {
   listKredit,
   link1,
   link2,
-} from "../../../helpers/LodalData";
+} from '../../../helpers/LodalData';
 
 import {
   sumTotalBasket,
   sumTotalBasketOldPrice,
-} from "../../../helpers/SumTotalBasket";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import MycheckBox from "../../../common/MycheckBox/MycheckBox";
+} from '../../../helpers/SumTotalBasket';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import MycheckBox from '../../../common/MycheckBox/MycheckBox';
 
 const DeliveryPay = () => {
   const [state1, setState1] = useState(true);
   const [state2, setState2] = useState(true);
 
   const [list, setList] = useState([
-    { id: 1, text: "до пункта выдачи заказа", active: false },
-    { id: 2, text: "до двери покупателя", active: false },
+    { id: 1, text: 'до пункта выдачи заказа', active: false },
+    { id: 2, text: 'до двери покупателя', active: false },
   ]);
 
   const [list1, setList1] = useState([
-    { id: 1, text: "«СДЭК»", active: false },
-    { id: 2, text: "«Деловые линии»", active: false },
-    { id: 3, text: "«Боксберри»", active: false },
+    { id: 1, text: '«СДЭК»', active: false },
+    { id: 2, text: '«Деловые линии»', active: false },
+    { id: 3, text: '«Боксберри»', active: false },
   ]);
 
   const [listPay, setListPay] = useState([
-    { id: 1, text: "банковская карта", active: false },
-    { id: 2, text: "беспроцентная рассрочка", active: false },
+    { id: 1, text: 'банковская карта', active: false },
+    { id: 2, text: 'беспроцентная рассрочка', active: false },
   ]);
 
   const [listPayPart, setListPayPart] = useState([
-    { id: 1, text: "«Долями»", active: false },
+    { id: 1, text: '«Долями»', active: false },
   ]);
 
   const navigate = useNavigate();
@@ -73,7 +73,7 @@ const DeliveryPay = () => {
 
   return (
     <div className="deliveryPay">
-      <div className="userInputAddres deliveryPay__inner ">
+      {/* <div className="userInputAddres deliveryPay__inner ">
         <h6>Выбрать способ доставки</h6>
         <div className="delivery">
           <div className="delivery__inner">
@@ -109,7 +109,7 @@ const DeliveryPay = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="userInputAddres deliveryPay__moreResult">
         <div className="agreementCofidantion">
@@ -122,21 +122,25 @@ const DeliveryPay = () => {
           </div>
           <div className="moreText">
             <p onClick={() => setState1(!state1)}>{confidation}</p>
-            <span className="linkText"> {link1}</span>
+            <span> {link1}</span>
             <p onClick={() => setState1(!state1)}> и </p>
-            <span className="linkText"> {link2}</span>
+            <span> {link2}</span>
           </div>
         </div>
+      </div>
 
+      <div className="userInputAddres deliveryPay__moreResult">
         <div className="resultAction">
           <p>Итоговая стоимость вашего заказа</p>
           <div className="action">
-            <span>{sumTotalBasket(basketList)} ₽</span>
-            <button type="submit" disabled={state1} className={"choiceCloth"}>
-              Оплатить заказ
+            <span>{sumTotalBasket(basketList)} руб.</span>
+            <button type="submit" disabled={state1} className={'choiceCloth'}>
+              Оформить
             </button>
           </div>
-          <b>без учета доставки вашего заказа: обычно это стоит около 1000 ₽</b>
+          <b>минимальная сумма заказа от 10000 руб.</b>
+          <b>бесплатная доставка заказа от 20000 руб.</b>
+          <b>доставка рассчитывается при оформлении заказа</b>
         </div>
       </div>
     </div>

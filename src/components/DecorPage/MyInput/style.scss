@@ -1,49 +1,83 @@
 .myInput {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  position: relative;
 
-    span {
-        font-size: 14px;
-        line-height: 14px;
-        text-align: left;
-        height: 20px;
-        margin-top: 5px;
-        
-        i {
-            font-size: 12px;
-            line-height: 12px;
-            color: #909090;
-        }
+  span {
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    text-align: left;
+    margin: 10px 0 5px;
+    color: #505050;
+
+    i {
+      font-size: 12px;
+      line-height: 12px;
+      color: #909090;
+    }
+  }
+
+  input {
+    font-size: 18px;
+    line-height: 20px;
+    padding: 15px;
+    border: 1px solid rgba(9, 9, 9, 0.518);
+    border-radius: 10px;
+    width: 425px;
+    height: 50px;
+    background-color: transparent;
+
+    &::placeholder {
+      font-family: 'Cygre Book', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 18px;
+      text-align: left;
+      color: #b9b9b9;
     }
 
-    input {
-        font-size: 18px;
-        line-height: 20px;  
-        padding: 15px;     
-        border: 1px solid #7d7d7d;
-        border-radius: 5px;
-        width: 425px;
-        height: 50px;
-        background-color: transparent;
-        margin-bottom: 10px;
-    
-        &::placeholder {
-            font-family: Unbounded;
-            font-size: 16px;
-            line-height: 16px;
-            text-align: left;            
-            color: #b9b9b9;
-        }
-
-        &:focus {
-            color: #050505;
-            border: 1px solid rgba(9, 9, 9, 0.518) !important;
-            outline: none;
-        }
+    &:focus {
+      color: #050505;
+      outline: none;
+      border: 1px solid #050505;
     }
+  }
 
-  
+  b {
+    font-size: 16px;
+    line-height: 16px;
+    text-align: left;
+    color: #ff3535;
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(50%);
+    left: 445px;
+  }
 }
 
+.errorValidated {
+  span,
+  i {
+    color: #ff3535 !important;
+  }
 
+  input {
+    color: #ff3535 !important;
+    border: 1px solid #ff3535 !important;
+
+    &::placeholder {
+      color: #ff3535 !important;
+    }
+
+    &:focus {
+      color: #ff3535 !important;
+    }
+  }
+
+  b {
+    display: block;
+  }
+}

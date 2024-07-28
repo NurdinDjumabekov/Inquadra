@@ -1,89 +1,93 @@
 .deliveryPay {
+  //   &__inner {
+  //     .delivery {
+  //       display: flex;
+  //       gap: 10px;
+  //       align-items: flex-start;
 
-    &__inner {
-        .delivery {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-            
-            &__inner, &__type {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-            }
+  //       &__inner,
+  //       &__type {
+  //         display: flex;
+  //         flex-direction: column;
+  //         gap: 10px;
+  //         align-items: flex-start;
+  //       }
 
-            &__type {
-                .checkboxBlock  {
-                    width: 300px;
-                }
-            }
+  //       &__type {
+  //         .checkboxBlock {
+  //           width: 300px;
+  //         }
+  //       }
+  //     }
+
+  //     .deliveryBottom {
+  //       align-items: flex-end !important;
+  //     }
+  //   }
+
+  &__moreResult {
+    padding: 15px;
+
+    .agreementCofidantion {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+      align-items: center;
+
+      img {
+        min-width: 20px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        animation: modal 0.7s ease-in-out;
+      }
+
+      .roundBlock {
+        min-width: 20px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid #050505;
+        cursor: pointer;
+      }
+
+      .moreText {
+        max-width: 630px;
+
+        span {
+          font-size: 16px;
+          line-height: 18px;
+          color: #3366bb;
+          position: relative;
+          text-decoration: underline;
+
+          //   &::after {
+          //     content: '';
+          //     width: 100%;
+          //     height: 1px;
+          //     background: #3366bb;
+          //     position: absolute;
+          //     left: 0px;
+          //     bottom: 0px;
+          //   }
         }
+      }
 
-        .deliveryBottom {
-            align-items: flex-end !important;
-        }
-
+      p {
+        font-size: 16px;
+        line-height: 18px;
+        text-align: left;
+        display: inline;
+      }
     }
 
-    &__moreResult {
-        padding: 30px 25px 20px;
-
-        .agreementCofidantion {
-            display: flex;
-            gap: 10px;
-            cursor: pointer;
-            align-items: center;
-            margin-bottom: 20px;
-    
-            img {
-                min-width: 20px;
-                width: 20px;
-                height: 20px;
-                cursor: pointer;
-                animation: modal 0.7s ease-in-out;
-            }
-    
-            .roundBlock {
-                min-width: 20px;
-                width: 20px;
-                height: 20px;
-                border-radius: 50%;
-                border: 1px solid #050505;
-                cursor: pointer;
-            }
-    
-            .moreText {
-                max-width: 750px;
-            }
-    
-            p {
-                font-size: 16px;
-                line-height: 18px;
-                text-align: left;
-                display: inline;
-            }
-    
-            .linkText {
-                font-size: 16px;
-                line-height: 18px;
-                color: #3366BB;
-                position: relative;
-    
-                &::after {
-                    content: "";
-                    width: 100%;
-                    height: 1px;
-                    background: #3366BB;
-                    position: absolute;
-                    left: 0px;
-                    bottom: 0px;
-                    
-                }
-            }
+    .resultAction {
+      .action {
+        span {
+          font-size: 18px;
+          line-height: 18px;
         }
-    
-       
+      }
     }
-
+  }
 }

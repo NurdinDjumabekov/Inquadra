@@ -1,13 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  alertText: { text: "", backColor: "", state: false },
+  alertText: { text: '', backColor: '', state: false },
 
-  inputSearch: "", /// поиск товаров
+  inputSearch: '', /// поиск товаров
 
-  menuActive: "", /// главное меню
+  menuActive: '', /// главное меню
 
-  numberUser: "+7", /// для ввода номера
+  numberUser: '+7', /// для ввода номера
 
   //////////////////////// categories all
 
@@ -41,10 +41,29 @@ const initialState = {
   lookNumber: false, ///// для модалки логина через номер
 
   lookNumberConf: false, ///// для модалки подтверждения номера
+
+  inputsDecor: {
+    name: { text: '', error: false, errrText: 'необходимо заполнить' },
+    firstName: { text: '', error: false, errrText: 'необходимо заполнить' },
+    lastName: { text: '', error: false, errrText: 'необходимо заполнить' },
+    num: {
+      text: '',
+      error: false,
+      errrText: 'необходимо правильно заполнить номер',
+    },
+    email: { text: '', error: false, errrText: 'введите корректный email' },
+    deliv: { text: '', error: false, errrText: 'необходимо заполнить' },
+    deliv_home: { text: '', error: false, errrText: 'необходимо заполнить' },
+    deliv_home_num: {
+      text: '',
+      error: false,
+      errrText: 'необходимо заполнить',
+    },
+  },
 };
 
 const stateSlice = createSlice({
-  name: "stateSlice",
+  name: 'stateSlice',
   initialState,
   reducers: {
     changeInputSearch: (state, action) => {
@@ -108,6 +127,31 @@ const stateSlice = createSlice({
     initialPriceFN: (state, action) => {
       state.initialPrice = action.payload;
     },
+
+    changeInputsDecor: (state, action) => {
+      state.inputsDecor = {
+        ...state.inputsDecor,
+        ...action.payload,
+      };
+    },
+
+    setError: (state, action) => {
+      const { key, error } = action.payload;
+      state.inputsDecor[key].error = error;
+    },
+
+    clearInputsDecor: (state, action) => {
+      state.inputsDecor = {
+        name: '',
+        firstName: '',
+        lastName: '',
+        num: '',
+        email: '',
+        deliv: '',
+        deliv_home: '',
+        deliv_home_num: '',
+      };
+    },
   },
 });
 
@@ -130,6 +174,11 @@ export const {
 
   activePriceFN,
   initialPriceFN,
+
+  //////////////// inputs
+  changeInputsDecor,
+  setError,
+  clearInputsDecor,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

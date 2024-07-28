@@ -1,25 +1,25 @@
 ///hooks
-import React from "react";
+import React from 'react';
 
 /////style
-import "./style.scss";
+import './style.scss';
 
 ////imgs
-import pay1 from "../../../assets/images/pay1.png";
-import pay2 from "../../../assets/images/pay2.png";
-import minus from "../../../assets/images/minus.png";
-import plus from "../../../assets/images/plus.png";
-import deleteImg from "../../../assets/icons/delete.svg";
-import info from "../../../assets/icons/Info.svg";
+import pay1 from '../../../assets/images/pay1.png';
+import pay2 from '../../../assets/images/pay2.png';
+import minus from '../../../assets/images/minus.png';
+import plus from '../../../assets/images/plus.png';
+import deleteImg from '../../../assets/icons/delete.svg';
+import info from '../../../assets/icons/Info.svg';
 
 //////components
-import { deleteProdBasket } from "../../../store/reducers/serverSaveSlice";
-import { addProdBasket } from "../../../store/reducers/serverSaveSlice";
-import { removeProdBasket } from "../../../store/reducers/serverSaveSlice";
+import { deleteProdBasket } from '../../../store/reducers/serverSaveSlice';
+import { addProdBasket } from '../../../store/reducers/serverSaveSlice';
+import { removeProdBasket } from '../../../store/reducers/serverSaveSlice';
 
 ////helpers
-import { sarchImg } from "../../../helpers/sarchImg";
-import { useDispatch } from "react-redux";
+import { sarchImg } from '../../../helpers/sarchImg';
+import { useDispatch } from 'react-redux';
 
 const EveryBasket = ({ item }) => {
   const dispatch = useDispatch();
@@ -30,14 +30,19 @@ const EveryBasket = ({ item }) => {
   const size = item?.sizes?.filter((i) => i?.id === item?.sizeId); /// размер
   const sizeActive = size?.[0]?.sizeName;
 
-  console.log(item);
-
   return (
     <>
       <div className="basket__every">
         <div className="basket__child">
           <div className="mainImg">
             <img src={sarchImg(item?.photos)?.url} alt="" />
+            {/* <img src={item?.photos?.[0]?.url} alt="" /> */}
+            <div className="discount">
+              <p>-80%</p>
+            </div>
+            <div className="count">
+              <p>28шт</p>
+            </div>
           </div>
           <div className="dopContant">
             <div className="title">

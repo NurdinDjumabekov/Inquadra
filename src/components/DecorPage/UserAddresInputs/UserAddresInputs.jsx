@@ -1,19 +1,32 @@
-import React from "react";
-import MyInputs from "../MyInput/MyInputs";
-import "../UserInputs/style.scss";
+///////// hooks
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+/////// components
+import MyInputs from '../MyInput/MyInputs';
+
+/////// style
+import '../UserInputs/style.scss';
+
+//////// fns
+import {
+  changeInputsDecor,
+  setError,
+} from '../../../store/reducers/stateSlice';
 
 ////delete
-import phone from "../../../assets/icons/phone.svg";
-import save from "../../../assets/icons/save.svg";
+import phone from '../../../assets/icons/phone.svg';
+import save from '../../../assets/icons/save.svg';
 
 const UserAddresInputs = ({ refAddres }) => {
-  const onChange = (e) => {
-    console.log(e);
-  };
+  const dispatch = useDispatch();
 
-  const sendMainData = (e) => {
-    e.preventDefault();
-    console.log("asdsa");
+  const { inputsDecor } = useSelector((state) => state.stateSlice);
+
+  const onChange = (e) => {
+    const { name, value } = e.target;
+    const obj = { [name]: { ...inputsDecor?.[name], text: value } };
+    dispatch(changeInputsDecor(obj));
   };
 
   return (
@@ -22,36 +35,40 @@ const UserAddresInputs = ({ refAddres }) => {
 
       <div>
         <MyInputs
-          title={"Населенный пункт"}
-          placeholder={"Москва, Московская область"}
+          title={'Населенный пункт'}
+          placeholder={'Москва, Московская область'}
           onChange={onChange}
-          required={true}
           refAddres={refAddres}
+          name={'deliv'}
+          error={inputsDecor.deliv.error}
+          value={inputsDecor.deliv.text}
         />
 
         <MyInputs
-          title={"Улица и дом"}
-          placeholder={"Кремлевская площадь, 1"}
+          title={'Улица и дом'}
+          placeholder={'Кремлевская площадь, 1'}
           onChange={onChange}
-          required={true}
+          name={'deliv_home'}
+          error={inputsDecor.deliv_home.error}
+          value={inputsDecor.deliv_home.text}
         />
 
         <MyInputs
-          title={"Квартира "}
-          moreTitle={"(если отсутствует, пропустите строку)"}
-          placeholder={"1"}
+          title={'Квартира '}
+          moreTitle={'(если отсутствует, пропустите строку)'}
+          placeholder={'1'}
           onChange={onChange}
-          required={true}
+          name={'deliv_home_num'}
+          error={inputsDecor.deliv_home_num.error}
+          value={inputsDecor.deliv_home_num.text}
         />
 
-        <MyInputs
+        {/* <MyInputs
           title={`Индекс`}
-          placeholder={"1000"}
+          placeholder={'1000'}
           onChange={onChange}
-          moreTitle={"(если частный дом, то пусто)"}
-        />
-
-        {/* <button /> */}
+          moreTitle={'(если частный дом, то пусто)'}
+        /> */}
       </div>
     </div>
   );

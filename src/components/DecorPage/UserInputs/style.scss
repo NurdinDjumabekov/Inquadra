@@ -1,32 +1,32 @@
 .userInputAddres {
-    margin-top: 20px;
-    background-color: #F5F5F5;
-    padding: 15px;
-    border-radius: 5px;
+  margin-top: 5px;
+  background-color: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
 
-    .line {
-        margin: 15px 0 25px;
-      }
+  .line {
+    margin: 15px 0 25px;
+  }
 
-    h6 {
-        font-size: 16px;
-        line-height: 16px;
-        text-align: left;
-        margin-bottom: 12px;
-    }
+  h6 {
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 500;
+    text-align: left;
+  }
+
+  .choiceCloth {
+    cursor: pointer;
+  }
+
+  .twoInputs {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
 
     .choiceCloth {
-        cursor: pointer;
+      width: 300px;
+      font-size: 18px;
     }
-
-    .twoInputs {
-        display: flex;
-        align-items: flex-end;
-        gap: 20px;
-
-        .choiceCloth {
-            margin: 0 0 10px 0;
-        }
-        
-    }
+  }
 }

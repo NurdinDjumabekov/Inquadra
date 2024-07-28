@@ -5,12 +5,46 @@
   justify-content: space-between;
 
   .mainImg {
-    width: 290px;
-    height: 390px;
+    width: 170px;
+    min-width: 170px;
+    height: 230px;
+    position: relative;
 
     > img {
       object-fit: cover;
       border-radius: 10px;
+    }
+
+    .discount {
+      padding: 5px 10px;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: #ffffff51;
+      border-radius: 10px;
+
+      p {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #fff;
+      }
+    }
+
+    .count {
+      padding: 5px 10px;
+      position: absolute;
+      bottom: 5px;
+      left: 5px;
+      background: #ffffff51;
+      border-radius: 10px;
+
+      p {
+        font-size: 14px;
+        line-height: 17px;
+        text-align: center;
+        color: #fff;
+      }
     }
   }
 
@@ -134,7 +168,7 @@
           display: flex;
           align-items: center;
           justify-content: center;
-          font-family: "Cygre Book", sans-serif;
+          font-family: 'Cygre Book', sans-serif;
           font-size: 18px;
           font-weight: 400;
           line-height: 36px;
@@ -160,7 +194,7 @@
         background: #050505;
         color: #fff;
         border-radius: 10px;
-        font-family: "Cygre Book", sans-serif;
+        font-family: 'Cygre Book', sans-serif;
         font-size: 18px;
         font-weight: 400;
         line-height: 36px;

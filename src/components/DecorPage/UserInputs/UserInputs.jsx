@@ -1,23 +1,30 @@
-import React from "react";
-import InputMask from "react-input-mask";
-import { useDispatch, useSelector } from "react-redux";
-import MyInputs from "../MyInput/MyInputs";
-import { lookNumberConfFN } from "../../../store/reducers/stateSlice";
-import "./style.scss";
+/////// hooks
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+////// components
+import MyInputs from '../MyInput/MyInputs';
+import InputMask from 'react-input-mask';
+
+////// fns
+import { changeInputsDecor } from '../../../store/reducers/stateSlice';
+import { lookNumberConfFN } from '../../../store/reducers/stateSlice';
+
+////// style
+import './style.scss';
 
 const UserInputs = ({ refAddres }) => {
   const dispatch = useDispatch();
 
   const { dataUser } = useSelector((state) => state.saveDataSlice);
 
-  const onChange = (e) => {
-    console.log(e);
-  };
+  const { inputsDecor } = useSelector((state) => state.stateSlice);
 
-  const sendMainData = (e) => {
-    e.preventDefault();
-    console.log("asdsa");
-    refAddres?.current?.focus();
+  const onChange = (e) => {
+    const { name, value } = e.target;
+
+    const obj = { [name]: { ...inputsDecor?.[name], text: value } };
+    dispatch(changeInputsDecor(obj));
   };
 
   const openNum = () => dispatch(lookNumberConfFN(true));
@@ -27,24 +34,31 @@ const UserInputs = ({ refAddres }) => {
       <h6>Мои данные</h6>
       <div>
         <MyInputs
-          title={"Имя"}
-          placeholder={"Александра"}
+          title={'Имя'}
+          placeholder={'Александра'}
           onChange={onChange}
-          required={true}
+          name={'name'}
+          error={inputsDecor.name.error}
+          value={inputsDecor.name.text}
         />
 
         <MyInputs
-          title={"Фамилия"}
-          placeholder={"Александрова"}
+          title={'Фамилия'}
+          placeholder={'Александрова'}
           onChange={onChange}
-          required={true}
+          name={'firstName'}
+          error={inputsDecor.firstName.error}
+          value={inputsDecor.firstName.text}
         />
 
         <MyInputs
-          title={"Отчество "}
-          placeholder={"Александровна"}
+          title={'Отчество '}
+          placeholder={'Александровна'}
           onChange={onChange}
-          moreTitle={"(если нет отчества, то пусто)"}
+          moreTitle={'(если нет отчества, то пусто)'}
+          name={'lastName'}
+          error={inputsDecor.lastName.error}
+          value={inputsDecor.lastName.text}
         />
 
         <div className="twoInputs">
@@ -53,9 +67,8 @@ const UserInputs = ({ refAddres }) => {
             <InputMask
               mask="+9 999 999-99-99"
               placeholder="+7 937 475-75-95"
-              name="number"
+              name="num"
               onChange={onChange}
-              required
             />
           </div>
 
@@ -67,11 +80,11 @@ const UserInputs = ({ refAddres }) => {
         </div>
 
         <MyInputs
-          title={"Электронная почта"}
-          placeholder={"womanfromthefuture@icloud.com"}
+          title={'Электронная почта'}
+          placeholder={'womanfromthefuture@icloud.com'}
           onChange={onChange}
-          required={true}
           email={true}
+          name={'email'}
         />
       </div>
     </div>
@@ -79,15 +92,3 @@ const UserInputs = ({ refAddres }) => {
 };
 
 export default UserInputs;
-
-// {!dataUser?.haveBeen ? (
-//   <div className="saveBtn">
-//     <span>Автосохранение</span>
-//     <img src={save} alt="[]" />
-//   </div>
-// ) : (
-//   <div className="choiceCloth" onClick={openNum}>
-//     <span>Подтвердить номер</span>
-//     <img src={phone} alt="[]" />
-//   </div>
-// )}
