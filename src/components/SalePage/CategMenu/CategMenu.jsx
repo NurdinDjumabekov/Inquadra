@@ -8,13 +8,11 @@ import "./style.scss";
 /////// imgs
 import check from "../../../assets/icons/check.svg";
 
-//////// fns
-
 const CategMenu = ({ list, name, activeState, onChange }) => {
   const dispatch = useDispatch();
   const { activeCateg, active } = useSelector((state) => state.stateSlice);
+  // const { active } = useSelector((state) => state.requestSlice);
 
-  const [actives, setActives] = useState(true);
   const [length, setLength] = useState(false);
   const contentRef = useRef(null);
 
@@ -22,8 +20,6 @@ const CategMenu = ({ list, name, activeState, onChange }) => {
     // window.scrollTo({ top: 0, behavior: "smooth" });
     onChange(id, activeState);
   };
-
-  const changeAccord = () => setActives(!actives);
 
   const noEmpty = list?.length > 0;
 

@@ -1,11 +1,11 @@
-import React from 'react';
-import './style.scss';
-import vk from '../../assets/icons/vk.svg';
-import telega from '../../assets/icons/telega.svg';
+import React from "react";
+import "./style.scss";
+import vk from "../../assets/icons/vk.svg";
+import telega from "../../assets/icons/telega.svg";
 
 ////delete
-import news from '../../assets/images/news.png';
-import imgFooter from '../../assets/images/imgFooter.png';
+import news from "../../assets/images/news.png";
+import imgFooter from "../../assets/images/imgFooter.png";
 
 const Footer = () => {
   return (

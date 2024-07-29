@@ -1,5 +1,4 @@
 ////hooks
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 ////style
@@ -10,7 +9,6 @@ import "./style.scss";
 ////components
 import Sorting from "../Sorting/Sorting";
 import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
-import { getListProds } from "../../../store/reducers/requestSlice";
 
 const ClothList = () => {
   const dispatch = useDispatch();

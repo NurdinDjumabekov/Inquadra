@@ -1,6 +1,11 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { changeTemporary, lookNumberConfFN, lookNumberFN } from "./stateSlice";
+import {
+  changeSortAllType,
+  changeTemporary,
+  lookNumberConfFN,
+  lookNumberFN,
+} from "./stateSlice";
 import axiosInstance from "../../axiosInstance";
 import { changeToken } from "./saveDataSlice";
 import {
@@ -122,6 +127,7 @@ export const getListCategs = createAsyncThunk(
     try {
       const response = await axiosInstance(url);
       if (response.status >= 200 && response.status < 300) {
+        dispatch(changeSortAllType(response?.data));
         return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);

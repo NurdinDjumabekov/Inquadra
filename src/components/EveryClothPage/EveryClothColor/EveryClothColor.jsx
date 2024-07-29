@@ -26,12 +26,6 @@ const EveryClothColor = ({ listColor }) => {
           <p className={temporary?.colorId == item?.id ? "activeItem" : ""}>
             {item?.color}
           </p>
-          {/* <div className="moreSize">
-            <div className="moreSize__inner">
-              <p>размеры облицовочной плитки продажа коробками</p>
-            </div>
-          </div>
-          <div className="shadowSize"></div> */}
         </li>
       ))}
     </ul>

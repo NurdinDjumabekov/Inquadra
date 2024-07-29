@@ -1,18 +1,18 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  alertText: { text: '', backColor: '', state: false },
+////// helpers
+import { defaultInputsDecor } from "../../helpers/LodalData";
 
-  inputSearch: '', /// поиск товаров
+export const initialState = {
+  alertText: { text: "", backColor: "", state: false },
 
-  menuActive: '', /// главное меню
+  inputSearch: "", /// поиск товаров
 
-  numberUser: '+7', /// для ввода номера
+  menuActive: "", /// главное меню
+
+  numberUser: "+7", /// для ввода номера
 
   //////////////////////// categories all
-
-  activeBrands: 0, // активный бренд
-
   active: {
     kladka: [],
     status: [],
@@ -21,6 +21,8 @@ const initialState = {
     texture: [],
     color: [],
   },
+
+  activeBrands: 0, // активный бренд
 
   temporary: { colorId: 0, sizeId: 0, count: 1, type: 0 },
   //// для временного хранения размеров и цветов в списке
@@ -42,28 +44,11 @@ const initialState = {
 
   lookNumberConf: false, ///// для модалки подтверждения номера
 
-  inputsDecor: {
-    name: { text: '', error: false, errrText: 'необходимо заполнить' },
-    firstName: { text: '', error: false, errrText: 'необходимо заполнить' },
-    lastName: { text: '', error: false, errrText: 'необходимо заполнить' },
-    num: {
-      text: '',
-      error: false,
-      errrText: 'необходимо правильно заполнить номер',
-    },
-    email: { text: '', error: false, errrText: 'введите корректный email' },
-    deliv: { text: '', error: false, errrText: 'необходимо заполнить' },
-    deliv_home: { text: '', error: false, errrText: 'необходимо заполнить' },
-    deliv_home_num: {
-      text: '',
-      error: false,
-      errrText: 'необходимо заполнить',
-    },
-  },
+  inputsDecor: defaultInputsDecor,
 };
 
 const stateSlice = createSlice({
-  name: 'stateSlice',
+  name: "stateSlice",
   initialState,
   reducers: {
     changeInputSearch: (state, action) => {
@@ -129,10 +114,7 @@ const stateSlice = createSlice({
     },
 
     changeInputsDecor: (state, action) => {
-      state.inputsDecor = {
-        ...state.inputsDecor,
-        ...action.payload,
-      };
+      state.inputsDecor = { ...state.inputsDecor, ...action.payload };
     },
 
     setError: (state, action) => {
@@ -141,15 +123,22 @@ const stateSlice = createSlice({
     },
 
     clearInputsDecor: (state, action) => {
-      state.inputsDecor = {
-        name: '',
-        firstName: '',
-        lastName: '',
-        num: '',
-        email: '',
-        deliv: '',
-        deliv_home: '',
-        deliv_home_num: '',
+      state.inputsDecor = defaultInputsDecor;
+    },
+
+    /////// для изначальной подставки все блоков для сортировки
+    ////// присваиваю id каждой сортировки во временный state для того чтобы везде были галочки
+
+    changeSortAllType: (state, action) => {
+      const { masonryTypes, coatings } = action.payload;
+      const { texture, colors } = action.payload;
+
+      state.active = {
+        ...state.active,
+        coating: coatings?.map((item) => item.id), // покрытие
+        color: colors?.map((item) => item.id), // покрытие
+        kladka: masonryTypes?.map((item) => item.id), // кладки
+        texture: texture?.map((item) => item.id), // текстура
       };
     },
   },
@@ -167,18 +156,16 @@ export const {
   lookNumberFN,
   lookNumberConfFN,
   activeBrandsFN,
-
   changeActive,
-
   changeTemporary,
-
   activePriceFN,
   initialPriceFN,
-
   //////////////// inputs
   changeInputsDecor,
   setError,
   clearInputsDecor,
+  /////// allCategs
+  changeSortAllType,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

@@ -1,13 +1,9 @@
 ////hooks
 import { useDispatch, useSelector } from "react-redux";
 
-////style
-import "./style.scss";
-
 /////components
 import ClothSize from "../ClothSize/ClothSize";
 import ClothPrices from "../ClothPrices/ClothPrices";
-import ClothColor from "../ClothColor/ClothColor";
 import CategMenu from "../CategMenu/CategMenu";
 import MenuChoice from "../../../common/Menu/MenuChoice/MenuChoice";
 
@@ -15,7 +11,9 @@ import MenuChoice from "../../../common/Menu/MenuChoice/MenuChoice";
 import { activeBrandsFN } from "../../../store/reducers/stateSlice";
 import { changeActive } from "../../../store/reducers/stateSlice";
 import { getListCategs } from "../../../store/reducers/requestSlice";
-import { listCards } from "../../../helpers/LodalData";
+
+////style
+import "./style.scss";
 
 const ClothTypes = () => {
   const dispatch = useDispatch();
@@ -51,6 +49,9 @@ const ClothTypes = () => {
     }
   };
 
+  // console.log(listBrands, "listBrands");
+  console.log(active, "active");
+
   return (
     <div className="clothTypes">
       <MenuChoice />
@@ -63,12 +64,12 @@ const ClothTypes = () => {
               onClick={() => actionBrands(item?.id)}
             >
               <p>{item?.brandName}</p>
-              <span>{item?.count || 0}</span>
+              <span>{item?.productCount || 0}</span>
             </li>
           ))}
         </ul>
 
-        <ul className="listTypes brands cards">
+        {/* <ul className="listTypes brands cards">
           {listCards?.map((item) => (
             <li
               key={item?.id}
@@ -79,7 +80,7 @@ const ClothTypes = () => {
               <span>{item?.count}</span>
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         <CategMenu
           list={categKladka}
@@ -110,14 +111,6 @@ const ClothTypes = () => {
           activeState={"color"}
           onChange={onChange}
         />
-
-        {/*
-        <CategMenu
-          list={categKladka}
-          typeTitle={1}
-          typeSex={"Мужская одежда"}
-        />
-        <ClothColor /> */}
       </div>
 
       <ClothPrices />

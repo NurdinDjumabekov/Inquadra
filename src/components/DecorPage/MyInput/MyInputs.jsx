@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import './style.scss';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useState } from "react";
+import "./style.scss";
+import { useSelector } from "react-redux";
 
 const MyInputs = (props) => {
   const { title, placeholder, name, moreTitle } = props;
@@ -10,16 +10,16 @@ const MyInputs = (props) => {
   const { inputsDecor } = useSelector((state) => state.stateSlice);
 
   const check = inputsDecor?.[name]?.error;
-  const errText = inputsDecor?.[name]?.errrText;
+  const errText = inputsDecor?.[name]?.errText;
 
   return (
-    <div className={`myInput ${check ? 'errorValidated' : ''}`}>
+    <div className={`myInput ${check ? "errorValidated" : ""}`}>
       <span>
         {title}
         {moreTitle && <i>{moreTitle}</i>}
       </span>
       <input
-        type={email ? 'email' : 'text'}
+        type={email ? "email" : "text"}
         placeholder={placeholder}
         name={name}
         onChange={onChange}
