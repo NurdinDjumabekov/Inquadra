@@ -8,6 +8,9 @@
     align-items: center;
     justify-content: flex-end;
     gap: 30px 20px;
+    @media (max-width: 1235px) {
+      gap: 10px;
+    }
 
     .emptyData {
       height: 50vh;
@@ -19,6 +22,28 @@
       font-weight: 400;
       line-height: 20px;
       color: #050505;
+    }
+  }
+}
+
+////////////////////////////////// адаптивка
+.clothList {
+  &__inner {
+    @media (max-width: 1235px) {
+      gap: 10px;
+    }
+    @media (max-width: 1215px) {
+      justify-content: flex-start;
+    }
+    @media (max-width: 910px) {
+      gap: 25px;
+    }
+    @media (max-width: 645px) {
+      gap: 10px;
+    }
+    @media (max-width: 500px) {
+      gap: 5px;
+      justify-content: space-between;
     }
   }
 }

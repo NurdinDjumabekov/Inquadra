@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 ///// imgs
 import deleteImg from "../../assets/icons/deleteGray.svg";
-import arrowCounter from "../../assets/icons/arrowCounter.svg";
+import minus from "../../assets/icons/minus.svg";
+import plus from "../../assets/icons/plus.svg";
 import basket from "../../assets/icons/saleWhite.svg";
 
 ///// components
@@ -21,13 +22,11 @@ import { deleteBasket } from "../../store/reducers/requestSlice";
 import { deleteFavourite } from "../../store/reducers/requestSlice";
 import { counterFavourite } from "../../store/reducers/requestSlice";
 import { everyClothFN } from "../../store/reducers/requestSlice";
+import { delProdFavourite } from "../../store/reducers/serverSaveSlice";
+import { deleteProdBasket } from "../../store/reducers/serverSaveSlice";
 
 ///// style
 import "./style.scss";
-import {
-  delProdFavourite,
-  deleteProdBasket,
-} from "../../store/reducers/serverSaveSlice";
 
 const Cloth = ({ item, type }) => {
   const navigate = useNavigate();
@@ -92,7 +91,14 @@ const Cloth = ({ item, type }) => {
       <li className="everyBasket">
         <div className="imgMain">
           <img src={sarchImg(item?.photos)?.url} alt="" />
-          <button onClick={navDetailed}>Посмотреть</button>
+          {/* <button onClick={navDetailed}>Посмотреть</button> */}
+          <p className="kol">{item?.productDetails?.complect}</p>
+          {item?.discountActive && (
+            <p className="discount">-{item?.discount}%</p>
+          )}
+          <div className="favoriteIcon">
+            <Favourite obj={item} />
+          </div>
         </div>
         <div className="infoBlock">
           <div className="title">
@@ -102,9 +108,6 @@ const Cloth = ({ item, type }) => {
             </div>
             <b>{item?.productStatus?.status}</b>
           </div>
-
-          <DiscountPrice item={item} />
-
           <div className="typesProd">
             <div className="typesProd__inner">
               <div className="color">
@@ -114,34 +117,30 @@ const Cloth = ({ item, type }) => {
                 <p>{colorActive}</p>
               </div>
             </div>
-            <div className="typesProd__saved">
-              <Favourite obj={item} />
-              <button className="actionDelete" onClick={deleteFav}>
-                <img src={deleteImg} alt="x" />
-              </button>
+          </div>
+          <div className="price">
+            <div className="meter">
+              <p>{item?.count * item?.price}</p>
+              <span>руб. </span>
+            </div>
+            <div className="meter">
+              <p>{item?.count * item?.price}</p>
+              <span>{item?.saleType?.type}</span>
             </div>
           </div>
           <div className="actions">
-            <div className="priceMeter">
-              <div className="meter">
-                <p>{item?.count * item?.price}</p>
-                <p>{item?.saleType?.type}</p>
+            <div className="counter">
+              <button onClick={() => counterFN(2)} className="increment">
+                <img src={minus} alt=">" />
+              </button>
+              <div className="count">
+                <p>{item?.count}</p>
               </div>
-              <div className="counter">
-                <div className="counter__num">
-                  <p>{item?.count}</p>
-                </div>
-                <div className="counter__btn">
-                  <button onClick={() => counterFN(1)}>
-                    <img src={arrowCounter} alt=">" />
-                  </button>
-                  <button onClick={() => counterFN(2)}>
-                    <img src={arrowCounter} alt="<" />
-                  </button>
-                </div>
-              </div>
+              <button onClick={() => counterFN(1)} className="decrement">
+                <img src={plus} alt="<" />
+              </button>
             </div>
-            <button onClick={nav}>Выбрать</button>
+            <button onClick={() => {}}>в корзину</button>
           </div>
         </div>
       </li>
@@ -153,7 +152,14 @@ const Cloth = ({ item, type }) => {
       <li className="everyBasket">
         <div className="imgMain">
           <img src={sarchImg(item?.photos)?.url} alt="" />
-          <button onClick={navDetailed}>Посмотреть</button>
+          {/* <button onClick={navDetailed}>Посмотреть</button> */}
+          <p className="kol">{item?.productDetails?.complect}</p>
+          {item?.discountActive && (
+            <p className="discount">-{item?.discount}%</p>
+          )}
+          <div className="favoriteIcon">
+            <Favourite obj={item} />
+          </div>
         </div>
         <div className="infoBlock">
           <div className="title">
@@ -163,9 +169,6 @@ const Cloth = ({ item, type }) => {
             </div>
             <b>{item?.productStatus?.status}</b>
           </div>
-
-          <DiscountPrice item={item} />
-
           <div className="typesProd">
             <div className="typesProd__inner">
               <div className="color">
@@ -175,42 +178,30 @@ const Cloth = ({ item, type }) => {
                 <p>{colorActive}</p>
               </div>
             </div>
-
-            <div className="typesProd__saved">
-              {/* <Favourite obj={item} /> */}
-              <button className="actionDelete" onClick={delBasket}>
-                <img src={deleteImg} alt="x" />
-              </button>
+          </div>
+          <div className="price">
+            <div className="meter">
+              <p>{item?.count * item?.price}</p>
+              <span>руб. </span>
+            </div>
+            <div className="meter">
+              <p>{item?.count * item?.price}</p>
+              <span>{item?.saleType?.type}</span>
             </div>
           </div>
-
           <div className="actions">
-            <div className="priceMeter">
-              <div className="price">
-                <p>{item?.count * item?.price}</p>
-                <p>руб.</p>
+            <div className="counter">
+              <button onClick={() => counterFN(2)} className="increment">
+                <img src={minus} alt=">" />
+              </button>
+              <div className="count">
+                <p>{item?.count}</p>
               </div>
-              <div className="meter">
-                <p>{item?.count * 1}</p>
-                <p>{item?.saleType?.type}</p>
-              </div>
-              <div className="counter">
-                <div className="counter__num">
-                  <p>{item?.count}</p>
-                </div>
-                <div className="counter__btn">
-                  <button onClick={() => counterFN(1)}>
-                    <img src={arrowCounter} alt=">" />
-                  </button>
-                  <button onClick={() => counterFN(2)}>
-                    <img src={arrowCounter} alt="<" />
-                  </button>
-                </div>
-              </div>
+              <button onClick={() => counterFN(1)} className="decrement">
+                <img src={plus} alt="<" />
+              </button>
             </div>
-            <button onClick={nav} className="basketBtn">
-              <img src={basket} alt="basket" />
-            </button>
+            <button onClick={nav}>В корзину</button>
           </div>
         </div>
       </li>

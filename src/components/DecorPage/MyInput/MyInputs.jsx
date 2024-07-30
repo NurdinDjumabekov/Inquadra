@@ -19,7 +19,7 @@ const MyInputs = (props) => {
         {moreTitle && <i>{moreTitle}</i>}
       </span>
       <input
-        type={email ? "email" : "text"}
+        type={"text"}
         placeholder={placeholder}
         name={name}
         onChange={onChange}

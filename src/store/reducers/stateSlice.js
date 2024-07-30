@@ -44,7 +44,10 @@ export const initialState = {
 
   lookNumberConf: false, ///// для модалки подтверждения номера
 
-  inputsDecor: defaultInputsDecor,
+  inputsDecor: defaultInputsDecor, ////// для подтверждения заказа
+
+  ////////////////////////////// для адаптивки
+  menuAdaptive: { left: false, right: false }, //// для меню мобилки
 };
 
 const stateSlice = createSlice({
@@ -141,6 +144,12 @@ const stateSlice = createSlice({
         texture: texture?.map((item) => item.id), // текстура
       };
     },
+
+    ///////////////////
+
+    changeMenuAdaptive: (state, action) => {
+      state.menuAdaptive = action.payload; //// для меню мобилки
+    },
   },
 });
 
@@ -166,6 +175,8 @@ export const {
   clearInputsDecor,
   /////// allCategs
   changeSortAllType,
+  ///////////menuAdaptive
+  changeMenuAdaptive,
 } = stateSlice.actions;
 
 export default stateSlice.reducer;

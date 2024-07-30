@@ -41,7 +41,6 @@ const Selects = (props) => {
 
   return (
     <div className={`selectBlockMain ${active && "colorGray"}`}>
-      <h5>{title}</h5>
       <div className="selectBlock" id="uniqueSelectID" ref={accordionRef}>
         <div
           className={`selectBlock__inner ${active && "more"}`}

@@ -3,18 +3,6 @@
   flex-direction: column;
   border-radius: 8px;
   width: 400px;
-  // padding: 0 0 20px 0;
-
-  h5 {
-    margin: 0 !important;
-    padding: 0px 0 10px 0 !important;
-    font-size: 20px !important;
-    font-weight: 400 !important;
-    line-height: 20px !important;
-    padding: 0 0 10px 0;
-    text-align: left !important;
-    width: 100%;
-  }
 
   .selectBlock {
     position: relative;
@@ -127,11 +115,51 @@
   }
 }
 
+/////////////////////////////////// адаптивка
+.sorting .selectFilter .selectBlockMain {
+  @media (max-width: 910px) {
+    width: 40px;
+    min-width: 40px;
+    height: 40px !important;
+    .selectBlock {
+      height: 40px !important;
+      .selectBlock__inner {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 !important;
+        p,
+        img {
+          display: none !important;
+        }
+
+        &::before {
+          content: "";
+          width: 24px;
+          min-width: 24px;
+          height: 24px;
+          background-image: url("../../assets/icons/adaptive/sortingAdaptiv.svg");
+        }
+      }
+      &__activeBlock {
+        width: 170px;
+        left: -132px;
+        p {
+          position: static;
+          text-align: right;
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 @keyframes modal {
   from {
-    opacity: 0;
+    // opacity: 0;
   }
   to {
-    opacity: 1;
+    // opacity: 1;
   }
 }

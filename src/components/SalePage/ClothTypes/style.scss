@@ -1,7 +1,7 @@
 .clothTypes {
   min-width: 280px;
   max-width: 280px;
-  padding: 105px 0 200px;
+  padding: 91px 0 200px;
   position: relative;
 
   &__inner {
@@ -102,5 +102,12 @@
     position: absolute;
     bottom: 00px;
     left: 0;
+  }
+}
+
+/////////////////////////////////// адаптивка
+.clothTypes {
+  @media (max-width: 910px) {
+    display: none;
   }
 }

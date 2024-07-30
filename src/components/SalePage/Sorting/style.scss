@@ -2,8 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 30px 0 20px 0;
+  margin: 30px 0 9px 0;
 
   .filter,
   .sort {
@@ -51,7 +50,6 @@
       .selectBlock {
         width: 100%;
         height: auto !important;
-        // background: #c0c0c0;
 
         &__inner {
           padding: 10px 15px !important;
@@ -92,7 +90,6 @@
 
         &__activeBlock {
           border-radius: 10px;
-          // background-color: #c0c0c0;
           padding: 10px 15px 15px;
 
           p {
@@ -139,16 +136,9 @@
   }
 }
 
-.colorGray {
-  .selectBlock {
-    background: #050505 !important;
-
-    &__inner {
-      background: #050505 !important;
-    }
-
-    &__activeBlock {
-      background: #050505 !important;
-    }
+/////////////////////////////////// адаптивка
+.sorting {
+  @media (max-width: 910px) {
+    display: none;
   }
 }

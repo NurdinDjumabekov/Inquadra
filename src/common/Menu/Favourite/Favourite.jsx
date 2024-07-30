@@ -47,13 +47,15 @@ const Favourite = ({ obj, black, disable }) => {
     }
   };
 
+  const active = checkFavourite(obj, favouriteList);
+
   return (
     <button
-      className="favoriteBtn"
+      className={`favoriteBtn ${active ? "activeFav" : ""}`}
       onClick={changeFavourite}
       disabled={disable}
     >
-      {checkFavourite(obj, favouriteList) ? (
+      {active ? (
         <img src={favorite} alt="{}" />
       ) : (
         <img src={black ? heartBlack : favoriteDisActive} alt="{}" />

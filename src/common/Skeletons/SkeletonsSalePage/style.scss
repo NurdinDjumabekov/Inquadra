@@ -8,7 +8,7 @@
     .mainInfo {
       display: flex;
       justify-content: space-between;
-      margin: 30px 0 0;
+      margin: 20px 0 0;
       gap: 20px;
 
       &__types {
@@ -25,7 +25,7 @@
           > div {
             width: 40px;
             height: 40px;
-            border-radius: 5px;
+            border-radius: 10px;
           }
         }
 
@@ -33,27 +33,27 @@
           width: 280px;
           height: 40px;
           background: #aaa;
-          border-radius: 5px;
+          border-radius: 10px;
         }
 
         div {
           width: 280px;
           height: 70px;
           background: #aaa;
-          border-radius: 5px;
+          border-radius: 10px;
         }
 
         section {
           width: 280px;
           height: 200px;
           background: #aaa;
-          border-radius: 5px;
+          border-radius: 10px;
         }
 
         p {
           width: 280px;
           height: 50px;
-          border-radius: 5px;
+          border-radius: 10px;
 
           background: #aaa;
         }
@@ -62,7 +62,7 @@
           width: 280px;
           height: 70px;
           background: #aaa;
-          border-radius: 5px;
+          border-radius: 10px;
         }
 
         main {
@@ -70,7 +70,7 @@
           flex-wrap: wrap;
           gap: 8px;
           width: 280px;
-          border-radius: 5px;
+          border-radius: 10px;
 
           i {
             width: 35px;
@@ -92,7 +92,7 @@
             background: #aaa;
             margin: 15px 0 20px;
             align-self: center;
-            border-radius: 5px;
+            border-radius: 10px;
           }
         }
       }
@@ -153,9 +153,9 @@
   margin: 3px 0 0 0;
 
   > div {
-    height: 440px;
+    height: 430px;
     width: 295px;
     background: #aaa;
-    border-radius: 5px;
+    border-radius: 10px;
   }
 }

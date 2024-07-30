@@ -42,12 +42,12 @@ const RenderEveryCloth = ({ item }) => {
         <div className="mainCard__content">
           <div className="mainCard__content__title">
             <h6>{item?.price} рублей за м²</h6>
-            <b>{item?.discountActive && <p>{item?.discount}</p>}</b>
+            <div>{item?.discountActive && <p>-{item?.discount}%</p>}</div>
           </div>
           <span>{item?.brand?.brandName}</span>
           <div className="mainCard__content__decription">
             <p>{item?.productName}</p>
-            <b>{item?.kol || 0} шт.</b>
+            <b>{item?.productDetails?.complect || 0} шт.</b>
           </div>
         </div>
       </div>

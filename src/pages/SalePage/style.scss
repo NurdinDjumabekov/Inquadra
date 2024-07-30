@@ -5,9 +5,31 @@
     display: flex;
     justify-content: space-between;
     gap: 35px;
+    position: relative;
   }
 }
 
+/////// адаптивка
+.sale {
+  &__inner {
+    @media (max-width: 1289px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 1215px) {
+      gap: 30px;
+    }
+
+    @media (max-width: 930px) {
+      gap: 10px;
+    }
+
+    @media (max-width: 910px) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+}
 
 @keyframes page {
   from {

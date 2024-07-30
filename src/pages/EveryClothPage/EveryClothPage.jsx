@@ -36,21 +36,6 @@ const EveryClothPage = () => {
 
   const { preloader } = useSelector((state) => state.requestSlice);
 
-  const addProdInBasket = () => {
-    ///// добавляю в корзину
-    if (temporary?.sizeId == 0) {
-      alert("Выберите размер одежды");
-    } else if (temporary?.colorId == 0) {
-      alert("Выберите цвет одежды");
-    } else {
-      alert("Товар добавлен в корзину");
-      const data = { ...everyCloth, ...temporary, productId: 1 };
-      // dispatch(addBasket(data));
-      dispatch(addProdBasket(data));
-      ///// добавляю в корзину через запрос
-    }
-  };
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     dispatch(detailedCloth(id));
@@ -104,7 +89,7 @@ const EveryClothPage = () => {
             <div className="prices">
               <p>{everyCloth?.price} рублей за м²</p>
               <span>
-                {everyCloth?.discountActive && <p>{everyCloth?.discount}</p>}
+                {everyCloth?.discountActive && <>-{everyCloth?.discount}%</>}
               </span>
             </div>
 
@@ -114,12 +99,6 @@ const EveryClothPage = () => {
 
             <PriceMeter count={temporary?.count} everyCloth={everyCloth} />
 
-            <div className="actions">
-              <button className="choiceCloth" onClick={addProdInBasket}>
-                Добавить
-              </button>
-              <Favourite obj={everyCloth} black={true} />
-            </div>
             <Description everyCloth={everyCloth} />
           </div>
         </div>

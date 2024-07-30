@@ -2,6 +2,8 @@ import woman from "../assets/noneData/Rectangle 996.png";
 import woman2 from "../assets/noneData//Rectangle 996.png";
 import colorBig from "../assets/noneData/bigMaterial.png";
 
+const pages = [];
+
 export const listSorting = [
   { id: 1, name: "по доступным" },
   { id: 2, name: "по премиальным" },

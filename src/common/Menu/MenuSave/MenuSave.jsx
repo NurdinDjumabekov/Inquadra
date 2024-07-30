@@ -28,7 +28,6 @@ const MenuSave = () => {
   const { basketList } = useSelector((state) => state.serverSaveSlice);
   const { favouriteList } = useSelector((state) => state.serverSaveSlice);
 
-  console.log(basketList, "basketList");
   const lookMyFavorite = () => {
     dispatch(lookFavoriteFN(!lookFavorite));
 

@@ -1,0 +1,111 @@
+.clothTypesAdaptive {
+  min-width: 280px;
+  max-width: 280px;
+  padding: 91px 0px 40px;
+  position: relative;
+  display: none;
+
+  &__inner {
+    .brands {
+      background: #f0f0f0;
+      padding: 10px 15px;
+      border-radius: 10px;
+
+      li {
+        p {
+          font-weight: 400;
+          color: #050505;
+          font-size: 16px;
+          line-height: 16px;
+        }
+
+        span {
+          font-size: 16px;
+          line-height: 16px;
+          text-align: right;
+          color: #b5b5b5;
+        }
+      }
+    }
+
+    .listTypes {
+      li {
+        p {
+          position: relative;
+          display: inline-block;
+
+          &:after {
+            position: absolute;
+            bottom: -2px;
+            left: 0px;
+            content: "";
+            width: 0;
+            height: 1px;
+            background: #050505;
+            transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 0;
+          }
+
+          &:hover:after {
+            width: 100%; /* Показываем линию при наведении */
+            opacity: 1; /* Делаем ее видимой */
+          }
+
+          &:not(:hover):after {
+            // width: 0; /* Скрываем линию после того, как курсор убран */
+            // opacity: 0; /* Делаем ее невидимой */
+          }
+        }
+
+        &:hover {
+          span {
+            position: relative;
+            display: inline-block;
+
+            &:before {
+              content: "";
+              position: absolute;
+              bottom: -2px;
+              left: 0px;
+              height: 1px;
+              background: #b5b5b5;
+              width: 110%;
+              animation: modal 0.7s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+
+    .cards {
+      margin: 5px 0 0 0;
+    }
+  }
+
+  .first {
+    margin-top: 12px !important;
+  }
+
+  .onUp {
+    border: 1px solid #ff3535;
+    width: 100%;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 10px;
+    color: #ff3535;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 18px;
+    text-align: center;
+    position: absolute;
+    bottom: 00px;
+    left: 0;
+  }
+}
+
+/////////////////////////////////// адаптивка
+.clothTypesAdaptive {
+  @media (max-width: 910px) {
+    display: block;
+  }
+}

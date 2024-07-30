@@ -1,18 +1,18 @@
-import React from 'react';
-import './style.scss';
-import CheckUser from '../../components/CheckUser/CheckUser';
-import UserInputs from '../../components/DecorPage/UserInputs/UserInputs';
-import UserAddresInputs from '../../components/DecorPage/UserAddresInputs/UserAddresInputs';
-import { useRef } from 'react';
-import DeliveryPay from '../../components/DecorPage/DeliveryPay/DeliveryPay';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { NavPath } from '../../common/NavPath/NavPath';
-import { listNavDecor } from '../../helpers/LodalData';
-import { setError } from '../../store/reducers/stateSlice';
-import { useDispatch, useSelector } from 'react-redux';
-import { tranformNumber } from '../../helpers/tranformNumber';
-import { validateEmail } from '../../helpers/validation';
+import React from "react";
+import "./style.scss";
+import CheckUser from "../../components/CheckUser/CheckUser";
+import UserInputs from "../../components/DecorPage/UserInputs/UserInputs";
+import UserAddresInputs from "../../components/DecorPage/UserAddresInputs/UserAddresInputs";
+import { useRef } from "react";
+import DeliveryPay from "../../components/DecorPage/DeliveryPay/DeliveryPay";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { NavPath } from "../../common/NavPath/NavPath";
+import { listNavDecor } from "../../helpers/LodalData";
+import { setError } from "../../store/reducers/stateSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { tranformNumber } from "../../helpers/tranformNumber";
+import { validateEmail } from "../../helpers/validation";
 
 const DecorZakazPage = () => {
   const refAddres = useRef(null);
@@ -22,13 +22,13 @@ const DecorZakazPage = () => {
   const { inputsDecor } = useSelector((state) => state.stateSlice);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, []);
 
   const sendData = (e) => {
     e.preventDefault();
-    // navigate('/');
-    // alert('Ваш заказ успешно был оформлен');
+    // navigate("/");
+    // alert("Ваш заказ успешно был оформлен");
 
     const validations = {
       name: inputsDecor?.name?.text?.length > 3,
@@ -45,6 +45,7 @@ const DecorZakazPage = () => {
       const isValid = validations[key];
       if (!isValid) {
         dispatch(setError({ key, error: true }));
+        window.scrollTo({ top: 250, behavior: "smooth" });
         setTimeout(() => {
           dispatch(setError({ key, error: false }));
         }, 3000);

@@ -2,46 +2,30 @@ import React from "react";
 import "./style.scss";
 
 export const Description = ({ everyCloth }) => {
+  const { productDetails, texture, coating } = everyCloth;
+
+  const listDescr = [
+    { id: 1, name: "артикул: ", info: productDetails?.articul },
+    { id: 2, name: "материал: ", info: productDetails?.material },
+    // { id: 3, name: "размер: ", info: "" },
+    { id: 4, name: "цвет: ", info: productDetails?.complect },
+    { id: 5, name: "текстура: ", info: texture?.texture_name },
+    // { id: 6, name: "тип кладки: ", info: "" },
+    { id: 7, name: "тип поверхности: ", info: coating?.type },
+    { id: 8, name: "комплектация: ", info: productDetails?.complect },
+    { id: 9, name: "страна изготовления: ", info: productDetails?.country },
+  ];
+
   return (
     <div className="descriptions">
       <div className="descriptions__main">
         <div className="moreSescr">
-          <div>
-            <span>артикул: </span>
-            <p>{everyCloth?.productDetails?.articul}</p>
-          </div>
-          <div>
-            <span>материал: </span>
-            <p>{everyCloth?.productDetails?.material}</p>
-          </div>
-          <div>
-            <span>размер: </span>
-            <p>{}</p>
-          </div>
-          <div>
-            <span>цвет: </span>
-            <p>{everyCloth?.productDetails?.complect}</p>
-          </div>
-          <div>
-            <span>текстура: </span>
-            <p>{}</p>
-          </div>
-          <div>
-            <span>тип кладки: </span>
-            <p>{}</p>
-          </div>
-          <div>
-            <span>тип поверхности: </span>
-            <p>{}</p>
-          </div>
-          <div>
-            <span>комплектация: </span>
-            <p>{everyCloth?.productDetails?.complect}</p>
-          </div>
-          <div>
-            <span>страна изготовления: </span>
-            <p>{everyCloth?.productDetails?.country}</p>
-          </div>
+          {listDescr?.map((i) => (
+            <div key={i.id}>
+              <span>{i.name}</span>
+              <p>{i.info}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

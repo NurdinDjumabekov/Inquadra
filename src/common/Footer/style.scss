@@ -63,6 +63,8 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 80px;
 
       > div {
         p {
@@ -102,6 +104,22 @@
     button {
       width: 255px;
       height: 40px;
+    }
+  }
+}
+
+/////////////////////////////////// адаптивка
+.footer {
+  @media (max-width: 540px) {
+    &__main {
+      padding: 30px 10px 130px;
+      .textInfo {
+        gap: 20px;
+
+        p {
+          font-size: 14px !important;
+        }
+      }
     }
   }
 }

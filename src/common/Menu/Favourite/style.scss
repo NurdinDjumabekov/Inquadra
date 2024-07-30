@@ -1,12 +1,18 @@
 .favoriteBtn {
-    width: 40px;
-    height: 40px;
-    z-index: 3;
-    border-radius: 10px;
-    background: #ffffff4b;
-    
-    > img {
-        width: 24px;
-        height: 24px;
-    }
+  width: 40px;
+  height: 40px;
+  z-index: 3;
+  border-radius: 10px;
+  background: #ffffff4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > img {
+    width: 20px;
+    height: 20px;
+  }
+}
+.activeFav {
+  background: rgba(255, 0, 0, 0.229);
 }

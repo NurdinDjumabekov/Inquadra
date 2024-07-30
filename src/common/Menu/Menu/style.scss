@@ -22,6 +22,7 @@
       display: flex;
       align-items: flex-start;
       flex-direction: column;
+      gap: 2px;
 
       .logo {
         font-family: "Righteous", sans-serif;
@@ -82,4 +83,26 @@
 
 .epsIndex {
   z-index: 9;
+}
+
+/////////////////////////////////// адаптивка
+.menu {
+  &__inner {
+    &__logo {
+      .logo {
+        font-size: 24px;
+        width: 125px;
+        line-height: 24px;
+      }
+      .logoHome {
+        font-size: 14px;
+        width: 125px;
+      }
+    }
+  }
+  &__favorite {
+    @media (max-width: 930px) {
+      display: none;
+    }
+  }
 }

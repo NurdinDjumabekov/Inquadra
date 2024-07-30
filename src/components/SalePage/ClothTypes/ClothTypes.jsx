@@ -49,9 +49,6 @@ const ClothTypes = () => {
     }
   };
 
-  // console.log(listBrands, "listBrands");
-  console.log(active, "active");
-
   return (
     <div className="clothTypes">
       <MenuChoice />

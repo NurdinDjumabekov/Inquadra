@@ -14,6 +14,7 @@ import "./style.scss";
 import { getListBrands } from "../../store/reducers/requestSlice";
 import { getListCateg } from "../../store/reducers/requestSlice";
 import { getListProds } from "../../store/reducers/requestSlice";
+import ClothTypesAdaptive from "../../components/SalePage/ClothTypesAdaptive/ClothTypesAdaptive";
 
 const SalePage = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,12 @@ const SalePage = () => {
     <div className="sale">
       <div className="container">
         <div className="sale__inner">
-          <ClothTypes />
+          <>
+            <ClothTypes />
+            {/* //// для desktop */}
+            <ClothTypesAdaptive />
+            {/* //// для mobile */}
+          </>
           <ClothList />
         </div>
       </div>

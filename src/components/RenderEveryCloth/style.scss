@@ -20,6 +20,11 @@
     position: absolute;
     top: 10px;
     right: 10px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .mainCard {
@@ -34,7 +39,7 @@
           content: "";
           width: 100%;
           height: 100%;
-          border-radius: 5px;
+          border-radius: 10px;
           position: absolute;
           top: 0;
           left: 0;
@@ -56,7 +61,7 @@
         content: "";
         width: 100%;
         height: 100%;
-        border-radius: 5px;
+        border-radius: 10px;
         position: absolute;
         top: 0;
         left: 0;
@@ -91,7 +96,7 @@
         object-fit: cover;
         width: 100%;
         min-height: 100%;
-        border-radius: 5px 5px 0 0;
+        border-radius: 10px 10px 0 0;
       }
 
       h5 {
@@ -121,14 +126,15 @@
 
         h6 {
           font-size: 18px;
-          font-weight: 18px;
         }
 
-        b {
-          font-size: 24px;
-          line-height: 24px;
-          text-align: right;
-          color: #050505;
+        > div {
+          p {
+            font-size: 18px;
+            line-height: 18px;
+            text-align: right;
+            color: #050505;
+          }
         }
       }
 
@@ -155,6 +161,57 @@
           font-size: 14px;
           font-weight: 400;
           line-height: 14px;
+        }
+      }
+    }
+  }
+}
+
+////////////////////////////////// адаптивка
+.every {
+  @media (max-width: 630px) {
+    width: 185px;
+    height: 315px;
+    @media (max-width: 605px) {
+      width: 165px;
+    }
+    @media (max-width: 500px) {
+      width: 49%;
+    }
+  }
+
+  .mainCard {
+    .mainImg {
+      @media (max-width: 630px) {
+        height: 230px;
+      }
+    }
+
+    &__content {
+      @media (max-width: 630px) {
+        height: 230px;
+        margin: 10px;
+
+        &__title {
+          margin: 0 0 5px 0;
+
+          h6 {
+            font-size: 16px;
+            color: #505050;
+          }
+          > div {
+            display: none;
+          }
+        }
+
+        > span {
+          display: none;
+        }
+
+        &__decription {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
         }
       }
     }

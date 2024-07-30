@@ -1,0 +1,43 @@
+.menuChoiceApadtive {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 10px 0px;
+  animation: modal 0.7s ease-in-out;
+
+  button {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: #050505;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .active {
+    background: #f0f0f0;
+  }
+
+  .types {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .sorting {
+    display: none;
+    margin: 0;
+
+    @media (max-width: 910px) {
+      display: block;
+    }
+  }
+}

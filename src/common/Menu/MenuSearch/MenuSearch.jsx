@@ -16,7 +16,6 @@ import { searchFN, searchListFN } from "../../../store/reducers/requestSlice";
 
 ////// fns
 import { searchCloth } from "../../../store/reducers/requestSlice";
-import { listCloth } from "../../../helpers/LodalData";
 
 const MenuSearch = () => {
   const dispatch = useDispatch();

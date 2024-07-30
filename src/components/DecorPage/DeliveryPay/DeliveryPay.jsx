@@ -7,6 +7,8 @@ import "./style.scss";
 
 ///// imgs
 import like from "../../../assets/images/likeBlack.png";
+import money from "../../../assets/icons/money.svg";
+import truck from "../../../assets/icons/truck.svg";
 
 /////// helpers
 import { confidation, link1, link2 } from "../../../helpers/LodalData";
@@ -46,9 +48,14 @@ const DeliveryPay = () => {
               Оформить
             </button>
           </div>
-          <b>минимальная сумма заказа от 10000 руб.</b>
-          <b>бесплатная доставка заказа от 20000 руб.</b>
-          <b>доставка рассчитывается при оформлении заказа</b>
+          <div className="moreInfo">
+            <img src={money} alt="money" />
+            <b>минимальная сумма заказа от 10000 руб.</b>
+          </div>
+          <div className="moreInfo">
+            <img src={truck} alt="truck" />
+            <b>бесплатная доставка заказа от 20000 руб.</b>
+          </div>
         </div>
       </div>
     </div>
