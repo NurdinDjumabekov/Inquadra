@@ -1,0 +1,115 @@
+.mainContant {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+
+  .dopImg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+
+    > div {
+      width: 170px;
+      height: 230px;
+      border-radius: 10px;
+
+      > img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+    }
+  }
+
+  .mainImg {
+    width: 525px;
+    height: 710px;
+    border-radius: 10px;
+
+    img {
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+}
+
+/////////////////////////////////// адаптивка
+.mainContant {
+  @media (max-width: 1110px) {
+    justify-content: flex-start;
+  }
+
+  @media (max-width: 650px) {
+    .dopImg {
+      gap: 5px;
+
+      > div {
+        width: 140px;
+        height: 200px;
+      }
+    }
+
+    .mainImg {
+      height: 610px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    display: none;
+  }
+}
+
+.mySwiper {
+  display: none !important;
+
+  @media (max-width: 520px) {
+    display: block !important;
+    height: 500px;
+
+    .everySlide {
+      height: 500px;
+      border-radius: 10px;
+
+      img {
+        border-radius: 10px;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      background: rgba(255, 255, 255, 0.924);
+      width: 10px;
+      height: 10px;
+    }
+
+    .swiper-pagination-bullet-active {
+      background: #fff;
+      width: 20px;
+      height: 10px;
+      border-radius: 10px;
+    }
+  }
+
+  .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100% !important;
+  }
+
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

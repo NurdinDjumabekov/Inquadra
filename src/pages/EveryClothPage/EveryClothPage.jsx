@@ -7,23 +7,21 @@ import { useParams } from "react-router-dom";
 import { NavPath } from "../../common/NavPath/NavPath";
 import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
 import { Description } from "../../components/EveryClothPage/Description/Description";
-import Favourite from "../../common/Menu/Favourite/Favourite";
 
 ////////// fns
-import { addBasket, getListhistory } from "../../store/reducers/requestSlice";
+import { getListhistory } from "../../store/reducers/requestSlice";
 import { detailedCloth } from "../../store/reducers/requestSlice";
 import { changeTemporary } from "../../store/reducers/stateSlice";
 
 ///////// helpers
-import { sarchImg, sarchImgSeconds } from "../../helpers/sarchImg";
 import PriceMeter from "../../components/EveryClothPage/PriceMeter/PriceMeter";
 import EveryClothSize from "../../components/EveryClothPage/EveryClothSize/EveryClothSize";
 import EveryClothColor from "../../components/EveryClothPage/EveryClothColor/EveryClothColor";
 import SkeletonsDetailedPage from "../../common/Skeletons/SkeletonsDetailedPage/SkeletonsDetailedPage";
+import Images from "../../components/EveryClothPage/Images/Images";
 
 ///////// /style
 import "./style.scss";
-import { addProdBasket } from "../../store/reducers/serverSaveSlice";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -48,8 +46,6 @@ const EveryClothPage = () => {
     ///// подставляю state для временного хранения типа размера
   }, [everyCloth]);
 
-  const listImg = sarchImgSeconds(everyCloth?.photos);
-
   const listNavDecor = [
     { link: everyCloth?.brand?.brandName, path: "/", active: false },
     { link: everyCloth?.coating?.type, path: `/every/${id}`, active: true },
@@ -65,18 +61,7 @@ const EveryClothPage = () => {
         <NavPath list={listNavDecor} />
 
         <div className="everyCloth__inner">
-          <div className="mainContant">
-            <div className="dopImg">
-              {listImg?.slice(0, 3)?.map((item) => (
-                <div key={item?.id}>
-                  <img src={item?.url} alt="" />
-                </div>
-              ))}
-            </div>
-            <div className="mainImg">
-              <img src={sarchImg(everyCloth?.photos)?.url} alt="" />
-            </div>
-          </div>
+          <Images />
 
           <div className="dopContant">
             <div className="titles">
@@ -93,9 +78,11 @@ const EveryClothPage = () => {
               </span>
             </div>
 
-            <EveryClothSize listSizes={everyCloth?.sizes} />
+            <div className="types">
+              <EveryClothSize listSizes={everyCloth?.sizes} />
 
-            <EveryClothColor listColor={everyCloth?.colors} />
+              <EveryClothColor listColor={everyCloth?.colors} />
+            </div>
 
             <PriceMeter count={temporary?.count} everyCloth={everyCloth} />
 

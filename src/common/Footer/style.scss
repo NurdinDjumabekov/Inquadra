@@ -113,6 +113,11 @@
   @media (max-width: 540px) {
     &__main {
       padding: 30px 10px 130px;
+
+      .titleMain {
+        margin-bottom: 25px;
+      }
+
       .textInfo {
         gap: 20px;
 

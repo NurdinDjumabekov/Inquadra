@@ -97,6 +97,14 @@
   }
 }
 
+/////////////////////////////////// адаптивка
+.listSize,
+.morePush {
+  @media (max-width: 540px) {
+    padding: 10px;
+  }
+}
+
 @keyframes shadowBlock {
   from {
     opacity: 0;

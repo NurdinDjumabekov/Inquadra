@@ -46,6 +46,29 @@
   }
 }
 
+/////////////////////////////////// адаптивка
+.descriptions {
+  @media (max-width: 540px) {
+    padding: 0 10px 10px;
+    &__main {
+      .moreSescr {
+        > div {
+          &::before {
+            content: "";
+            width: 2px;
+            height: 2px;
+            background: #050505;
+          }
+          span,
+          p {
+            font-size: 12px !important;
+          }
+        }
+      }
+    }
+  }
+}
+
 @keyframes page {
   from {
     opacity: 0;

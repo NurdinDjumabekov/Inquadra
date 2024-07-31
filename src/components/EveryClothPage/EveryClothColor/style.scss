@@ -50,6 +50,22 @@
   }
 }
 
+/////////////////////////////////// адаптивка
+.listColor {
+  @media (max-width: 540px) {
+    li {
+      p {
+        width: 80px !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        display: inline-block;
+        padding: 13px 10px 1px;
+      }
+    }
+  }
+}
+
 @keyframes shadowBlock {
   from {
     opacity: 0;

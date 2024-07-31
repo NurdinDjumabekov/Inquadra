@@ -51,6 +51,8 @@ const RenderEveryCloth = ({ item }) => {
           </div>
         </div>
       </div>
+      {/* ////// для адаптивки */}
+      <div className="clickAdaptive" onClick={clickBtn}></div>
     </li>
   );
 };
