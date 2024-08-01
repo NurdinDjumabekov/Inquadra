@@ -1,7 +1,7 @@
 /////// hooks
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 
 ////// pages
@@ -19,11 +19,10 @@ import ContactsPage from "../pages/ContactsPage/ContactsPage";
 
 /////// fns
 import { getToken } from "../store/reducers/requestSlice";
+import FavouritePage from "../pages/FavouritePage/FavouritePage";
 
 const MainRoutes = () => {
   const dispatch = useDispatch();
-
-  const { preloader } = useSelector((state) => state.requestSlice);
 
   useEffect(() => {
     dispatch(getToken());
@@ -38,6 +37,7 @@ const MainRoutes = () => {
           <Route path="/" element={<SalePage />} />
           <Route path="/every/:id" element={<EveryClothPage />} />
           <Route path="/basket" element={<BasketPage />} />
+          <Route path="/favourite" element={<FavouritePage />} />
           <Route path="/decor" element={<DecorZakazPage />} />
           {/* ////// страницы в меню */}
           <Route path="/about" element={<AboutCompanyPage />} />

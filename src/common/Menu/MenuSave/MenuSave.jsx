@@ -1,6 +1,7 @@
 ////// hooks
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useLocation } from "react-router-dom";
 
 ////// imgs
 import favorite from "../../../assets/icons/heart.svg";
@@ -8,20 +9,21 @@ import favoriteWhite from "../../../assets/icons/heartWhite.svg";
 import sale from "../../../assets/icons/sale.svg";
 import saleWhite from "../../../assets/icons/saleWhite.svg";
 
-////// style
-import "./style.scss";
-
 ////// fns
 import { lookBasketFN } from "../../../store/reducers/stateSlice";
 import { lookFavoriteFN } from "../../../store/reducers/stateSlice";
 import { getListBasket } from "../../../store/reducers/requestSlice";
 import { getListFavourite } from "../../../store/reducers/requestSlice";
 
+////// style
+import "./style.scss";
+
 ////// components
 import Cloth from "../../Cloth/Cloth";
 
 const MenuSave = () => {
   const dispatch = useDispatch();
+  const { pathname } = useLocation();
 
   const { lookFavorite, lookBasket } = useSelector((state) => state.stateSlice);
 
@@ -50,6 +52,10 @@ const MenuSave = () => {
       ///// get список корзины
     }
   };
+
+  const active =
+    (pathname?.includes("favourite") && "activeFavourite") ||
+    (pathname?.includes("basket") && "activeBasket");
 
   return (
     <>
@@ -97,6 +103,24 @@ const MenuSave = () => {
             )}
           </ul>
         )}
+      </div>
+
+      {/* ////// для адаптивки */}
+      <div className={`adaptiveSave ${active}`}>
+        <NavLink to={"/favourite"}>
+          <div>
+            <img src={favorite} alt="" />
+            {favouriteList?.length > 0 && <span>{favouriteList?.length}</span>}
+          </div>
+          <p>Пометка</p>
+        </NavLink>
+        <NavLink to={"/basket"}>
+          <div>
+            <img src={sale} alt="" />
+            {basketList?.length > 0 && <span>{basketList?.length}</span>}
+          </div>
+          <p>Корзина</p>
+        </NavLink>
       </div>
     </>
   );

@@ -257,6 +257,14 @@ button {
   }
 }
 
+///// для адаптивки menuSave
+.adaptiveAction {
+  display: none;
+  @media (max-width: 930px) {
+    display: block;
+  }
+}
+
 @keyframes modal {
   from {
     opacity: 0;

@@ -22,6 +22,7 @@ import Images from "../../components/EveryClothPage/Images/Images";
 
 ///////// /style
 import "./style.scss";
+import MenuSave from "../../common/Menu/MenuSave/MenuSave";
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -56,42 +57,48 @@ const EveryClothPage = () => {
   }
 
   return (
-    <div className="everyCloth">
-      <div className="container">
-        <NavPath list={listNavDecor} />
+    <>
+      <div className="everyCloth">
+        <div className="container">
+          <NavPath list={listNavDecor} />
 
-        <div className="everyCloth__inner">
-          <Images />
+          <div className="everyCloth__inner">
+            <Images />
 
-          <div className="dopContant">
-            <div className="titles">
-              <div>
-                <span>{everyCloth?.brand?.brandName}</span>
-                <b>{everyCloth?.productStatus?.status}</b>
+            <div className="dopContant">
+              <div className="titles">
+                <div>
+                  <span>{everyCloth?.brand?.brandName}</span>
+                  <b>{everyCloth?.productStatus?.status}</b>
+                </div>
+                <h5>{everyCloth?.productName}</h5>
               </div>
-              <h5>{everyCloth?.productName}</h5>
+              <div className="prices">
+                <p>{everyCloth?.price} рублей за м²</p>
+                <span>
+                  {everyCloth?.discountActive && <>-{everyCloth?.discount}%</>}
+                </span>
+              </div>
+
+              <div className="types">
+                <EveryClothSize listSizes={everyCloth?.sizes} />
+
+                <EveryClothColor listColor={everyCloth?.colors} />
+              </div>
+
+              <PriceMeter count={temporary?.count} everyCloth={everyCloth} />
+
+              <Description everyCloth={everyCloth} />
             </div>
-            <div className="prices">
-              <p>{everyCloth?.price} рублей за м²</p>
-              <span>
-                {everyCloth?.discountActive && <>-{everyCloth?.discount}%</>}
-              </span>
-            </div>
-
-            <div className="types">
-              <EveryClothSize listSizes={everyCloth?.sizes} />
-
-              <EveryClothColor listColor={everyCloth?.colors} />
-            </div>
-
-            <PriceMeter count={temporary?.count} everyCloth={everyCloth} />
-
-            <Description everyCloth={everyCloth} />
           </div>
+          <RecomCloth />
         </div>
-        <RecomCloth />
       </div>
-    </div>
+      {/* ///// для адаптивки */}
+      <div className="adaptiveAction">
+        <MenuSave />
+      </div>
+    </>
   );
 };
 

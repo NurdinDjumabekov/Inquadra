@@ -5,6 +5,12 @@
   position: relative;
   display: none;
 
+  .navPath {
+    .active::after {
+      display: none;
+    }
+  }
+
   &__inner {
     .brands {
       background: #f0f0f0;

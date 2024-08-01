@@ -120,19 +120,19 @@ const serverSaveSlice = createSlice({
     builder.addCase(getListFavourite.rejected, (state, action) => {
       state.error = action.payload;
       state.favouriteList = [];
-      alert("Упс, не удалось загрузить данные(");
+      // alert("Упс, не удалось загрузить данные(");
     });
 
     ////////////////// addFavourite
     builder.addCase(addFavourite.rejected, (state, action) => {
       state.error = action.payload;
-      alert("Упс, не удалось добавить в избранные(");
+      // alert("Упс, не удалось добавить в избранные(");
     });
 
     ////////////////// deleteFavourite
     builder.addCase(deleteFavourite.rejected, (state, action) => {
       state.error = action.payload;
-      alert("Упс, не удалось удалить с избранных(");
+      // alert("Упс, не удалось удалить с избранных(");
     });
 
     ///////////////////////////// корзина /////////////////////////////////////
@@ -145,7 +145,7 @@ const serverSaveSlice = createSlice({
     builder.addCase(getListBasket.rejected, (state, action) => {
       state.error = action.payload;
       state.basketList = [];
-      alert("Упс, не удалось загрузить данные(");
+      // alert("Упс, не удалось загрузить данные(");
     });
   },
 });

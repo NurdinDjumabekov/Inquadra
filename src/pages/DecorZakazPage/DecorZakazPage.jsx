@@ -1,23 +1,31 @@
+//////// hooks
 import React from "react";
-import "./style.scss";
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+/////// components
+import Promocode from "../../components/BasketPage/BasketPage/Promocode";
+import ConfirmPrice from "../../components/BasketPage/ConfirmPrice/ConfirmPrice";
 import CheckUser from "../../components/CheckUser/CheckUser";
 import UserInputs from "../../components/DecorPage/UserInputs/UserInputs";
 import UserAddresInputs from "../../components/DecorPage/UserAddresInputs/UserAddresInputs";
-import { useRef } from "react";
 import DeliveryPay from "../../components/DecorPage/DeliveryPay/DeliveryPay";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { NavPath } from "../../common/NavPath/NavPath";
-import { listNavDecor } from "../../helpers/LodalData";
+
+/////// fns
 import { setError } from "../../store/reducers/stateSlice";
-import { useDispatch, useSelector } from "react-redux";
+
+/////// helpers
+import { listNavDecor } from "../../helpers/LodalData";
 import { tranformNumber } from "../../helpers/tranformNumber";
 import { validateEmail } from "../../helpers/validation";
+
+/////// style
+import "./style.scss";
 
 const DecorZakazPage = () => {
   const refAddres = useRef(null);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const { inputsDecor } = useSelector((state) => state.stateSlice);
 
@@ -27,6 +35,19 @@ const DecorZakazPage = () => {
 
   const sendData = (e) => {
     e.preventDefault();
+    if (!inputsDecor?.checkIfDeliv) {
+      alert("Ознакомьтесь с условиями доставки");
+      return;
+    }
+    if (inputsDecor?.typePay == 0) {
+      alert("Выберите способ оплаты");
+      return;
+    }
+    if (inputsDecor?.typeDelivery == 0) {
+      alert("Выберите способ доставки");
+      return;
+    }
+
     // navigate("/");
     // alert("Ваш заказ успешно был оформлен");
 
@@ -64,6 +85,10 @@ const DecorZakazPage = () => {
             <UserAddresInputs refAddres={refAddres} />
             <DeliveryPay />
           </form>
+          <div className="actionsDecor">
+            <Promocode />
+            <ConfirmPrice />
+          </div>
         </div>
       </div>
     </div>

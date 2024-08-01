@@ -23,7 +23,7 @@ export const Description = ({ everyCloth }) => {
           {listDescr?.map((i) => (
             <div key={i.id}>
               <span>{i.name}</span>
-              <p>{i.info}</p>
+              <p>{i.info || "не выбрано"}</p>
             </div>
           ))}
         </div>

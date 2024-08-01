@@ -87,6 +87,12 @@
 
 /////////////////////////////////// адаптивка
 .menu {
+  @media (max-width: 930px) {
+    .shadowMenu {
+      background: transparent;
+      height: 35px;
+    }
+  }
   &__inner {
     &__logo {
       .logo {

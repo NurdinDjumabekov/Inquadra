@@ -215,6 +215,10 @@ export const listNavBasket = [
   { link: "Подтверждение заказа", path: "/basket", active: true },
 ];
 
+export const listNavFavourite = [
+  { link: "Пометка", path: "/favourite", active: true },
+];
+
 export const listCloth = [
   {
     id: 1,
@@ -346,4 +350,21 @@ export const defaultInputsDecor = {
   deliv: { text: "", error: false, errText: errText },
   deliv_home: { text: "", error: false, errText },
   deliv_home_num: { text: "", error: false, errText },
+  checkIfDeliv: false,
+  typeDelivery: 0,
+  typePay: 0,
 };
+
+export const listDelivery = [
+  {
+    id: 1,
+    title: "самостоятельный вывоз со склада",
+    moreInfo: "Московская обл., г. Подольск, ул. Вишнёвая, д. 11 ",
+  },
+  { id: 2, title: "доставка до вашего адреса нашим транспортным средством" },
+];
+
+export const listTypePays = [
+  { id: 1, title: "денежными средствами при получении" },
+  { id: 2, title: "платёжным поручением от компании" },
+];

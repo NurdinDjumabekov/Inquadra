@@ -110,6 +110,18 @@
 
 /////////////////////////////////// адаптивка
 .footer {
+  .m150 {
+    margin: 150px auto 0;
+  }
+
+  .m20 {
+    margin: 20px auto 0;
+  }
+
+  .m100 {
+    margin: 100px auto 0;
+  }
+
   @media (max-width: 540px) {
     &__main {
       padding: 30px 10px 130px;

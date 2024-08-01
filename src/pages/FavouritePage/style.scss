@@ -1,10 +1,6 @@
-.basket {
+.favourite {
   animation: page 0.7s ease-in-out;
   margin-bottom: 200px;
-
-  @media (max-width: 930px) {
-    margin-bottom: 0px;
-  }
 
   .navPath {
     margin: 40px 0 30px 0;
@@ -33,11 +29,18 @@
     display: flex;
     gap: 20px;
   }
+
+  .confirm {
+    margin: 15px 0 0 0;
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 10px;
+  }
 }
 
 /////////////////////////////////// адаптивка
 
-.basket {
+.favourite {
   @media (max-width: 930px) {
     margin-bottom: 0px;
 
