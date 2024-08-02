@@ -82,3 +82,27 @@
     display: block;
   }
 }
+
+////////////////////////////////// адаптивка
+.decor {
+  @media (max-width: 630px) {
+    .myInput {
+      span {
+        font-size: 14px;
+        i {
+          font-size: 14px;
+        }
+      }
+      input {
+        width: 100%;
+        font-size: 16px;
+        &::placeholder {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .errorValidated {
+  }
+}

@@ -18,6 +18,11 @@ import "./style.scss";
 
 ///////// helpers
 import { listMenu } from "../../../helpers/LodalData";
+import Sorting from "../../../components/SalePage/Sorting/Sorting";
+
+///// helpers
+import { listSorting } from "../../../helpers/LodalData";
+import Selects from "../../Selects/Selects";
 
 const MenuChoice = () => {
   const dispatch = useDispatch();
@@ -46,6 +51,10 @@ const MenuChoice = () => {
   };
 
   const changeFilter = (bool) => setFilterActive(bool);
+
+  const onChnage = (key, name, id) => {
+    // console.log(key, name, id);
+  };
 
   return (
     <div className={`menuChoice ${menuActive ? "menuChoiceActive" : ""}`}>
@@ -107,6 +116,18 @@ const MenuChoice = () => {
           </div>
         )}
       </div>
+
+      {!menuActive && (
+        <div className="select">
+          <Selects
+            list={listSorting}
+            title={""}
+            initText={"сортировать по"}
+            onChnage={onChnage}
+            nameKey={"name"}
+          />
+        </div>
+      )}
     </div>
   );
 };

@@ -7,7 +7,6 @@ import "./style.scss";
 ////fns
 
 ////components
-import Sorting from "../Sorting/Sorting";
 import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
 
 const ClothList = () => {
@@ -17,7 +16,6 @@ const ClothList = () => {
 
   return (
     <div className="clothList">
-      <Sorting />
       <ul className="clothList__inner">
         {listCloth?.length === 0 ? (
           <p className="emptyData">Данных пока что нет</p>

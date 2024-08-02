@@ -30,3 +30,28 @@
     }
   }
 }
+
+////////////////////////////////// адаптивка
+.userInputAddres {
+  @media (max-width: 800px) {
+    h6 {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .twoInputs {
+      @media (max-width: 520px) {
+        width: 100%;
+        .myInput {
+          width: 100%;
+        }
+      }
+      .choiceCloth {
+        display: none;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    padding: 15px 10px;
+  }
+}

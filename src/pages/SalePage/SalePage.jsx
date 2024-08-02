@@ -15,6 +15,7 @@ import { getListBrands } from "../../store/reducers/requestSlice";
 import { getListCateg } from "../../store/reducers/requestSlice";
 import { getListProds } from "../../store/reducers/requestSlice";
 import ClothTypesAdaptive from "../../components/SalePage/ClothTypesAdaptive/ClothTypesAdaptive";
+import MenuChoice from "../../common/Menu/MenuChoice/MenuChoice";
 
 const SalePage = () => {
   const dispatch = useDispatch();
@@ -35,14 +36,17 @@ const SalePage = () => {
   return (
     <div className="sale">
       <div className="container">
-        <div className="sale__inner">
-          <>
-            <ClothTypes />
-            {/* //// для desktop */}
-            <ClothTypesAdaptive />
-            {/* //// для mobile */}
-          </>
-          <ClothList />
+        <div>
+          <MenuChoice />
+          <div className="sale__inner">
+            <>
+              <ClothTypes />
+              {/* //// для desktop */}
+              {/* <ClothTypesAdaptive /> */}
+              {/* //// для mobile */}
+            </>
+            <ClothList />
+          </div>
         </div>
       </div>
     </div>

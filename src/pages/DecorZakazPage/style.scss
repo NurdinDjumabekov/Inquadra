@@ -4,6 +4,27 @@
 
   .actionsDecor {
     display: none;
+  }
+}
+
+////////////////////////////////// адаптивка
+.decor {
+  @media (max-width: 520px) {
+    margin-top: 10px;
+    &__inner {
+      .navPath {
+        div:nth-child(1) {
+          display: none;
+        }
+        div:nth-child(2) {
+          img {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+  .actionsDecor {
     @media (max-width: 930px) {
       display: block;
     }

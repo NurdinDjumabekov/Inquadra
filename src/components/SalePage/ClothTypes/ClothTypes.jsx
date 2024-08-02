@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import ClothSize from "../ClothSize/ClothSize";
 import ClothPrices from "../ClothPrices/ClothPrices";
 import CategMenu from "../CategMenu/CategMenu";
-import MenuChoice from "../../../common/Menu/MenuChoice/MenuChoice";
 
 ///////fns
 import { activeBrandsFN } from "../../../store/reducers/stateSlice";
@@ -51,7 +50,6 @@ const ClothTypes = () => {
 
   return (
     <div className="clothTypes">
-      <MenuChoice />
       <div className="clothTypes__inner">
         <ul className="listTypes brands">
           {listBrands?.map((item) => (

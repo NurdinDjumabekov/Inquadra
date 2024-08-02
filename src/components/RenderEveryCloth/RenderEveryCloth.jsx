@@ -27,6 +27,8 @@ const RenderEveryCloth = ({ item }) => {
     }
   };
 
+  console.log(sarchImg(item?.photos)?.url, "sarchImg(item?.photos)?.url");
+
   return (
     <li className="every">
       <Favourite obj={item} disable={true} />

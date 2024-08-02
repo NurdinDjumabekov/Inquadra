@@ -11,14 +11,12 @@ import money from "../../../assets/icons/money.svg";
 import truck from "../../../assets/icons/truck.svg";
 
 /////// helpers
-import {
-  confidation,
-  link1,
-  link2,
-  listDelivery,
-  listTypePays,
-} from "../../../helpers/LodalData";
+import { confidation, link1 } from "../../../helpers/LodalData";
+import { link2, listDelivery } from "../../../helpers/LodalData";
+import { listTypePays } from "../../../helpers/LodalData";
 import { sumTotalBasket } from "../../../helpers/SumTotalBasket";
+
+//////// fns
 import { changeInputsDecor } from "../../../store/reducers/stateSlice";
 
 const DeliveryPay = () => {

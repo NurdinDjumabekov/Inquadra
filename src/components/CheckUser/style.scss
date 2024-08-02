@@ -39,9 +39,18 @@
       font-size: 16px;
       font-weight: 400;
       line-height: 16px;
-      border: 1px solid #050505;
+      border: none;
       border-radius: 5px;
       padding: 0 15px;
+      &::placeholder {
+        color: #b9b9b9;
+      }
+
+      &:focus {
+        color: #050505;
+        outline: none;
+        border: 1px solid #050505;
+      }
     }
 
     button {
@@ -99,8 +108,8 @@
         font-weight: 400;
         line-height: 16px;
         text-align: center;
-        border: 1px solid #898989;
         border-radius: 10px;
+        border: none;
 
         &::placeholder {
           font-size: 16px;
@@ -124,6 +133,97 @@
       color: #fff;
       width: 300px;
       min-width: 300px;
+    }
+  }
+}
+
+.checkUser {
+  @media (max-width: 500px) {
+    padding: 15px 10px;
+    margin-top: 10px;
+
+    @media (max-width: 425px) {
+      .choiceCloth {
+        width: 100%;
+      }
+      > p {
+        width: 220px;
+      }
+    }
+    @media (max-width: 520px) {
+      h5 {
+        font-size: 14px;
+        font-weight: 600;
+
+        b {
+          font-size: 14px;
+          font-weight: 600;
+        }
+      }
+
+      .sendNum {
+        gap: 5px;
+
+        input {
+          width: 100%;
+          border-radius: 10px;
+        }
+
+        button {
+          width: 100px;
+          height: 50px;
+          font-size: 14px;
+          color: transparent;
+          position: relative;
+
+          &::after {
+            content: "Верно";
+            color: initial;
+            position: absolute;
+            color: #fff;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            line-height: 46px;
+          }
+        }
+      }
+    }
+  }
+
+  .modalNumConf {
+    @media (max-width: 600px) {
+      gap: 5px;
+      width: 100%;
+
+      .btnSend {
+        width: 100%;
+        min-width: 100px;
+        height: 50px;
+        font-size: 14px;
+        color: transparent;
+        position: relative;
+
+        &::after {
+          content: "Верно";
+          position: absolute;
+          color: #fff;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 14px;
+          line-height: 46px;
+        }
+      }
     }
   }
 }

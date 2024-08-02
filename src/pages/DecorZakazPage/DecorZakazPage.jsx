@@ -85,10 +85,10 @@ const DecorZakazPage = () => {
             <UserAddresInputs refAddres={refAddres} />
             <DeliveryPay />
           </form>
-          <div className="actionsDecor">
+          {/* <div className="actionsDecor">
             <Promocode />
             <ConfirmPrice />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

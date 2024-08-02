@@ -94,3 +94,66 @@
   border: 1px solid #050505;
   cursor: pointer;
 }
+
+////////////////////////// для подтверждения номера
+@media (max-width: 500px) {
+  .deliveryPay {
+    .userInputAddres {
+      .everyChoiceDecor {
+        p {
+          font-size: 14px;
+        }
+      }
+    }
+
+    &__moreResult {
+      padding: 10px;
+
+      .resultAction {
+        p {
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 20px;
+        }
+
+        .action {
+          span {
+            font-size: 16px;
+          }
+
+          button {
+            background: #b9b9b9;
+            font-size: 14px;
+          }
+        }
+
+        .moreInfo {
+          b {
+            font-size: 12px;
+          }
+        }
+      }
+
+      .agreementCofidantion {
+        .moreText {
+          p,
+          span {
+            font-size: 14px;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+
+    .everyChoiceDecor {
+      .moreInfo {
+        width: 100%;
+        p,
+        span {
+          font-size: 12px;
+          line-height: 14px;
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
-import img from "../../assets/icons/arrowBlack.svg";
+
+///// styles
 import "./style.scss";
 
 ///// только для сортировки на главной странице
 import aroow from "../../assets/icons/arrowWhite.svg";
 
 const Selects = (props) => {
-  const { list, title, initText } = props;
+  const { list, initText } = props;
   const { onChnage, nameKey } = props;
 
   const [active, setActive] = useState(false);
@@ -40,22 +41,17 @@ const Selects = (props) => {
   const textSelect = list?.find((i) => i.id === id);
 
   return (
-    <div className={`selectBlockMain ${active && "colorGray"}`}>
+    <div className="selectBlockMain">
       <div className="selectBlock" id="uniqueSelectID" ref={accordionRef}>
-        <div
-          className={`selectBlock__inner ${active && "more"}`}
-          onClick={() => setActive(!active)}
-        >
+        <div className="selectBlock__inner" onClick={() => setActive(!active)}>
           <p className={textSelect ? "activeText" : ""}>
             {textSelect ? textSelect?.name : initText}
           </p>
-          <img src={img} alt="<" className={active ? "rotate180" : "rotate0"} />
 
-          {/* ///// только для сортировки на главной странице */}
           <img
             src={aroow}
             alt="<"
-            className={active ? "rotate180More" : "rotate0More"}
+            className={active ? "rotate0" : "rotate180"}
           />
         </div>
         {active && (
