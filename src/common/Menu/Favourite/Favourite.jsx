@@ -1,22 +1,22 @@
 //////// hooks
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 //////// imgs
-import favorite from "../../../assets/icons/hart.svg";
-import favoriteDisActive from "../../../assets/icons/heartGray.svg";
-import heartBlack from "../../../assets/icons/heart.svg";
+import favorite from '../../../assets/icons/hart.svg';
+import favoriteDisActive from '../../../assets/icons/heartGray.svg';
+import heartBlack from '../../../assets/icons/heart.svg';
 
 /////// fns
-import { deleteFavourite } from "../../../store/reducers/requestSlice";
-import { addFavourite } from "../../../store/reducers/requestSlice";
-import { addProdFavourite } from "../../../store/reducers/serverSaveSlice";
+import { deleteFavourite } from '../../../store/reducers/requestSlice';
+import { addFavourite } from '../../../store/reducers/requestSlice';
 
 /////// helpers
-import { checkFavourite } from "../../../helpers/checkFavourite";
+import { checkFavourite } from '../../../helpers/checkFavourite';
 
 /////// style
-import "./style.scss";
+import './style.scss';
+import { addProdFavourite } from '../../../store/reducers/serverSaveSlice';
 
 const Favourite = ({ obj, black, disable }) => {
   ///if black = true то подставляю черную сердечку, else серую сердечку
@@ -36,11 +36,11 @@ const Favourite = ({ obj, black, disable }) => {
       ///// удаляю с избранных через запрос
     } else {
       if (temporary?.sizeId == 0) {
-        alert("Выберите размер одежды");
+        alert('Выберите размер одежды');
       } else if (temporary?.colorId == 0) {
-        alert("Выберите цвет одежды");
+        alert('Выберите цвет одежды');
       } else {
-        dispatch(addFavourite(data));
+        // dispatch(addFavourite(data));
         dispatch(addProdFavourite(data)); //// time
         ///// добавляю в избранные через запрос
       }
@@ -51,7 +51,7 @@ const Favourite = ({ obj, black, disable }) => {
 
   return (
     <button
-      className={`favoriteBtn ${active ? "activeFav" : ""}`}
+      className={`favoriteBtn ${active ? 'activeFav' : ''}`}
       onClick={changeFavourite}
       disabled={disable}
     >

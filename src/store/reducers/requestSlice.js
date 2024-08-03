@@ -1,27 +1,27 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 import {
   changeSortAllType,
   changeTemporary,
   lookNumberConfFN,
   lookNumberFN,
-} from "./stateSlice";
-import axiosInstance from "../../axiosInstance";
-import { changeToken } from "./saveDataSlice";
+} from './stateSlice';
+import axiosInstance from '../../axiosInstance';
+import { changeToken } from './saveDataSlice';
 import {
   addProdBasket,
   addProdFavourite,
   changeFavouriteList,
   delProdFavourite,
   deleteProdBasket,
-} from "./serverSaveSlice";
+} from './serverSaveSlice';
 const { REACT_APP_API_URL } = process.env;
 
 ///////////////////////////// токен для авторизации /////////////////////////////////////
 
 ///// getToken - get токен
 export const getToken = createAsyncThunk(
-  "getToken",
+  'getToken',
   async function (_, { dispatch, rejectWithValue }) {
     try {
       const response = await axiosInstance(`temp-user/login-or-register`);
@@ -42,7 +42,7 @@ export const getToken = createAsyncThunk(
 
 ///// sendNumberFN - отправка номера
 export const sendNumberFN = createAsyncThunk(
-  "sendNumberFN",
+  'sendNumberFN',
   async function (num, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}`;
     try {
@@ -61,7 +61,7 @@ export const sendNumberFN = createAsyncThunk(
 
 ///// confirmNumberFN - отправка подтверждения номера
 export const confirmNumberFN = createAsyncThunk(
-  "confirmNumberFN",
+  'confirmNumberFN',
   async function (props, { dispatch, rejectWithValue }) {
     const { clear, nums, numberUser } = props;
     // try {
@@ -85,12 +85,12 @@ export const confirmNumberFN = createAsyncThunk(
 
 ///// getListCateg - get список катег0рий //// check
 export const getListCateg = createAsyncThunk(
-  "getListCateg",
+  'getListCateg',
   async function (props, { dispatch, rejectWithValue }) {
     try {
       const response = await axiosInstance(`reference-data/categories`);
       if (response.status >= 200 && response.status < 300) {
-        console.log(response?.data, " response?.data");
+        console.log(response?.data, ' response?.data');
         // return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -103,7 +103,7 @@ export const getListCateg = createAsyncThunk(
 
 ///// getListBrands - get список плит (Напольная плитка, Декоративная  и т.д.)
 export const getListBrands = createAsyncThunk(
-  "getListBrands",
+  'getListBrands',
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}reference-data/brands`;
     try {
@@ -121,7 +121,7 @@ export const getListBrands = createAsyncThunk(
 
 ///// getListCategs - get одежду
 export const getListCategs = createAsyncThunk(
-  "getListCategs",
+  'getListCategs',
   async function (id, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}reference-data/brand-data?brandId=${id}`;
     try {
@@ -140,7 +140,7 @@ export const getListCategs = createAsyncThunk(
 
 ///// detailedCloth - get каждую одежду
 export const detailedCloth = createAsyncThunk(
-  "detailedCloth",
+  'detailedCloth',
   async function (id, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}products/details/${id}`;
     try {
@@ -158,7 +158,7 @@ export const detailedCloth = createAsyncThunk(
 
 ///// getListProds - get одежду
 export const getListProds = createAsyncThunk(
-  "getListProds",
+  'getListProds',
   async function (props, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}products`;
     try {
@@ -176,7 +176,7 @@ export const getListProds = createAsyncThunk(
 
 ///// searchCloth -  посик одежды
 export const searchCloth = createAsyncThunk(
-  "searchCloth",
+  'searchCloth',
   async function (text, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}search?query=${text}`;
     try {
@@ -196,7 +196,7 @@ export const searchCloth = createAsyncThunk(
 
 ///// getListFavourite - get список избранных
 export const getListFavourite = createAsyncThunk(
-  "getListFavourite",
+  'getListFavourite',
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}favorites`;
     try {
@@ -214,7 +214,7 @@ export const getListFavourite = createAsyncThunk(
 
 ///// addFavourite - добавить в избранные товар
 export const addFavourite = createAsyncThunk(
-  "addFavourite",
+  'addFavourite',
   async function (data, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}favorites`;
     try {
@@ -224,7 +224,7 @@ export const addFavourite = createAsyncThunk(
         ///// добавляю в избранные локально
         dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
         ///// обнуляю state для временного хранения цвета и размера и типа размера
-        alert("Товар добавлен в корзину");
+        alert('Товар добавлен в корзину');
         return response.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -237,7 +237,7 @@ export const addFavourite = createAsyncThunk(
 
 ///// deleteFavourite -  удалить с избранных товар
 export const deleteFavourite = createAsyncThunk(
-  "deleteFavourite",
+  'deleteFavourite',
   async function (data, { dispatch, rejectWithValue }) {
     const { id } = data;
     const url = `${REACT_APP_API_URL}favorites/${id}`;
@@ -259,7 +259,7 @@ export const deleteFavourite = createAsyncThunk(
 
 ///// getListBasket - get список корзины
 export const getListBasket = createAsyncThunk(
-  "getListBasket",
+  'getListBasket',
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}basket`;
     try {
@@ -277,7 +277,7 @@ export const getListBasket = createAsyncThunk(
 
 ///// addBasket - добавить в корзину товар
 export const addBasket = createAsyncThunk(
-  "addBasket",
+  'addBasket',
   async function (data, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}basket/addItem`;
     try {
@@ -288,7 +288,7 @@ export const addBasket = createAsyncThunk(
 
         dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
         ///// обнуляю state для временного хранения цвета и размера и типа размера
-        alert("Товар добавлен в корзину");
+        alert('Товар добавлен в корзину');
         return response.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -301,7 +301,7 @@ export const addBasket = createAsyncThunk(
 
 ///// deleteBasket -  удалить с корзины товар
 export const deleteBasket = createAsyncThunk(
-  "deleteBasket",
+  'deleteBasket',
   async function (data, { dispatch, rejectWithValue }) {
     const { codeid } = data;
     const url = `${REACT_APP_API_URL}basket/item/${codeid}`;
@@ -323,7 +323,7 @@ export const deleteBasket = createAsyncThunk(
 
 ///// counterFavourite - counter для изменения кол-ва товаров в избранных
 export const counterFavourite = createAsyncThunk(
-  "counterFavourite",
+  'counterFavourite',
   async function (props, { dispatch, rejectWithValue }) {
     const { typeCounter, item, favouriteList } = props; //. typeCounter 1 - добавляю, 2 - минусую
 
@@ -357,7 +357,7 @@ export const counterFavourite = createAsyncThunk(
 
 ///// getListhistory - get список избранных
 export const getListhistory = createAsyncThunk(
-  "getListhistory",
+  'getListhistory',
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}view-history`;
 
@@ -380,7 +380,7 @@ const initialState = {
   preloaderBasket: false,
 
   //////////
-  search: "",
+  search: '',
   searchList: [], //// поиск одежды
   listCloth: [], /// для отображения списка
   listHistory: [], /// для отображения списка
@@ -396,7 +396,7 @@ const initialState = {
 };
 
 const requestSlice = createSlice({
-  name: "requestSlice",
+  name: 'requestSlice',
   initialState,
   extraReducers: (builder) => {
     //////////////// sendNumberFN

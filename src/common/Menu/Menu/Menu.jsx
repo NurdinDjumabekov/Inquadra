@@ -1,21 +1,18 @@
 ////components
-import MenuSave from "../MenuSave/MenuSave";
+import MenuSave from '../MenuSave/MenuSave';
+import MenuSearch from '../MenuSearch/MenuSearch';
 
 ////hooks
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 ///fns
-import { lookBasketFN, lookMenuFN } from "../../../store/reducers/stateSlice";
-import { lookFavoriteFN } from "../../../store/reducers/stateSlice";
+import { lookBasketFN, lookMenuFN } from '../../../store/reducers/stateSlice';
+import { lookFavoriteFN } from '../../../store/reducers/stateSlice';
 
 ////style
-import "./style.scss";
-
-////imgs
-import MenuSearch from "../MenuSearch/MenuSearch";
+import './style.scss';
 
 const Menu = () => {
   const dispatch = useDispatch();
@@ -35,15 +32,15 @@ const Menu = () => {
   const check = lookFavorite || lookBasket || lookMenu;
 
   return (
-    <div className={`menu ${lookSize && "epsIndex"}`}>
+    <div className={`menu ${lookSize && 'epsIndex'}`}>
       <div className="shadowMenu"></div>
       <div className="container">
         <div className="menu__inner">
           <div className="menu__inner__logo">
-            <NavLink to={"/"} className="logo">
+            <NavLink to={'/'} className="logo">
               Inquadra
             </NavLink>
-            <NavLink to={"/"} className="logoHome">
+            <NavLink to={'/'} className="logoHome">
               ceramic home
             </NavLink>
           </div>

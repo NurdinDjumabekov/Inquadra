@@ -1,21 +1,21 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useCallback } from "react";
-import { debounce } from "@mui/material";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useCallback } from 'react';
+import { debounce } from '@mui/material';
 
 //// imgs
-import loop from "../../../assets/icons/loop.svg";
-import del from "../../../assets/icons/deleteGray.svg";
+import loop from '../../../assets/icons/loop.svg';
+import del from '../../../assets/icons/deleteGray.svg';
 
 ///// style
-import "./style.scss";
+import './style.scss';
 
 ///// componnets
-import Cloth from "../../Cloth/Cloth";
-import { searchFN, searchListFN } from "../../../store/reducers/requestSlice";
+import Cloth from '../../Cloth/Cloth';
+import { searchFN, searchListFN } from '../../../store/reducers/requestSlice';
 
 ////// fns
-import { searchCloth } from "../../../store/reducers/requestSlice";
+import { searchCloth } from '../../../store/reducers/requestSlice';
 
 const MenuSearch = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const MenuSearch = () => {
   const { search, searchList } = useSelector((state) => state.requestSlice);
 
   const clear = (e) => {
-    dispatch(searchFN(""));
+    dispatch(searchFN(''));
     dispatch(searchListFN([]));
     ////// очищаю input
   };
@@ -55,7 +55,7 @@ const MenuSearch = () => {
 
   return (
     <>
-      <div className={`menu__input ${haveData && "searchMore"}`}>
+      <div className={`menu__input ${haveData && 'searchMore'}`}>
         <input onChange={onChange} placeholder="плитка оникс" value={search} />
         <img src={loop} alt="loop" className="loop" />
         {haveData && (
@@ -65,7 +65,7 @@ const MenuSearch = () => {
         {haveData && !emptyList && (
           <ul className="contentSearch">
             {searchList?.map((item, index) => (
-              <Cloth item={item} key={index} type={"search"} />
+              <Cloth item={item} key={index} type={'search'} />
             ))}
           </ul>
         )}

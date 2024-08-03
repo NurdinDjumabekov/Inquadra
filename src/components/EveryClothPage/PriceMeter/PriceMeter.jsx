@@ -1,20 +1,21 @@
 ///////// hooks
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 ///////// style
-import "./style.scss";
+import './style.scss';
 
 ///////// imgs
-import minus from "../../../assets/icons/minus.svg";
-import plus from "../../../assets/icons/plus.svg";
-import money from "../../../assets/icons/money.svg";
-import truck from "../../../assets/icons/truck.svg";
+import minus from '../../../assets/icons/minus.svg';
+import plus from '../../../assets/icons/plus.svg';
+import money from '../../../assets/icons/money.svg';
+import truck from '../../../assets/icons/truck.svg';
 
 ///////// fns
-import { changeTemporary } from "../../../store/reducers/stateSlice";
-import { addProdBasket } from "../../../store/reducers/serverSaveSlice";
-import Favourite from "../../../common/Menu/Favourite/Favourite";
+import { changeTemporary } from '../../../store/reducers/stateSlice';
+import { addProdBasket } from '../../../store/reducers/serverSaveSlice';
+import Favourite from '../../../common/Menu/Favourite/Favourite';
+import { addBasket } from '../../../store/reducers/requestSlice';
 
 const PriceMeter = ({ count, everyCloth }) => {
   const dispatch = useDispatch();
@@ -36,14 +37,12 @@ const PriceMeter = ({ count, everyCloth }) => {
   const addProdInBasket = () => {
     ///// добавляю в корзину
     if (temporary?.sizeId == 0) {
-      alert("Выберите размер одежды");
+      alert('Выберите размер одежды');
     } else if (temporary?.colorId == 0) {
-      alert("Выберите цвет одежды");
+      alert('Выберите цвет одежды');
     } else {
-      alert("Товар добавлен в корзину");
       const data = { ...everyCloth, ...temporary, productId: 1 };
-      // dispatch(addBasket(data));
-      dispatch(addProdBasket(data));
+      dispatch(addBasket(data));
       ///// добавляю в корзину через запрос
     }
   };

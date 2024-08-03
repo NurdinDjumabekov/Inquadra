@@ -1,25 +1,25 @@
 /////// hooks
-import React from "react";
-import { useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Route, Routes } from "react-router-dom";
+import React from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Routes } from 'react-router-dom';
 
 ////// pages
-import MainLayouts from "../layouts/MainLayouts/MainLayouts";
-import SalePage from "../pages/SalePage/SalePage";
-import EveryClothPage from "../pages/EveryClothPage/EveryClothPage";
-import BasketPage from "../pages/BasketPage/BasketPage";
-import DecorZakazPage from "../pages/DecorZakazPage/DecorZakazPage";
-import AboutCompanyPage from "../pages/AboutCompanyPage/AboutCompanyPage";
-import DeliveryPage from "../pages/DeliveryPage/DeliveryPage";
-import GiftCardPage from "../pages/GiftCardPage/GiftCardPage";
-import PartnerPage from "../pages/PartnerPage/PartnerPage";
-import DsiccountsPage from "../pages/DsiccountsPage/DsiccountsPage";
-import ContactsPage from "../pages/ContactsPage/ContactsPage";
+import MainLayouts from '../layouts/MainLayouts/MainLayouts';
+import SalePage from '../pages/SalePage/SalePage';
+import EveryClothPage from '../pages/EveryClothPage/EveryClothPage';
+import BasketPage from '../pages/BasketPage/BasketPage';
+import DecorZakazPage from '../pages/DecorZakazPage/DecorZakazPage';
+import AboutCompanyPage from '../pages/AboutCompanyPage/AboutCompanyPage';
+import DeliveryPage from '../pages/DeliveryPage/DeliveryPage';
+import GiftCardPage from '../pages/GiftCardPage/GiftCardPage';
+import PartnerPage from '../pages/PartnerPage/PartnerPage';
+import DsiccountsPage from '../pages/DsiccountsPage/DsiccountsPage';
+import ContactsPage from '../pages/ContactsPage/ContactsPage';
 
 /////// fns
-import { getToken } from "../store/reducers/requestSlice";
-import FavouritePage from "../pages/FavouritePage/FavouritePage";
+import { getToken } from '../store/reducers/requestSlice';
+import FavouritePage from '../pages/FavouritePage/FavouritePage';
 
 const MainRoutes = () => {
   const dispatch = useDispatch();

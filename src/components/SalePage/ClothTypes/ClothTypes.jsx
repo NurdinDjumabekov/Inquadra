@@ -1,18 +1,18 @@
 ////hooks
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
 /////components
-import ClothSize from "../ClothSize/ClothSize";
-import ClothPrices from "../ClothPrices/ClothPrices";
-import CategMenu from "../CategMenu/CategMenu";
+import ClothSize from '../ClothSize/ClothSize';
+import ClothPrices from '../ClothPrices/ClothPrices';
+import CategMenu from '../CategMenu/CategMenu';
 
 ///////fns
-import { activeBrandsFN } from "../../../store/reducers/stateSlice";
-import { changeActive } from "../../../store/reducers/stateSlice";
-import { getListCategs } from "../../../store/reducers/requestSlice";
+import { activeBrandsFN } from '../../../store/reducers/stateSlice';
+import { changeActive } from '../../../store/reducers/stateSlice';
+import { getListCategs } from '../../../store/reducers/requestSlice';
 
 ////style
-import "./style.scss";
+import './style.scss';
 
 const ClothTypes = () => {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const ClothTypes = () => {
   const { activeBrands, active } = useSelector((state) => state.stateSlice);
 
   const onUp = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const actionBrands = (id) => {
@@ -55,7 +55,7 @@ const ClothTypes = () => {
           {listBrands?.map((item) => (
             <li
               key={item?.id}
-              className={activeBrands === item?.id ? "activeItem" : ""}
+              className={activeBrands === item?.id ? 'activeItem' : ''}
               onClick={() => actionBrands(item?.id)}
             >
               <p>{item?.brandName}</p>
@@ -79,15 +79,15 @@ const ClothTypes = () => {
 
         <CategMenu
           list={categKladka}
-          name={"masonry_name"}
-          activeState={"kladka"}
+          name={'masonry_name'}
+          activeState={'kladka'}
           onChange={onChange}
         />
 
         <CategMenu
           list={categCoating}
-          name={"coating_name"}
-          activeState={"coating"}
+          name={'coating_name'}
+          activeState={'coating'}
           onChange={onChange}
         />
 
@@ -95,15 +95,15 @@ const ClothTypes = () => {
 
         <CategMenu
           list={listTexture}
-          name={"texture_name"}
-          activeState={"texture"}
+          name={'texture_name'}
+          activeState={'texture'}
           onChange={onChange}
         />
 
         <CategMenu
           list={listColor}
-          name={"color"}
-          activeState={"color"}
+          name={'color'}
+          activeState={'color'}
           onChange={onChange}
         />
       </div>

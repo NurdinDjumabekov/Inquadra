@@ -1,28 +1,28 @@
 ///////////hoooks
-import { useDispatch, useSelector } from "react-redux";
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 ///////// components
-import { NavPath } from "../../common/NavPath/NavPath";
-import RecomCloth from "../../components/EveryClothPage/RecomCloth/RecomCloth";
-import { Description } from "../../components/EveryClothPage/Description/Description";
+import { NavPath } from '../../common/NavPath/NavPath';
+import RecomCloth from '../../components/EveryClothPage/RecomCloth/RecomCloth';
+import { Description } from '../../components/EveryClothPage/Description/Description';
+import MenuSave from '../../common/Menu/MenuSave/MenuSave';
 
 ////////// fns
-import { getListhistory } from "../../store/reducers/requestSlice";
-import { detailedCloth } from "../../store/reducers/requestSlice";
-import { changeTemporary } from "../../store/reducers/stateSlice";
+import { getListhistory } from '../../store/reducers/requestSlice';
+import { detailedCloth } from '../../store/reducers/requestSlice';
+import { changeTemporary } from '../../store/reducers/stateSlice';
 
 ///////// helpers
-import PriceMeter from "../../components/EveryClothPage/PriceMeter/PriceMeter";
-import EveryClothSize from "../../components/EveryClothPage/EveryClothSize/EveryClothSize";
-import EveryClothColor from "../../components/EveryClothPage/EveryClothColor/EveryClothColor";
-import SkeletonsDetailedPage from "../../common/Skeletons/SkeletonsDetailedPage/SkeletonsDetailedPage";
-import Images from "../../components/EveryClothPage/Images/Images";
+import PriceMeter from '../../components/EveryClothPage/PriceMeter/PriceMeter';
+import EveryClothSize from '../../components/EveryClothPage/EveryClothSize/EveryClothSize';
+import EveryClothColor from '../../components/EveryClothPage/EveryClothColor/EveryClothColor';
+import SkeletonsDetailedPage from '../../common/Skeletons/SkeletonsDetailedPage/SkeletonsDetailedPage';
+import Images from '../../components/EveryClothPage/Images/Images';
 
 ///////// /style
-import "./style.scss";
-import MenuSave from "../../common/Menu/MenuSave/MenuSave";
+import './style.scss';
 
 const EveryClothPage = () => {
   const params = useParams();
@@ -36,7 +36,7 @@ const EveryClothPage = () => {
   const { preloader } = useSelector((state) => state.requestSlice);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     dispatch(detailedCloth(id));
     dispatch(getListhistory());
   }, [id]);
@@ -47,9 +47,11 @@ const EveryClothPage = () => {
     ///// подставляю state для временного хранения типа размера
   }, [everyCloth]);
 
+  const productName = everyCloth?.collection?.brand?.productName;
+  const collectionName = everyCloth?.collection?.collectionName;
   const listNavDecor = [
-    { link: everyCloth?.brand?.brandName, path: "/", active: false },
-    { link: everyCloth?.coating?.type, path: `/every/${id}`, active: true },
+    { link: productName, path: '/', active: false },
+    { link: collectionName, path: `/every/${id}`, active: true },
   ];
 
   if (preloader) {
@@ -64,14 +66,13 @@ const EveryClothPage = () => {
 
           <div className="everyCloth__inner">
             <Images />
-
             <div className="dopContant">
               <div className="titles">
                 <div>
-                  <span>{everyCloth?.brand?.brandName}</span>
+                  <span>{collectionName}</span>
                   <b>{everyCloth?.productStatus?.status}</b>
                 </div>
-                <h5>{everyCloth?.productName}</h5>
+                <h5>{productName}</h5>
               </div>
               <div className="prices">
                 <p>{everyCloth?.price} рублей за м²</p>

@@ -1,23 +1,23 @@
-import React from "react";
-import "./style.scss";
-import vk from "../../assets/icons/vk.svg";
-import telega from "../../assets/icons/telega.svg";
-import { useLocation } from "react-router-dom";
+import React from 'react';
+import './style.scss';
+import vk from '../../assets/icons/vk.svg';
+import telega from '../../assets/icons/telega.svg';
+import { useLocation } from 'react-router-dom';
 
 const Footer = () => {
   const { pathname } = useLocation();
 
   const m20 =
-    pathname?.includes("every") ||
-    pathname.includes("favourite") ||
-    pathname?.includes("basket");
+    pathname?.includes('every') ||
+    pathname.includes('favourite') ||
+    pathname?.includes('basket');
 
-  const m100 = pathname?.includes("decor");
+  const m100 = pathname?.includes('decor');
 
   return (
     <footer className="footer">
       <div
-        className={`footer__container m150 ${m20 && "m20"} ${m100 && "m100"} `}
+        className={`footer__container m150 ${m20 && 'm20'} ${m100 && 'm100'} `}
       >
         <div className="footer__main">
           <div className="titleMain">

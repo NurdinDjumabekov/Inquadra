@@ -1,5 +1,5 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 
 const SkeletonsDetailedPage = () => {
   const listRound = Array.from({ length: 20 }, (_, index) => index);
@@ -18,6 +18,7 @@ const SkeletonsDetailedPage = () => {
           </div>
 
           <div className="mainDetailedSkeleton">
+            <div className="adaptivedlider"></div>
             <section>
               <div>
                 <i></i>

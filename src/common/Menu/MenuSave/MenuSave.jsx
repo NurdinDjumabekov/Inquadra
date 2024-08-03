@@ -1,25 +1,25 @@
 ////// hooks
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useLocation } from 'react-router-dom';
 
 ////// imgs
-import favorite from "../../../assets/icons/heart.svg";
-import favoriteWhite from "../../../assets/icons/heartWhite.svg";
-import sale from "../../../assets/icons/sale.svg";
-import saleWhite from "../../../assets/icons/saleWhite.svg";
+import favorite from '../../../assets/icons/heart.svg';
+import favoriteWhite from '../../../assets/icons/heartWhite.svg';
+import sale from '../../../assets/icons/sale.svg';
+import saleWhite from '../../../assets/icons/saleWhite.svg';
 
 ////// fns
-import { lookBasketFN } from "../../../store/reducers/stateSlice";
-import { lookFavoriteFN } from "../../../store/reducers/stateSlice";
-import { getListBasket } from "../../../store/reducers/requestSlice";
-import { getListFavourite } from "../../../store/reducers/requestSlice";
+import { lookBasketFN } from '../../../store/reducers/stateSlice';
+import { lookFavoriteFN } from '../../../store/reducers/stateSlice';
+import { getListBasket } from '../../../store/reducers/requestSlice';
+import { getListFavourite } from '../../../store/reducers/requestSlice';
 
 ////// style
-import "./style.scss";
+import './style.scss';
 
 ////// components
-import Cloth from "../../Cloth/Cloth";
+import Cloth from '../../Cloth/Cloth';
 
 const MenuSave = () => {
   const dispatch = useDispatch();
@@ -53,15 +53,17 @@ const MenuSave = () => {
     }
   };
 
+  console.log(favouriteList, 'favouriteList');
+
   const active =
-    (pathname?.includes("favourite") && "activeFavourite") ||
-    (pathname?.includes("basket") && "activeBasket");
+    (pathname?.includes('favourite') && 'activeFavourite') ||
+    (pathname?.includes('basket') && 'activeBasket');
 
   return (
     <>
       <div className="blockFavorite">
         <button
-          className={`btnAction ${lookFavorite && "activeFavorite"}`}
+          className={`btnAction ${lookFavorite && 'activeFavorite'}`}
           onClick={lookMyFavorite}
         >
           <p>{favouriteList?.length}</p>
@@ -74,7 +76,7 @@ const MenuSave = () => {
             ) : (
               <>
                 {favouriteList?.map((item, index) => (
-                  <Cloth item={item} key={index} type={"favourite"} />
+                  <Cloth item={item} key={index} type={'favourite'} />
                 ))}
               </>
             )}
@@ -84,7 +86,7 @@ const MenuSave = () => {
 
       <div className="blockFavorite">
         <button
-          className={`btnAction ${lookBasket && "activeFavorite"}`}
+          className={`btnAction ${lookBasket && 'activeFavorite'}`}
           onClick={lookMyBasket}
         >
           <p>{basketList?.length}</p>
@@ -97,7 +99,7 @@ const MenuSave = () => {
             ) : (
               <>
                 {basketList?.map((item, index) => (
-                  <Cloth item={item} key={index} type={"basket"} />
+                  <Cloth item={item} key={index} type={'basket'} />
                 ))}
               </>
             )}
@@ -107,14 +109,14 @@ const MenuSave = () => {
 
       {/* ////// для адаптивки */}
       <div className={`adaptiveSave ${active}`}>
-        <NavLink to={"/favourite"}>
+        <NavLink to={'/favourite'}>
           <div>
             <img src={favorite} alt="" />
             {favouriteList?.length > 0 && <span>{favouriteList?.length}</span>}
           </div>
           <p>Пометка</p>
         </NavLink>
-        <NavLink to={"/basket"}>
+        <NavLink to={'/basket'}>
           <div>
             <img src={sale} alt="" />
             {basketList?.length > 0 && <span>{basketList?.length}</span>}

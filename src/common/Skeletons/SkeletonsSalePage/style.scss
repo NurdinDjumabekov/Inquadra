@@ -10,11 +10,16 @@
       justify-content: space-between;
       margin: 20px 0 0;
       gap: 20px;
+      width: 100%;
 
       &__types {
         display: flex;
         flex-direction: column;
         gap: 8px;
+
+        @media (max-width: 940px) {
+          display: none;
+        }
 
         .filtered {
           display: flex;
@@ -82,17 +87,37 @@
       }
 
       &__block {
+        width: 100%;
+
         main {
           display: flex;
           justify-content: flex-end;
+          @media (max-width: 930px) {
+            justify-content: flex-start;
+          }
 
           p {
-            width: 200px;
+            width: 40px;
             height: 40px;
             background: #aaa;
             margin: 15px 0 20px;
             align-self: center;
             border-radius: 10px;
+            position: relative;
+            @media (max-width: 930px) {
+              justify-content: flex-start;
+
+              &::after {
+                content: '';
+                position: absolute;
+                left: 50px;
+                top: 0;
+                width: 40px;
+                height: 40px;
+                background: #aaa;
+                border-radius: 10px;
+              }
+            }
           }
         }
       }
@@ -151,11 +176,24 @@
   justify-content: flex-end;
   gap: 20px 20px;
   margin: 3px 0 0 0;
+  @media (max-width: 1245px) {
+    justify-content: flex-start;
+    @media (max-width: 940px) {
+      gap: 10px 5px;
+      @media (max-width: 650px) {
+        justify-content: space-between;
+      }
+    }
+  }
 
   > div {
     height: 430px;
     width: 295px;
     background: #aaa;
     border-radius: 10px;
+    @media (max-width: 650px) {
+      width: 47%;
+      height: 315px;
+    }
   }
 }

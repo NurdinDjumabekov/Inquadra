@@ -1,16 +1,16 @@
 /////// hooks
-import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 ////// style
-import "./style.scss";
+import './style.scss';
 
 ////// img
-import { sarchImg } from "../../helpers/sarchImg";
+import { sarchImg } from '../../helpers/sarchImg';
 
 ////// components
-import Favourite from "../../common/Menu/Favourite/Favourite";
+import Favourite from '../../common/Menu/Favourite/Favourite';
 
 const RenderEveryCloth = ({ item }) => {
   ///true - можно добавить в корзину, false - переход на детальный просмотр
@@ -19,15 +19,16 @@ const RenderEveryCloth = ({ item }) => {
   const dispatch = useDispatch();
 
   const clickBtn = () => {
-    if (location?.pathname?.includes("every")) {
+    if (location?.pathname?.includes('every')) {
       navigate(`/every/${item?.id}`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       navigate(`/every/${item?.id}`);
     }
   };
 
-  console.log(sarchImg(item?.photos)?.url, "sarchImg(item?.photos)?.url");
+  console.log(item, 'item');
+  // console.log(sarchImg(item?.photos), 'sarchImg(item?.photos)?.url');
 
   return (
     <li className="every">
@@ -46,10 +47,10 @@ const RenderEveryCloth = ({ item }) => {
             <h6>{item?.price} рублей за м²</h6>
             <div>{item?.discountActive && <p>-{item?.discount}%</p>}</div>
           </div>
-          <span>{item?.brand?.brandName}</span>
+          <span>{item?.collection?.collectionName}</span>
           <div className="mainCard__content__decription">
-            <p>{item?.productName}</p>
-            <b>{item?.productDetails?.complect || 0} шт.</b>
+            <p>{item?.collection?.brand?.productName}</p>
+            <b>{item?.complect || '0 шт.'}</b>
           </div>
         </div>
       </div>
