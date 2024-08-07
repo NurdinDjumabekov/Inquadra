@@ -1,23 +1,24 @@
 /////// hooks
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 ///// style
-import "./style.scss";
+import './style.scss';
 
 ///// imgs
-import like from "../../../assets/images/likeBlack.png";
-import money from "../../../assets/icons/money.svg";
-import truck from "../../../assets/icons/truck.svg";
+import like from '../../../assets/images/likeBlack.png';
+import money from '../../../assets/icons/money.svg';
+import truck from '../../../assets/icons/truck.svg';
 
 /////// helpers
-import { confidation, link1 } from "../../../helpers/LodalData";
-import { link2, listDelivery } from "../../../helpers/LodalData";
-import { listTypePays } from "../../../helpers/LodalData";
-import { sumTotalBasket } from "../../../helpers/SumTotalBasket";
+import { confidation, link1 } from '../../../helpers/LodalData';
+import { link2, listDelivery } from '../../../helpers/LodalData';
+import { listTypePays } from '../../../helpers/LodalData';
+import { sumTotalBasket } from '../../../helpers/SumTotalBasket';
 
 //////// fns
-import { changeInputsDecor } from "../../../store/reducers/stateSlice";
+import { changeInputsDecor } from '../../../store/reducers/stateSlice';
+import { validationSendData } from '../../../helpers/validation';
 
 const DeliveryPay = () => {
   const dispatch = useDispatch();
@@ -38,6 +39,8 @@ const DeliveryPay = () => {
     dispatch(changeInputsDecor({ typePay: id }));
     ///// меняю способ оплаты для заказа
   };
+
+  const checkData = validationSendData(inputsDecor);
 
   return (
     <div className="deliveryPay">
@@ -114,7 +117,10 @@ const DeliveryPay = () => {
           <p>Итоговая стоимость вашего заказа</p>
           <div className="action">
             <span>{sumTotalBasket(basketList)} руб.</span>
-            <button type="submit" className={"choiceCloth"}>
+            <button
+              type="submit"
+              className={`choiceCloth ${checkData && 'activeClick'}`}
+            >
               Оформить
             </button>
           </div>

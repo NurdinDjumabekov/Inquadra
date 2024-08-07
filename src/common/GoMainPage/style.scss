@@ -1,27 +1,30 @@
 .goMain {
-  background: #fafafa;
-  padding: 35px 10px;
-  border-radius: 10px;
-  margin: 40px 0 100px;
-
-  p {
-    font-size: 14px;
-    line-height: 16px;
-    color: #757575;
-  }
-
-  button {
-    width: 195px;
-    gap: 50px;
-    background: #bcbcbc;
-    color: #fff;
-    font-family: Cygre;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 46px;
-    text-align: center;
-    border-radius: 10px;
+  display: none;
+  @media (max-width: 500px) {
     display: block;
-    margin: 10px 0 0 0;
+    background: #fafafa;
+    padding: 35px 10px;
+    border-radius: 10px;
+    margin: 40px 0 100px;
+    p {
+      font-size: 14px;
+      line-height: 16px;
+      color: #757575;
+    }
+
+    button {
+      width: 195px;
+      gap: 50px;
+      background: #bcbcbc;
+      color: #fff;
+      font-family: Cygre;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 46px;
+      text-align: center;
+      border-radius: 10px;
+      display: block;
+      margin: 10px 0 0 0;
+    }
   }
 }

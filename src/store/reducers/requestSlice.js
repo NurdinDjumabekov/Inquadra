@@ -1,27 +1,31 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import axios from 'axios';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 import {
+  activeBrandsFN,
   changeSortAllType,
   changeTemporary,
+  initialPriceFN,
   lookNumberConfFN,
   lookNumberFN,
-} from './stateSlice';
-import axiosInstance from '../../axiosInstance';
-import { changeToken } from './saveDataSlice';
+} from "./stateSlice";
+import axiosInstance from "../../axiosInstance";
+import { changeToken } from "./saveDataSlice";
 import {
   addProdBasket,
   addProdFavourite,
+  changeBasketList,
   changeFavouriteList,
   delProdFavourite,
   deleteProdBasket,
-} from './serverSaveSlice';
+} from "./serverSaveSlice";
+import { returnId } from "../../helpers/meterFN";
 const { REACT_APP_API_URL } = process.env;
 
 ///////////////////////////// токен для авторизации /////////////////////////////////////
 
 ///// getToken - get токен
 export const getToken = createAsyncThunk(
-  'getToken',
+  "getToken",
   async function (_, { dispatch, rejectWithValue }) {
     try {
       const response = await axiosInstance(`temp-user/login-or-register`);
@@ -42,7 +46,7 @@ export const getToken = createAsyncThunk(
 
 ///// sendNumberFN - отправка номера
 export const sendNumberFN = createAsyncThunk(
-  'sendNumberFN',
+  "sendNumberFN",
   async function (num, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}`;
     try {
@@ -61,7 +65,7 @@ export const sendNumberFN = createAsyncThunk(
 
 ///// confirmNumberFN - отправка подтверждения номера
 export const confirmNumberFN = createAsyncThunk(
-  'confirmNumberFN',
+  "confirmNumberFN",
   async function (props, { dispatch, rejectWithValue }) {
     const { clear, nums, numberUser } = props;
     // try {
@@ -85,12 +89,12 @@ export const confirmNumberFN = createAsyncThunk(
 
 ///// getListCateg - get список катег0рий //// check
 export const getListCateg = createAsyncThunk(
-  'getListCateg',
+  "getListCateg",
   async function (props, { dispatch, rejectWithValue }) {
     try {
       const response = await axiosInstance(`reference-data/categories`);
       if (response.status >= 200 && response.status < 300) {
-        console.log(response?.data, ' response?.data');
+        console.log(response?.data, " response?.data");
         // return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -103,12 +107,17 @@ export const getListCateg = createAsyncThunk(
 
 ///// getListBrands - get список плит (Напольная плитка, Декоративная  и т.д.)
 export const getListBrands = createAsyncThunk(
-  'getListBrands',
+  "getListBrands",
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}reference-data/brands`;
     try {
       const response = await axiosInstance(url);
       if (response.status >= 200 && response.status < 300) {
+        const id = response.data?.[0]?.id;
+        if (id) {
+          dispatch(activeBrandsFN(id));
+          dispatch(getListCategs(id));
+        }
         return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -120,14 +129,16 @@ export const getListBrands = createAsyncThunk(
 );
 
 ///// getListCategs - get одежду
+///check поменять название
 export const getListCategs = createAsyncThunk(
-  'getListCategs',
+  "getListCategs",
   async function (id, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}reference-data/brand-data?brandId=${id}`;
     try {
       const response = await axiosInstance(url);
       if (response.status >= 200 && response.status < 300) {
         dispatch(changeSortAllType(response?.data));
+        dispatch(initialPriceFN({ min: 0, max: response?.data?.maxPrice }));
         return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -140,7 +151,25 @@ export const getListCategs = createAsyncThunk(
 
 ///// detailedCloth - get каждую одежду
 export const detailedCloth = createAsyncThunk(
-  'detailedCloth',
+  "detailedCloth",
+  async function (id, { dispatch, rejectWithValue }) {
+    const url = `${REACT_APP_API_URL}products/details/${id}`;
+    try {
+      const response = await axiosInstance(url);
+      if (response.status >= 200 && response.status < 300) {
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+///// getPhoto - get каждую одежду
+export const getPhioto = createAsyncThunk(
+  "getPhoto",
   async function (id, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}products/details/${id}`;
     try {
@@ -158,12 +187,13 @@ export const detailedCloth = createAsyncThunk(
 
 ///// getListProds - get одежду
 export const getListProds = createAsyncThunk(
-  'getListProds',
-  async function (props, { dispatch, rejectWithValue }) {
+  "getListProds",
+  async function (data, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}products`;
     try {
-      const response = await axiosInstance(url);
+      const response = await axiosInstance.post(url, data);
       if (response.status >= 200 && response.status < 300) {
+        console.log(response?.data);
         return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -176,7 +206,7 @@ export const getListProds = createAsyncThunk(
 
 ///// searchCloth -  посик одежды
 export const searchCloth = createAsyncThunk(
-  'searchCloth',
+  "searchCloth",
   async function (text, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}search?query=${text}`;
     try {
@@ -196,7 +226,7 @@ export const searchCloth = createAsyncThunk(
 
 ///// getListFavourite - get список избранных
 export const getListFavourite = createAsyncThunk(
-  'getListFavourite',
+  "getListFavourite",
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}favorites`;
     try {
@@ -214,17 +244,24 @@ export const getListFavourite = createAsyncThunk(
 
 ///// addFavourite - добавить в избранные товар
 export const addFavourite = createAsyncThunk(
-  'addFavourite',
+  "addFavourite",
   async function (data, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}favorites`;
     try {
       const response = await axiosInstance.post(url, data);
       if (response.status >= 200 && response.status < 300) {
-        dispatch(addProdFavourite({ ...data, codeid: response.data?.codeid }));
+        const colors = returnId(data?.colors, data?.colorId);
+        const masonry = returnId(data?.masonry, data?.masonryId);
+        const sizes = returnId(data?.sizes, data?.sizeId);
+        const objSend = { ...data, codeid: response.data?.codeid };
+        dispatch(addProdFavourite({ ...objSend, masonry, colors, sizes }));
+
         ///// добавляю в избранные локально
-        dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
+        const obj = { colorId: 0, sizeId: 0, masonryId: 0, count: 1, type: 0 };
+        dispatch(changeTemporary(obj));
+
         ///// обнуляю state для временного хранения цвета и размера и типа размера
-        alert('Товар добавлен в корзину');
+        alert("Товар добавлен в корзину");
         return response.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -237,7 +274,7 @@ export const addFavourite = createAsyncThunk(
 
 ///// deleteFavourite -  удалить с избранных товар
 export const deleteFavourite = createAsyncThunk(
-  'deleteFavourite',
+  "deleteFavourite",
   async function (data, { dispatch, rejectWithValue }) {
     const { id } = data;
     const url = `${REACT_APP_API_URL}favorites/${id}`;
@@ -255,17 +292,18 @@ export const deleteFavourite = createAsyncThunk(
     }
   }
 );
+
 ///////////////////////////// корзина /////////////////////////////////////
 
 ///// getListBasket - get список корзины
 export const getListBasket = createAsyncThunk(
-  'getListBasket',
+  "getListBasket",
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}basket`;
     try {
       const response = await axiosInstance(url);
       if (response.status >= 200 && response.status < 300) {
-        return response?.data?.items;
+        return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
       }
@@ -277,7 +315,7 @@ export const getListBasket = createAsyncThunk(
 
 ///// addBasket - добавить в корзину товар
 export const addBasket = createAsyncThunk(
-  'addBasket',
+  "addBasket",
   async function (data, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}basket/addItem`;
     try {
@@ -286,9 +324,10 @@ export const addBasket = createAsyncThunk(
         dispatch(addProdBasket({ ...data, codeid: response?.data?.codeid }));
         ///// добавляю в корзину локально
 
-        dispatch(changeTemporary({ colorId: 0, sizeId: 0, count: 1, type: 0 }));
+        // const obj = { colorId: 0, sizeId: 0, masonryId: 0, count: 1, type: 0 };
+        // dispatch(changeTemporary(obj));
         ///// обнуляю state для временного хранения цвета и размера и типа размера
-        alert('Товар добавлен в корзину');
+        alert("Товар добавлен в корзину");
         return response.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -301,7 +340,7 @@ export const addBasket = createAsyncThunk(
 
 ///// deleteBasket -  удалить с корзины товар
 export const deleteBasket = createAsyncThunk(
-  'deleteBasket',
+  "deleteBasket",
   async function (data, { dispatch, rejectWithValue }) {
     const { codeid } = data;
     const url = `${REACT_APP_API_URL}basket/item/${codeid}`;
@@ -323,18 +362,17 @@ export const deleteBasket = createAsyncThunk(
 
 ///// counterFavourite - counter для изменения кол-ва товаров в избранных
 export const counterFavourite = createAsyncThunk(
-  'counterFavourite',
+  "counterFavourite",
   async function (props, { dispatch, rejectWithValue }) {
     const { typeCounter, item, favouriteList } = props; //. typeCounter 1 - добавляю, 2 - минусую
 
-    const url = `${REACT_APP_API_URL}counter-favourite`;
+    const url = `${REACT_APP_API_URL}favorites/counter-favourite`;
     const data = { typeCounter, id: item?.id };
 
     try {
       const response = await axiosInstance.post(url, data);
       if (response.status >= 200 && response.status < 300) {
         const objSort = favouriteList?.find((i) => i?.id === item?.id); /// нахожу элемент
-
         if (objSort) {
           const num = typeCounter === 1 ? 1 : -1;
           const newList = favouriteList?.map((i) =>
@@ -342,7 +380,36 @@ export const counterFavourite = createAsyncThunk(
           );
           dispatch(changeFavouriteList(newList));
         }
+        return response?.data;
+      } else {
+        throw Error(`Error: ${response.status}`);
+      }
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
+///// counterBasket - counter для изменения кол-ва товаров в корзине
+export const counterBasket = createAsyncThunk(
+  "counterBasket",
+  async function (props, { dispatch, rejectWithValue }) {
+    const { typeCounter, item, basketList } = props; //. typeCounter 1 - добавляю, 2 - минусую
+
+    const url = `${REACT_APP_API_URL}basket/counter-basket`;
+    const data = { typeCounter, id: item?.id };
+
+    try {
+      const response = await axiosInstance.post(url, data);
+      if (response.status >= 200 && response.status < 300) {
+        const objSort = basketList?.find((i) => i?.id === item?.id); /// нахожу элемент
+        if (objSort) {
+          const num = typeCounter === 1 ? 1 : -1;
+          const newList = basketList?.map((i) =>
+            i?.id === item?.id ? { ...i, count: i?.count + num } : i
+          );
+          dispatch(changeBasketList(newList));
+        }
         return response?.data;
       } else {
         throw Error(`Error: ${response.status}`);
@@ -357,7 +424,7 @@ export const counterFavourite = createAsyncThunk(
 
 ///// getListhistory - get список избранных
 export const getListhistory = createAsyncThunk(
-  'getListhistory',
+  "getListhistory",
   async function (_, { dispatch, rejectWithValue }) {
     const url = `${REACT_APP_API_URL}view-history`;
 
@@ -380,7 +447,7 @@ const initialState = {
   preloaderBasket: false,
 
   //////////
-  search: '',
+  search: "",
   searchList: [], //// поиск одежды
   listCloth: [], /// для отображения списка
   listHistory: [], /// для отображения списка
@@ -391,12 +458,12 @@ const initialState = {
   listSize: [], // размер
   listTexture: [], // текстура
   listColor: [], // цвета
-  listPrice: [], // цена
+  facture: [], // фактура (сверху: полировка), (сверху: глазурь)
   everyCloth: {},
 };
 
 const requestSlice = createSlice({
-  name: 'requestSlice',
+  name: "requestSlice",
   initialState,
   extraReducers: (builder) => {
     //////////////// sendNumberFN
@@ -452,40 +519,39 @@ const requestSlice = createSlice({
 
     //////////////// getListCategs
     builder.addCase(getListCategs.fulfilled, (state, action) => {
-      state.preloader = false;
-
+      // state.preloader = false;
       const { masonryTypes, coatings, sizes } = action.payload;
-      const { texture, colors, price } = action.payload;
+      const { texture, colors, facture, status } = action.payload;
 
       state.categKladka = masonryTypes; // кладки
-      state.categStatus = []; // статус ////// chech
+      state.categStatus = status; // статус ////// chech
       state.categCoating = coatings; // покрытие
       state.listSize = sizes; // размер
       state.listTexture = texture; // текстура
       state.listColor = colors; // цвета
-      state.listPrice = []; // цены ////// chech
+      state.facture = facture; // цены ////// chech
     });
 
     builder.addCase(getListCategs.rejected, (state, action) => {
       state.error = action.payload;
-      state.preloader = false;
+      // state.preloader = false;
     });
     builder.addCase(getListCategs.pending, (state, action) => {
-      state.preloader = true;
+      // state.preloader = true;
     });
 
     //////////////////// getListProds
     builder.addCase(getListProds.fulfilled, (state, action) => {
-      state.preloader = false;
+      // state.preloader = false;
       state.listCloth = action.payload;
     });
     builder.addCase(getListProds.rejected, (state, action) => {
       state.error = action.payload;
-      state.preloader = false;
-      // state.listCloth = [];
+      // state.preloader = false;
+      state.listCloth = [];
     });
     builder.addCase(getListProds.pending, (state, action) => {
-      state.preloader = true;
+      // state.preloader = true;
     });
 
     //////////////////// searchCloth

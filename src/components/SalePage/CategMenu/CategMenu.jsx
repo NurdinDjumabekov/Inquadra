@@ -1,12 +1,12 @@
 /////// hooks
-import React, { useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 /////// style
-import "./style.scss";
+import './style.scss';
 
 /////// imgs
-import check from "../../../assets/icons/check.svg";
+import check from '../../../assets/icons/check.svg';
 
 const CategMenu = ({ list, name, activeState, onChange }) => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const CategMenu = ({ list, name, activeState, onChange }) => {
   const listData = list?.slice(0, length ? list?.length : 6);
 
   return (
-    <ul ref={contentRef} className={`menuCateg ${noEmpty && "morePush"}`}>
+    <ul ref={contentRef} className={`menuCateg ${noEmpty && 'morePush'}`}>
       {listData?.map((item) => (
         <li key={item?.id} onClick={() => actionCateg(item?.id)}>
           <div className="checkBox">
@@ -41,7 +41,7 @@ const CategMenu = ({ list, name, activeState, onChange }) => {
           <p>{item?.[name]}</p>
         </li>
       ))}
-      {moreInfo && (
+      {moreInfo && !length && (
         <li className="moreInfo" onClick={viewAll}>
           Показать все
         </li>

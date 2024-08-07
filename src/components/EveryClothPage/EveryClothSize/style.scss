@@ -39,11 +39,12 @@
       cursor: pointer;
       position: relative;
       background: #fff;
-      width: 80px;
+      // width: 80px;
+      width: auto;
       height: 40px;
-      font-size: 14px;
-      line-height: 14px;
-      padding: 3px 0 0 0;
+      font-size: 16px;
+      line-height: 16px;
+      padding: 3px 10px 0;
     }
 
     .activeItem {
@@ -102,6 +103,7 @@
 .morePush {
   @media (max-width: 540px) {
     padding: 10px;
+    align-items: flex-start;
   }
 }
 

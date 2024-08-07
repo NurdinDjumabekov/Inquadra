@@ -1,26 +1,28 @@
-import React, { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
 ////// helpers
-import { sarchImg, sarchImgSeconds } from '../../../helpers/sarchImg';
+import { sarchImg, sarchImgSeconds } from "../../../helpers/sarchImg";
 
 ///////// /style
-import './style.scss';
+import "./style.scss";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import Favourite from '../../../common/Menu/Favourite/Favourite';
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import Favourite from "../../../common/Menu/Favourite/Favourite";
 
 const Images = () => {
   const { everyCloth } = useSelector((state) => state.requestSlice);
 
   const listImg = sarchImgSeconds(everyCloth?.photos);
 
+  const countImg = everyCloth?.photos?.length === 1;
+
   return (
     <>
-      <div className="mainContant">
+      <div className={`mainContant ${countImg ? "onePhoto" : ""}`}>
         <div className="dopImg">
           {listImg?.slice(0, 3)?.map((item, index) => (
             <div key={index}>

@@ -13,6 +13,9 @@
     &:hover {
       .shadowSize {
         display: block;
+        @media (max-width: 900px) {
+          display: none !important;
+        }
       }
 
       p {
@@ -25,6 +28,9 @@
       .moreSize {
         z-index: 25;
         display: block;
+        @media (max-width: 900px) {
+          display: none !important;
+        }
       }
     }
 
@@ -57,7 +63,7 @@
       position: absolute;
       left: 0;
       bottom: 40px;
-      display: none;
+      // display: none;
 
       &__inner {
         padding: 10px 15px;
@@ -67,6 +73,7 @@
         margin: 0 0 8px 0;
         background: #fff;
         animation: shadowBlock 0.7s ease-in-out;
+        z-index: 10;
 
         p {
           font-size: 16px;

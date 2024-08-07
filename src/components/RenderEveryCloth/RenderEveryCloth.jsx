@@ -1,16 +1,16 @@
 /////// hooks
-import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 ////// style
-import './style.scss';
+import "./style.scss";
 
 ////// img
-import { sarchImg } from '../../helpers/sarchImg';
+import { sarchImg } from "../../helpers/sarchImg";
 
 ////// components
-import Favourite from '../../common/Menu/Favourite/Favourite';
+import Favourite from "../../common/Menu/Favourite/Favourite";
 
 const RenderEveryCloth = ({ item }) => {
   ///true - можно добавить в корзину, false - переход на детальный просмотр
@@ -19,15 +19,15 @@ const RenderEveryCloth = ({ item }) => {
   const dispatch = useDispatch();
 
   const clickBtn = () => {
-    if (location?.pathname?.includes('every')) {
+    if (location?.pathname?.includes("every")) {
       navigate(`/every/${item?.id}`);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       navigate(`/every/${item?.id}`);
     }
   };
 
-  console.log(item, 'item');
+  // console.log(item, 'item');
   // console.log(sarchImg(item?.photos), 'sarchImg(item?.photos)?.url');
 
   return (
@@ -35,22 +35,22 @@ const RenderEveryCloth = ({ item }) => {
       <Favourite obj={item} disable={true} />
       <div onClick={clickBtn} className="favourite"></div>
       <div className="mainCard">
-        <div className="mainImg">
-          <img src={sarchImg(item?.photos)?.url} alt="img" />
+        <div className="mainCard__inner">
+          <div className="mainImg" onClick={clickBtn}>
+            <img src={sarchImg(item?.photos)?.url} alt="img" />
+            <button className="lookDetailed">Посмотреть</button>
+          </div>
           <h5>{item?.productStatus?.status}</h5>
-          <button className="lookDetailed" onClick={clickBtn}>
-            Посмотреть
-          </button>
         </div>
         <div className="mainCard__content">
-          <div className="mainCard__content__title">
+          <div className="mainCard__content__title" onClick={clickBtn}>
             <h6>{item?.price} рублей за м²</h6>
             <div>{item?.discountActive && <p>-{item?.discount}%</p>}</div>
           </div>
-          <span>{item?.collection?.collectionName}</span>
+          <span>{item?.collection?.brand?.productName}</span>
           <div className="mainCard__content__decription">
-            <p>{item?.collection?.brand?.productName}</p>
-            <b>{item?.complect || '0 шт.'}</b>
+            <p onClick={clickBtn}>{item?.collection?.collectionName}</p>
+            <b>{item?.complect}.</b>
           </div>
         </div>
       </div>

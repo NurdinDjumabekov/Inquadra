@@ -10,6 +10,12 @@
     height: 230px;
     position: relative;
 
+    @media (max-width: 500px) {
+      width: 135px;
+      min-width: 135px;
+      height: 190px;
+    }
+
     > img {
       object-fit: cover;
       border-radius: 10px;
@@ -22,12 +28,18 @@
       left: 5px;
       background: #ffffff51;
       border-radius: 10px;
+      @media (max-width: 500px) {
+        padding: 2px 8px;
+      }
 
       p {
         font-size: 14px;
         line-height: 17px;
         text-align: center;
         color: #fff;
+        @media (max-width: 500px) {
+          font-size: 10px;
+        }
       }
     }
 
@@ -39,27 +51,61 @@
       background: #ffffff51;
       border-radius: 10px;
 
+      @media (max-width: 500px) {
+        padding: 2px 8px;
+      }
+
       p {
         font-size: 14px;
         line-height: 17px;
         text-align: center;
         color: #fff;
+        @media (max-width: 500px) {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .favoriteIcon {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+
+      .favoriteBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @media (max-width: 500px) {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      .activeFav {
+        background: rgba(255, 0, 0, 0.094);
       }
     }
   }
 
   .dopContant {
     width: 390px;
+    @media (max-width: 605px) {
+      width: 100%;
+    }
     .title {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
       flex-direction: row;
       width: 100%;
-      background: #f7f7f7;
+      background: #f0f0f0;
       gap: 3px;
       padding: 7px 10px 10px;
       border-radius: 10px;
+      @media (max-width: 500px) {
+        padding: 5px 10px 7px;
+      }
 
       p {
         font-size: 14px;
@@ -81,6 +127,11 @@
 
       h6 {
         text-align: left;
+        margin: 3px 0 0 0;
+
+        @media (max-width: 605px) {
+          font-size: 14px;
+        }
       }
 
       b {
@@ -89,12 +140,19 @@
         font-size: 14px;
         line-height: 14px;
         margin-top: 3px;
+        @media (max-width: 605px) {
+          display: none;
+        }
       }
 
       span {
         color: #909090;
         font-size: 14px;
         line-height: 14px;
+
+        @media (max-width: 605px) {
+          font-size: 12px;
+        }
       }
     }
 
@@ -114,11 +172,20 @@
         align-items: center;
         border-radius: 10px;
 
+        @media (max-width: 500px) {
+          height: 30px;
+          background: #c0c0c0;
+        }
+
         p {
           font-size: 16px;
           line-height: 20px;
           text-align: center;
           color: #fff;
+
+          @media (max-width: 500px) {
+            font-size: 12px;
+          }
         }
       }
     }
@@ -132,15 +199,21 @@
       div {
         display: flex;
         align-items: center;
-        gap: 5px;
-        border: 1px solid #c0c0c0;
+        gap: 10px;
+        // border: 1px solid #c0c0c0;
         padding: 3px 10px 0;
         height: 50px;
         border-radius: 10px;
+        @media (max-width: 500px) {
+          height: 40px;
+        }
 
         p {
           font-size: 18px;
           line-height: 46px;
+          @media (max-width: 500px) {
+            font-size: 14px;
+          }
         }
 
         span {
@@ -174,21 +247,28 @@
           line-height: 36px;
           text-align: center;
           border-radius: 10px;
-          background: #444444;
-        }
+          background: #848484;
+          border: none;
+          @media (max-width: 500px) {
+            height: 40px;
+            width: 40px;
+          }
 
-        button:nth-child(1) {
-          background: #c0c0c0;
+          img {
+            width: 20px;
+            height: 20px;
+          }
         }
 
         button:nth-child(2) {
           background: #fff;
-          border: 1px solid #050505;
+          // border: 1px solid #050505;
           padding: 3px 2px 0 0;
         }
       }
 
       > button {
+        display: none;
         height: 50px;
         width: 200px;
         background: #050505;
@@ -199,6 +279,20 @@
         font-weight: 400;
         line-height: 36px;
         text-align: center;
+        @media (max-width: 605px) {
+          display: block;
+          height: 40px;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 10px;
+
+          img {
+            width: 20px;
+            height: 20px;
+          }
+        }
       }
     }
   }

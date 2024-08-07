@@ -36,6 +36,14 @@
           background: #fff;
           border: none;
         }
+
+        .choiceCloth {
+          background: #b5b5b5;
+        }
+
+        .activeClick {
+          background: #050505;
+        }
       }
     }
   }
@@ -124,6 +132,7 @@
           button {
             background: #b9b9b9;
             font-size: 14px;
+            margin: 0;
           }
         }
 

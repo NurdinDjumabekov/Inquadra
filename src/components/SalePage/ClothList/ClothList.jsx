@@ -1,13 +1,13 @@
 ////hooks
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
 ////style
-import "./style.scss";
+import './style.scss';
 
 ////fns
 
 ////components
-import RenderEveryCloth from "../../RenderEveryCloth/RenderEveryCloth";
+import RenderEveryCloth from '../../RenderEveryCloth/RenderEveryCloth';
 
 const ClothList = () => {
   const dispatch = useDispatch();

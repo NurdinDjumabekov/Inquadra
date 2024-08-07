@@ -20,11 +20,14 @@ export const initialState = {
     size: 0,
     texture: [],
     color: [],
+    sorting: 0,
+    brandId: 0,
+    facture: [],
   },
 
   activeBrands: 0, // активный бренд
 
-  temporary: { colorId: 0, sizeId: 0, count: 1, type: 0 },
+  temporary: { colorId: 0, sizeId: 0, masonryId: 0, count: 1, type: 0 },
   //// для временного хранения размеров и цветов в списке
 
   activePrice: { min: 10, max: 12000 }, //// цена одежды диапозон
@@ -133,8 +136,8 @@ const stateSlice = createSlice({
     ////// присваиваю id каждой сортировки во временный state для того чтобы везде были галочки
 
     changeSortAllType: (state, action) => {
-      const { masonryTypes, coatings } = action.payload;
-      const { texture, colors } = action.payload;
+      const { masonryTypes, coatings, status } = action.payload;
+      const { texture, colors, facture } = action.payload;
 
       state.active = {
         ...state.active,
@@ -142,6 +145,9 @@ const stateSlice = createSlice({
         color: colors?.map((item) => item.id), // покрытие
         kladka: masonryTypes?.map((item) => item.id), // кладки
         texture: texture?.map((item) => item.id), // текстура
+
+        status: status?.map((item) => item.id), // текстура
+        facture: facture?.map((item) => item.id), // текстура
       };
     },
 

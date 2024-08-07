@@ -3,10 +3,15 @@
   margin-bottom: 200px;
 
   .navPath {
-    margin: 40px 0 30px 0;
+    margin: 5px 0 10px 0;
   }
 
   &__inner {
+
+    .everyBasket {
+      gap: 10px;
+    }
+
     h4 {
       font-size: 30px;
       font-weight: 700;

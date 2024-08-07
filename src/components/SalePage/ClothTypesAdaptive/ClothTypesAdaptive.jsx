@@ -1,21 +1,21 @@
 ////hooks
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 /////components
-import ClothSize from '../ClothSize/ClothSize';
-import ClothPrices from '../ClothPrices/ClothPrices';
-import CategMenu from '../CategMenu/CategMenu';
-import MenuChoiceAdaptive from '../../../common/Menu/MenuChoiceAdaptive/MenuChoiceAdaptive';
+import ClothSize from "../ClothSize/ClothSize";
+import ClothPrices from "../ClothPrices/ClothPrices";
+import CategMenu from "../CategMenu/CategMenu";
+import MenuChoiceAdaptive from "../../../common/Menu/MenuChoiceAdaptive/MenuChoiceAdaptive";
 
 ///////fns
-import { activeBrandsFN } from '../../../store/reducers/stateSlice';
-import { changeActive } from '../../../store/reducers/stateSlice';
-import { getListCategs } from '../../../store/reducers/requestSlice';
+import { activeBrandsFN } from "../../../store/reducers/stateSlice";
+import { changeActive } from "../../../store/reducers/stateSlice";
+import { getListCategs } from "../../../store/reducers/requestSlice";
 
 ////style
-import './style.scss';
-import { NavPath } from '../../../common/NavPath/NavPath';
-import { searchBrand } from '../../../helpers/tranformNumber';
+import "./style.scss";
+import { NavPath } from "../../../common/NavPath/NavPath";
+import { searchBrand } from "../../../helpers/tranformNumber";
 
 const ClothTypesAdaptive = () => {
   ///// есть такая же компонента только для desktop, а это для адаптивки
@@ -30,19 +30,18 @@ const ClothTypesAdaptive = () => {
   const { menuAdaptive } = useSelector((state) => state.stateSlice);
 
   const onUp = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const actionBrands = (id) => {
     dispatch(activeBrandsFN(id));
     dispatch(getListCategs(id));
-    onUp(); //// скролл вверх
-    // setCollection(false); /// сразу закрываю меню
-    // setTypes(true); /// сразу открываю второе меню
+    onUp();
   };
 
   const onChange = (id, name) => {
-    //// меняю кладку для сортировки
+    //// меняю кладку, покрытие, оттенки и прочее для сортировки
+
     if (active?.[name]?.includes(id)) {
       const newList = active?.[name]?.filter((i) => i !== id);
       dispatch(changeActive({ ...active, [name]: newList }));
@@ -51,8 +50,10 @@ const ClothTypesAdaptive = () => {
     }
   };
 
+  const check = menuAdaptive?.left || menuAdaptive?.right;
+
   return (
-    <div className="clothTypesAdaptive">
+    <div className={`clothTypesAdaptive ${check && "activePush"}`}>
       <NavPath list={searchBrand(listBrands, activeBrands)} />
       <MenuChoiceAdaptive />
       <div className="clothTypes__inner">
@@ -61,7 +62,7 @@ const ClothTypesAdaptive = () => {
             {listBrands?.map((item) => (
               <li
                 key={item?.id}
-                className={activeBrands === item?.id ? 'activeItem' : ''}
+                className={activeBrands === item?.id ? "activeItem" : ""}
                 onClick={() => actionBrands(item?.id)}
               >
                 <p>{item?.brandName}</p>
@@ -75,15 +76,15 @@ const ClothTypesAdaptive = () => {
           <>
             <CategMenu
               list={categKladka}
-              name={'masonry_name'}
-              activeState={'kladka'}
+              name={"masonry_name"}
+              activeState={"kladka"}
               onChange={onChange}
             />
 
             <CategMenu
               list={categCoating}
-              name={'coating_name'}
-              activeState={'coating'}
+              name={"coating_name"}
+              activeState={"coating"}
               onChange={onChange}
             />
 
@@ -91,15 +92,15 @@ const ClothTypesAdaptive = () => {
 
             <CategMenu
               list={listTexture}
-              name={'texture_name'}
-              activeState={'texture'}
+              name={"texture_name"}
+              activeState={"texture"}
               onChange={onChange}
             />
 
             <CategMenu
               list={listColor}
-              name={'color'}
-              activeState={'color'}
+              name={"color"}
+              activeState={"color"}
               onChange={onChange}
             />
 

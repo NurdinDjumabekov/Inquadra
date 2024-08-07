@@ -13,8 +13,8 @@
     color: #505050;
 
     i {
-      font-size: 12px;
-      line-height: 12px;
+      font-size: 16px;
+      line-height: 16px;
       color: #909090;
     }
   }
@@ -29,9 +29,10 @@
     height: 50px;
     background-color: transparent;
     background: #fff;
+    margin: 0 0 10px 0;
 
     &::placeholder {
-      font-family: "Cygre Book", sans-serif;
+      font-family: 'Cygre Book', sans-serif;
       font-weight: 400;
       font-size: 18px;
       line-height: 18px;
@@ -47,8 +48,8 @@
   }
 
   b {
-    font-size: 16px;
-    line-height: 16px;
+    font-size: 18px;
+    line-height: 18px;
     text-align: left;
     color: #ff3535;
     display: none;

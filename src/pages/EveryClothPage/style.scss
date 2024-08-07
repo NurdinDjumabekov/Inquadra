@@ -18,7 +18,7 @@
       width: 100%;
 
       .titles {
-        padding: 17px 15px 12px;
+        padding: 20px 15px 12px;
         background: #f0f0f0;
         border-radius: 10px;
 
@@ -30,7 +30,7 @@
 
           span {
             display: block;
-            font-size: 18px;
+            font-size: 16px;
             line-height: 18px;
             text-align: left;
             color: #909090;
@@ -41,12 +41,14 @@
             font-size: 16px;
             line-height: 16px;
             text-align: right;
+            color: #909090;
           }
         }
 
         h5 {
-          font-size: 24px;
-          line-height: 24px;
+          font-size: 22px;
+          line-height: 30px;
+          // margin: 5px 0 0 0;
         }
       }
 
@@ -55,11 +57,11 @@
         justify-content: space-between;
         align-items: center;
         background: #f0f0f0;
-        padding: 15px 15px 12px;
+        padding: 15px;
 
         p {
-          font-size: 24px;
-          line-height: 24px;
+          font-size: 22px;
+          line-height: 22px;
           color: #050505;
         }
 
@@ -130,6 +132,18 @@
         .types {
           display: flex;
           gap: 5px;
+
+          > ul {
+            width: 33%;
+          }
+
+          .listColor {
+            li {
+              p {
+                max-width: 100% !important;
+              }
+            }
+          }
         }
       }
     }

@@ -23,7 +23,7 @@ const RecomCloth = () => {
     return (
       <div className="recom">
         <div className="recom__title">
-          <h4>Можно дополнить образ, чтобы собрать весь комплект</h4>
+          <h4>Просмотренное, которое можно отложить в </h4>
           <div>
             <img src={heart} alt="heart" />
           </div>

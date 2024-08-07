@@ -1,26 +1,33 @@
 ///////// hooks
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 ///////// style
-import './style.scss';
+import "./style.scss";
 
 ///////// imgs
-import minus from '../../../assets/icons/minus.svg';
-import plus from '../../../assets/icons/plus.svg';
-import money from '../../../assets/icons/money.svg';
-import truck from '../../../assets/icons/truck.svg';
+import minus from "../../../assets/icons/minus.svg";
+import plus from "../../../assets/icons/plus.svg";
+import money from "../../../assets/icons/money.svg";
+import truck from "../../../assets/icons/truck.svg";
 
 ///////// fns
-import { changeTemporary } from '../../../store/reducers/stateSlice';
-import { addProdBasket } from '../../../store/reducers/serverSaveSlice';
-import Favourite from '../../../common/Menu/Favourite/Favourite';
-import { addBasket } from '../../../store/reducers/requestSlice';
+import { changeTemporary } from "../../../store/reducers/stateSlice";
+import Favourite from "../../../common/Menu/Favourite/Favourite";
 
-const PriceMeter = ({ count, everyCloth }) => {
+///////// fns
+import { addBasket } from "../../../store/reducers/requestSlice";
+
+///////// helpers
+import { meterFN, returnBasket } from "../../../helpers/meterFN";
+import { roundNum } from "../../../helpers/roundNum";
+
+const PriceMeter = ({ count, everyCloth, exists }) => {
   const dispatch = useDispatch();
 
   const { temporary } = useSelector((state) => state.stateSlice);
+
+  // const { basketList } = useSelector((state) => state.serverSaveSlice);
 
   const counterPlus = () => {
     dispatch(changeTemporary({ ...temporary, count: count + 1 }));
@@ -37,9 +44,9 @@ const PriceMeter = ({ count, everyCloth }) => {
   const addProdInBasket = () => {
     ///// добавляю в корзину
     if (temporary?.sizeId == 0) {
-      alert('Выберите размер одежды');
+      alert("Выберите размер одежды");
     } else if (temporary?.colorId == 0) {
-      alert('Выберите цвет одежды');
+      alert("Выберите цвет одежды");
     } else {
       const data = { ...everyCloth, ...temporary, productId: 1 };
       dispatch(addBasket(data));
@@ -47,32 +54,63 @@ const PriceMeter = ({ count, everyCloth }) => {
     }
   };
 
+  const checkWidth = everyCloth?.sizes?.find((i) => i?.id == temporary?.sizeId);
+  // const checkWidtsh = everyCloth?.sizes?.find(
+  //   (i) => i?.id == temporary?.sizeId
+  // );
+
+  // const objBasket = returnBasket(basketList, everyCloth);
+
+  // console.log(objBasket, "objBasket");
+
+  const secondMeter = meterFN(checkWidth?.sizeName || "1х1", everyCloth);
+
+  console.log(checkWidth?.sizeName || "1х1", everyCloth);
+
+  console.log(everyCloth, "everyCloth");
+
   return (
     <div className="priceMeter">
       <div className="price">
         <div className="meter">
-          <p>{count * everyCloth?.price}</p>
+          {exists ? (
+            <p>{roundNum(+count * +everyCloth?.price * +secondMeter)}</p>
+          ) : (
+            <p>{roundNum(+count * +everyCloth?.price * +secondMeter)}</p>
+          )}
           <span>руб. </span>
         </div>
         <div className="meter">
-          <p>{count * everyCloth?.price}</p>
-          <span>{everyCloth?.saleType?.type}</span>
+          <p className="second">{secondMeter}</p>
+          <span> м²</span>
+          {/* {everyCloth?.saleType?.type} */}
         </div>
       </div>
       <div className="actions">
-        <div className="counter">
-          <button onClick={counterMinus} className="increment">
-            <img src={minus} alt=">" />
-          </button>
-          <div className="count">
-            <p>{count}</p>
+        {exists && (
+          <div className="counter">
+            <button onClick={counterMinus} className="increment">
+              <img src={minus} alt=">" />
+            </button>
+            <div className="count">
+              <p>{count}</p>
+            </div>
+            <button onClick={counterPlus} className={`decrement `}>
+              <img src={plus} alt="<" />
+            </button>
           </div>
-          <button onClick={counterPlus} className="decrement">
-            <img src={plus} alt="<" />
+        )}
+        {exists ? (
+          <button className="actionInBasket">В корзине</button>
+        ) : (
+          <button
+            className="actionInBasket haveBasket"
+            onClick={addProdInBasket}
+          >
+            Добавить в корзину
           </button>
-        </div>
-        <button onClick={addProdInBasket}>В корзину</button>
-        <div className="favouriteAction">
+        )}
+        <div className={`favouriteAction`}>
           <Favourite obj={everyCloth} black={true} />
         </div>
       </div>

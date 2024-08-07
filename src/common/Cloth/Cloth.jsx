@@ -8,6 +8,7 @@ import deleteImg from "../../assets/icons/deleteGray.svg";
 import minus from "../../assets/icons/minus.svg";
 import plus from "../../assets/icons/plus.svg";
 import basket from "../../assets/icons/saleWhite.svg";
+import basketGray from "../../assets/icons/saleWhiteGray.svg";
 
 ///// components
 import DiscountPrice from "../DiscountPrice/DiscountPrice";
@@ -18,15 +19,20 @@ import { sarchImg } from "../../helpers/sarchImg";
 
 ///// fns
 import { lookBasketFN, lookFavoriteFN } from "../../store/reducers/stateSlice";
-import { deleteBasket } from "../../store/reducers/requestSlice";
+import {
+  addBasket,
+  counterBasket,
+  deleteBasket,
+  searchFN,
+} from "../../store/reducers/requestSlice";
 import { deleteFavourite } from "../../store/reducers/requestSlice";
 import { counterFavourite } from "../../store/reducers/requestSlice";
-import { everyClothFN } from "../../store/reducers/requestSlice";
 import { delProdFavourite } from "../../store/reducers/serverSaveSlice";
 import { deleteProdBasket } from "../../store/reducers/serverSaveSlice";
 
 ///// style
 import "./style.scss";
+import { listWords } from "../../helpers/LodalData";
 
 const Cloth = ({ item, type }) => {
   const navigate = useNavigate();
@@ -34,19 +40,14 @@ const Cloth = ({ item, type }) => {
   const location = useLocation();
 
   const { favouriteList } = useSelector((state) => state.serverSaveSlice);
+  const { basketList } = useSelector((state) => state.serverSaveSlice);
 
   const nav = () => {
     ///// скрываю все тени
     dispatch(lookFavoriteFN(false));
     dispatch(lookBasketFN(false));
-    navigate("basket");
+    navigate("/basket");
   };
-
-  const color = item?.colors?.filter((i) => i?.id === item?.colorId); /// цвет
-  const colorActive = color?.[0]?.color;
-
-  const size = item?.sizes?.filter((i) => i?.id === item?.sizeId); /// размер
-  const sizeActive = size?.[0]?.sizeName;
 
   const deleteFav = () => {
     dispatch(deleteFavourite(item));
@@ -58,17 +59,17 @@ const Cloth = ({ item, type }) => {
     dispatch(deleteProdBasket(item)); //// time
   }; /// удаяю через запрос
 
-  const navDetailed = () => {
+  const navDetailed = (id) => {
     if (location?.pathname?.includes("every")) {
-      navigate(`/every/${item?.id}`);
+      navigate(`/every/${id}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      navigate(`/every/${item?.id}`);
-      dispatch(everyClothFN(item));
+      navigate(`/every/${id}`);
     }
     ///// скрываю все тени
     dispatch(lookFavoriteFN(false));
     dispatch(lookBasketFN(false));
+    dispatch(searchFN(""));
   };
 
   const counterFN = (typeCounter) => {
@@ -86,13 +87,33 @@ const Cloth = ({ item, type }) => {
     }
   };
 
+  const counterBasketFN = (typeCounter) => {
+    ///// typeCounter 1 - добавляю, 2 - отнимаю
+    if (typeCounter === 1) {
+      // Добавляю
+      dispatch(counterBasket({ typeCounter, item, basketList }));
+    } else if (typeCounter === 2) {
+      // Минусую
+      if (item?.count > 1) {
+        dispatch(counterBasket({ typeCounter, item, basketList }));
+      } else {
+        alert("Количество не может быть меньше 1го");
+      }
+    }
+  };
+
+  const addProdInBasket = () => {
+    dispatch(addBasket(item));
+    ///// добавляю в корзину через запрос
+  };
+
   if (type == "favourite") {
     return (
       <li className="everyBasket">
         <div className="imgMain">
           <img src={sarchImg(item?.photos)?.url} alt="" />
           {/* <button onClick={navDetailed}>Посмотреть</button> */}
-          <p className="kol">{item?.productDetails?.complect}</p>
+          <p className="kol">{item?.complect}</p>
           {item?.discountActive && (
             <p className="discount">-{item?.discount}%</p>
           )}
@@ -103,18 +124,18 @@ const Cloth = ({ item, type }) => {
         <div className="infoBlock">
           <div className="title">
             <div>
-              <span>{item?.brand?.brandName}</span>
-              <h6>{item.productName}</h6>
+              <span>{item?.collection?.brand?.productName}</span>
+              <h6>{item?.collection?.collectionName}</h6>
             </div>
             <b>{item?.productStatus?.status}</b>
           </div>
           <div className="typesProd">
             <div className="typesProd__inner">
               <div className="color">
-                <p>{sizeActive}</p>
+                <p>{item?.colors?.[0]?.color}</p>
               </div>
               <div className="size">
-                <p>{colorActive}</p>
+                <p>{item?.sizes?.[0]?.sizeName}</p>
               </div>
             </div>
           </div>
@@ -140,7 +161,10 @@ const Cloth = ({ item, type }) => {
                 <img src={plus} alt="<" />
               </button>
             </div>
-            <button onClick={() => {}}>в корзину</button>
+            <button onClick={addProdInBasket}>
+              в корзину
+              <img src={basketGray} alt="" />
+            </button>
           </div>
         </div>
       </li>
@@ -152,30 +176,29 @@ const Cloth = ({ item, type }) => {
       <li className="everyBasket">
         <div className="imgMain">
           <img src={sarchImg(item?.photos)?.url} alt="" />
-          {/* <button onClick={navDetailed}>Посмотреть</button> */}
-          <p className="kol">{item?.productDetails?.complect}</p>
+          <p className="kol">{item?.complect}</p>
           {item?.discountActive && (
             <p className="discount">-{item?.discount}%</p>
           )}
           <div className="favoriteIcon">
-            <Favourite obj={item} />
+            <Favourite obj={item} positionBasket={true} />
           </div>
         </div>
         <div className="infoBlock">
           <div className="title">
             <div>
-              <span>{item?.brand?.brandName}</span>
-              <h6>{item.productName}</h6>
+              <span>{item?.collection?.brand?.productName}</span>
+              <h6>{item?.collection?.collectionName}</h6>
             </div>
             <b>{item?.productStatus?.status}</b>
           </div>
           <div className="typesProd">
             <div className="typesProd__inner">
               <div className="color">
-                <p>{sizeActive}</p>
+                <p>{item?.sizes?.[0]?.sizeName}</p>
               </div>
               <div className="size">
-                <p>{colorActive}</p>
+                <p>{item?.colors?.[0]?.color}</p>
               </div>
             </div>
           </div>
@@ -191,17 +214,17 @@ const Cloth = ({ item, type }) => {
           </div>
           <div className="actions">
             <div className="counter">
-              <button onClick={() => counterFN(2)} className="increment">
+              <button onClick={() => counterBasketFN(2)} className="increment">
                 <img src={minus} alt=">" />
               </button>
               <div className="count">
                 <p>{item?.count}</p>
               </div>
-              <button onClick={() => counterFN(1)} className="decrement">
+              <button onClick={() => counterBasketFN(1)} className="decrement">
                 <img src={plus} alt="<" />
               </button>
             </div>
-            <button onClick={nav}>В корзину</button>
+            <button onClick={nav}>Оформить</button>
           </div>
         </div>
       </li>
@@ -217,20 +240,20 @@ const Cloth = ({ item, type }) => {
         <div className="infoBlock forSearch">
           <div className="title">
             <div>
-              <span>{item?.typeProd}</span>
-              <h6>{item.productName}</h6>
+              <span>{item?.collection?.brand?.productName}</span>
+              <h6>{item?.collection?.collectionName}</h6>
             </div>
             <b>{item?.productStatus?.status}</b>
           </div>
           <DiscountPrice item={item} />
           <div className="words">
-            {item?.listWords?.map((word) => (
+            {listWords?.map((word) => (
               <li>{word}</li>
             ))}
           </div>
-          <div className="actions search">
-            <button onClick={nav}>Посмотреть</button>
-            <Favourite obj={item} />
+          <div className="actions search" onClick={() => navDetailed(item?.id)}>
+            <button onClick={() => navDetailed(item?.id)}>Посмотреть</button>
+            <Favourite obj={item} search={true} />
           </div>
         </div>
       </li>

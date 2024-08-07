@@ -1,8 +1,10 @@
 .clothTypes {
   min-width: 280px;
   max-width: 280px;
-  padding: 0px 0px 200px;
-  position: relative;
+  // height: 83vh;
+  // margin: 0px 0px 200px;
+  // overflow-y: scroll;
+  // position: static;
 
   &__inner {
     .brands {
@@ -29,51 +31,53 @@
 
     .listTypes {
       li {
-        p {
+        p,
+        span {
           position: relative;
           display: inline-block;
 
-          &:after {
+          &:before {
+            content: "";
             position: absolute;
             bottom: -2px;
-            left: 0px;
-            content: "";
-            width: 0;
+            left: 0;
             height: 1px;
-            background: #050505;
-            transition: width 0.5s ease-in-out, opacity 0.5s ease-in-out;
-            /* Плавное изменение ширины и прозрачности */
-
-            /* Исходно прячем линию */
-            opacity: 0;
-          }
-
-          &:hover:after {
-            width: 100%; /* Показываем линию при наведении */
-            opacity: 1; /* Делаем ее видимой */
-          }
-
-          &:not(:hover):after {
-            // width: 0; /* Скрываем линию после того, как курсор убран */
-            // opacity: 0; /* Делаем ее невидимой */
+            width: 0;
+            transition: width 0.7s; // Устанавливаем переход для ширины
           }
         }
 
-        &:hover {
-          span {
-            position: relative;
-            display: inline-block;
+        p:before {
+          background: #050505; // Черный цвет для линии у p
+        }
 
-            &:before {
-              content: "";
-              position: absolute;
-              bottom: -2px;
-              left: 0px;
-              height: 1px;
-              background: #b5b5b5;
-              width: 110%;
-              animation: modal 0.7s ease-in-out;
-            }
+        span:before {
+          background: #b5b5b5; // Серый цвет для линии у span
+        }
+
+        &:hover {
+          p:before {
+            animation: none; // Отключаем анимацию при наведении, используем только переходы
+            width: 100%;
+          }
+
+          span:before {
+            animation: none; // Отключаем анимацию при наведении, используем только переходы
+            width: 110%;
+            transition-delay: 0.4s; // Задержка для перехода у span
+          }
+        }
+
+        &:not(:hover) {
+          p:before {
+            animation: none; // Отключаем анимацию при убирании, используем только переходы
+            width: 0;
+            transition-delay: 0.4s; // Задержка для перехода у p
+          }
+
+          span:before {
+            animation: none; // Отключаем анимацию при убирании, используем только переходы
+            width: 0;
           }
         }
       }
@@ -102,6 +106,54 @@
     position: absolute;
     bottom: 00px;
     left: 0;
+  }
+
+  &::-webkit-scrollbar {
+    min-width: 1px;
+    max-width: 1px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    min-width: 1px;
+    max-width: 1px;
+    &:hover {
+      background-color: #050505;
+    }
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    cursor: pointer;
+    max-height: 50px;
+    min-height: 50px;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-track {
+      // background-color: #050505;
+    }
+    &::-webkit-scrollbar-thumb {
+      // background-color: #ffffff4e;
+    }
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
   }
 }
 

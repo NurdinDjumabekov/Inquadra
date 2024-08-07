@@ -1,11 +1,11 @@
-.listColor {
+.listMensory {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 5px 5px;
   background: #f0f0f0;
   border-radius: 10px;
-  margin: 5px 0 5px 0px;
+  // margin: 0 0 5px 0;
 
   li {
     position: relative;
@@ -52,8 +52,9 @@
 }
 
 /////////////////////////////////// адаптивка
-.listColor {
+.listMensory {
   @media (max-width: 540px) {
+    margin: 5px 0 0 0;
     li {
       p {
         width: 80px !important;

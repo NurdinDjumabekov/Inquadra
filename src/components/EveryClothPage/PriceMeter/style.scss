@@ -1,6 +1,5 @@
 .priceMeter {
   display: flex;
-  gap: 5px;
   flex-direction: column;
   margin: 20px 0 10px;
   min-width: 80px;
@@ -10,11 +9,11 @@
     gap: 5px;
 
     .meter {
-      background: #fafafa;
+      background: #f0f0f0;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 5px;
+      gap: 10px;
       border-radius: 10px;
       padding: 15px 15px 12px;
       min-width: 80px;
@@ -23,11 +22,17 @@
         font-size: 18px;
         line-height: 20px;
         color: #434343;
+        // width: 55px;
+        text-align: right;
+      }
+
+      .second {
+        width: 35px;
       }
 
       span {
-        font-size: 14px;
-        line-height: 15px;
+        font-size: 16px;
+        line-height: 16px;
         text-align: center;
         color: #bcbcbc;
       }
@@ -38,6 +43,7 @@
     display: flex;
     align-items: center;
     gap: 5px;
+    margin-top: 5px;
 
     .basketBtn {
       width: 86px;
@@ -47,8 +53,8 @@
       justify-content: center;
 
       img {
-        width: 20px;
-        height: 20px;
+        width: 28px;
+        height: 28px;
       }
     }
 
@@ -63,7 +69,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #fafafa;
+        background: #f0f0f0;
         border-radius: 10px;
         padding-top: 2px 0 0 0;
 
@@ -92,7 +98,7 @@
       }
 
       .increment {
-        background: #c0c0c0;
+        background: #828282;
       }
 
       .decrement {
@@ -100,8 +106,8 @@
       }
     }
 
-    > button {
-      font-family: 'Cygre Book', sans-serif;
+    .actionInBasket {
+      font-family: "Cygre Book", sans-serif;
       background: #050505;
       width: 200px;
       height: 50px;
@@ -114,14 +120,17 @@
     }
 
     .favouriteAction {
-      .activeFav {
-        background: transparent;
-
+      .activeFav,
+      .favoriteBtn {
         img {
-          width: 24px;
-          height: 24px;
+          width: 28px;
+          height: 28px;
         }
       }
+    }
+
+    .haveBasket {
+      width: 366px !important;
     }
   }
 
@@ -158,6 +167,15 @@
     .actions {
       .favouriteAction {
         display: none !important;
+      }
+
+      > button {
+        order: 1;
+        width: 100%;
+      }
+
+      .counter {
+        order: 2;
       }
     }
 

@@ -1,17 +1,17 @@
 /////// hooks
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 ////// components
-import MyInputs from "../MyInput/MyInputs";
-import InputMask from "react-input-mask";
+import MyInputs from '../MyInput/MyInputs';
+import InputMask from 'react-input-mask';
 
 ////// fns
-import { changeInputsDecor } from "../../../store/reducers/stateSlice";
-import { lookNumberConfFN } from "../../../store/reducers/stateSlice";
+import { changeInputsDecor } from '../../../store/reducers/stateSlice';
+import { lookNumberConfFN } from '../../../store/reducers/stateSlice';
 
 ////// style
-import "./style.scss";
+import './style.scss';
 
 const UserInputs = ({ refAddres }) => {
   const dispatch = useDispatch();
@@ -34,15 +34,15 @@ const UserInputs = ({ refAddres }) => {
       <h6>Мои данные</h6>
       <div>
         <MyInputs
-          title={"Имя"}
-          placeholder={"Александра"}
+          title={'Имя'}
+          placeholder={'Александра'}
           onChange={onChange}
-          name={"name"}
+          name={'name'}
           error={inputsDecor.name.error}
           value={inputsDecor.name.text}
         />
 
-        <MyInputs
+        {/* <MyInputs
           title={"Фамилия"}
           placeholder={"Александрова"}
           onChange={onChange}
@@ -59,7 +59,7 @@ const UserInputs = ({ refAddres }) => {
           name={"lastName"}
           error={inputsDecor.lastName.error}
           value={inputsDecor.lastName.text}
-        />
+        /> */}
 
         <div className="twoInputs">
           <div className="myInput">
@@ -80,10 +80,10 @@ const UserInputs = ({ refAddres }) => {
         </div>
 
         <MyInputs
-          title={"Электронная почта"}
-          placeholder={"womanfromthefuture@icloud.com"}
+          title={'Электронная почта'}
+          placeholder={'womanfromthefuture@icloud.com'}
           onChange={onChange}
-          name={"email"}
+          name={'email'}
         />
       </div>
     </div>

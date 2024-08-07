@@ -1,27 +1,76 @@
-.allPrice {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 14px;
-  text-align: left;      
-  color: #050505;
-  margin-bottom: 10px;
-}
-
 .priceBlock {
-  margin-top: 26px;   
-  padding: 0 0px 0 10px;
+  margin-top: 5px;
+  background: #f0f0f0;
+  height: 70px;
+  padding: 35px 23px 5px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-radius: 10px;
 
   .css-13sv6az-MuiSlider-root {
-    height: 1px;
+    height: 1px !important;
   }
 
-  .css-13sv6az-MuiSlider-root .MuiSlider-valueLabel {
-    background: #fff;
+  .css-6hu2ts-MuiSlider-root {
+    width: 85% !important;
+    margin: 0 auto !important;
+    display: block !important;
   }
 
-  .css-7d61z1-MuiSlider-valueLabel::before{
-    width: 0;
-    height: 0;
+  .css-6hu2ts-MuiSlider-root .MuiSlider-thumb {
+    color: black;
+    width: 13px !important;
+    height: 13px !important;
+  }
+
+  .css-14pt78w-MuiSlider-rail {
+    // background: transparent !important;
+    height: 1px !important;
+  }
+  .css-1p82lal .MuiSlider-rail {
+    height: 1px !important;
+    color: black;
+  }
+  .css-1p82lal .MuiSlider-track {
+    border: none;
+    height: 1px !important;
+  }
+  .css-1gv0vcd-MuiSlider-track {
+    height: 1px !important;
+    border: none !important;
+  }
+
+  .css-1p82lal .MuiSlider-thumb {
+    height: 15px;
+    width: 15px;
+    color: black;
+  }
+
+  .css-7d61z1-MuiSlider-valueLabel {
+    top: -5px !important;
+  }
+
+  .css-1p82lal .MuiSlider-thumb {
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  .css-1b90qqk.MuiSlider-valueLabelOpen {
+    transform: translateY(-70%) scale(1);
+  }
+
+  .css-6hu2ts-MuiSlider-root .MuiSlider-valueLabel {
+    background: transparent !important;
+  }
+
+  .css-1p82lal .MuiSlider-valueLabel {
+    background: transparent !important;
+  }
+
+  .css-7d61z1-MuiSlider-valueLabel::before {
+    width: 0 !important;
+    height: 0 !important;
   }
 
   .css-7d61z1-MuiSlider-valueLabel {
@@ -29,15 +78,14 @@
   }
 
   .MuiSlider-mark MuiSlider-markActive css-6cwnna-MuiSlider-mark {
-    display: none;
+    display: none !important;
   }
 
   .MuiSlider-valueLabelLabel {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 12px;
-    text-align: center;
-    color: #050505;
-
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 12px !important;
+    text-align: center !important;
+    color: #050505 !important;
   }
 }

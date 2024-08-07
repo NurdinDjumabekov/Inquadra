@@ -13,6 +13,9 @@ import call from "../../../assets/icons/call.svg";
 /////// fns
 import { changeMenuActive } from "../../../store/reducers/stateSlice";
 
+//////// components
+import InputMask from "react-input-mask";
+
 /////// style
 import "./style.scss";
 
@@ -23,14 +26,17 @@ import Sorting from "../../../components/SalePage/Sorting/Sorting";
 ///// helpers
 import { listSorting } from "../../../helpers/LodalData";
 import Selects from "../../Selects/Selects";
+import { getListProds } from "../../../store/reducers/requestSlice";
 
 const MenuChoice = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { menuActive } = useSelector((state) => state.stateSlice);
+  const { menuActive, active } = useSelector((state) => state.stateSlice);
+  const { activeBrands } = useSelector((state) => state.stateSlice);
 
   const [closing, setClosing] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [inputNum, setInputNum] = useState("");
   const [filterActive, setFilterActive] = useState(false);
 
   const openMenu = (bool) => {
@@ -39,7 +45,7 @@ const MenuChoice = () => {
       setTimeout(() => {
         dispatch(changeMenuActive(false));
         setClosing(false);
-      }, 600); // Время должно совпадать с transition в CSS
+      }, 1); // Время должно совпадать с transition в CSS
     } else {
       dispatch(changeMenuActive(true));
     }
@@ -54,14 +60,27 @@ const MenuChoice = () => {
 
   const onChnage = (key, name, id) => {
     // console.log(key, name, id);
+    dispatch(getListProds({ ...active, sorting: id, brandId: activeBrands }));
+  };
+
+  const onChangeInput = (e) => {
+    const newValue = e.target.value.replace(/\D/g, "");
+    setInputNum(newValue);
+  };
+
+  console.log(inputNum);
+  const consultation = () => {
+    if (inputNum?.length != 11) {
+      alert("Введите полный номер");
+    } else {
+      alert("С вами скоро свяжется консультат");
+    }
   };
 
   return (
     <div className={`menuChoice ${menuActive ? "menuChoiceActive" : ""}`}>
       <button
-        className={`menuMain menuBurger ${menuActive ? "activeMenu" : ""} ${
-          closing ? "closing" : ""
-        } ${hovered ? "hovered" : ""}`}
+        className={`menuMain menuBurger ${menuActive ? "activeMenu" : ""} `}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
       >
@@ -106,12 +125,22 @@ const MenuChoice = () => {
           <div className="filterActiveMore">
             <div className="call">
               <img src={call} alt="call" />
-              <span>+7 999 999 99 99</span>
-              <button>Консультация</button>
+              {/* <span>+7 999 999 99 99</span> */}
+              <InputMask
+                mask="+9 999 999-99-99"
+                placeholder="+7 999 999 99 99"
+                name="number"
+                onChange={onChangeInput}
+                maskChar={null}
+                value={inputNum}
+              />
+              <button onClick={consultation}>Консультация</button>
             </div>
             <div className="conditions">
               <b>нажимая по кнопке, вы соглашаетесь</b>
-              <span> с условиями обработки персональных данных</span>
+              <span onClick={() => navigate("/about")}>
+                с условиями обработки персональных данных
+              </span>
             </div>
           </div>
         )}
